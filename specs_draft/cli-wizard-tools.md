@@ -53,7 +53,7 @@ The Setup Wizard SHALL load Cloud API credentials (`apiKey`, `apiSecret`, `apiRe
 - Anchor: `tinytuya/wizard.py:84-106` (load), `:129-141` (reuse prompt), `:143-169` (prompt + save, region list at `:154-161`)
 
 ### Requirement: Wizard device harvest via Cloud with scan shortcut, dry-run, linking and dual file output
-Unless `--dry-run` (`nocloud`) — which reuses the existing `devices.json` list — the wizard SHALL: accept `apiDeviceID` set to the literal `scan` by auto-discovering one Device ID via a one-device network scan; call `Cloud.getdevices()` (optionally downloading DP name mappings); infer sub-device parents via `gateway_id` or shared local key; print the device listing; and save the normalized list to `devices.json` plus the full raw cloud response (with account, date and tinytuya version metadata) to `tuya-raw.json`, surfacing server errors and hinting at an expired IoT Core subscription when the payload mentions `permission` or error `1010`.
+Unless `--dry-run` (`nocloud`) reuses the existing `devices.json` list, the wizard SHALL accept `apiDeviceID` set to the literal `scan` by auto-discovering one Device ID via a one-device network scan; call `Cloud.getdevices()`, optionally downloading DP name mappings; infer sub-device parents via `gateway_id` or shared local key; print the device listing; and save the normalized list to `devices.json` plus the full raw cloud response to `tuya-raw.json`.
 - Status: VERIFIED
 - Evidence: doc: README.md line 115 (wizard creates `devices.json` and `tuya-raw.json`); [commit 14e6b7a3f307] — "Add IoT core service renewal info to the setup wizard in the README"; [commit 2a95d00f8f61] — "improve error messaging in scanner and wizard"
 - Anchor: `tinytuya/wizard.py:171-184` (dry-run/scan shortcut), `:186-215` (cloud fetch + renewal hint at `:192-194` and `:211-213`), `:217-254` (parent linking), `:256-265` (save devices.json), `:267-281` (raw file)
@@ -89,7 +89,7 @@ If the device IP is unknown (absent or `--ip auto`) or the protocol version is u
 - Anchor: `tinytuya/cli.py:183-195` (scanner call at `:185-188`, fallback at `:193-195`)
 
 ### Requirement: Control command execution and output contract
-`on`/`off` SHALL call `turn_on()/turn_off()` on the resolved switch DPS (default 1); `set` SHALL require `--dps` and `--value`, parsing `--value` as JSON first (so `true`, `123` keep native types) and falling back to a plain string; `get` SHALL print the full status JSON without `--dps`, or the bare DPS value with `--dps` (erroring with the available DPS keys when absent); any result containing `Err` SHALL print `Error <code>: <msg>` and exit non-zero, otherwise the JSON result (or `OK`) is printed.
+`on`/`off` SHALL call `turn_on()/turn_off()` on the resolved switch DPS (default 1); `set` SHALL require `--dps` and `--value`, parsing `--value` as JSON first and falling back to a plain string; `get` SHALL print the full status JSON without `--dps`, or the bare DPS value with `--dps`; any result containing `Err` SHALL print `Error <code>: <msg>` and exit non-zero, otherwise the JSON result (or `OK`) is printed.
 - Status: VERIFIED
 - Evidence: [commit e9a23af8c916] — "Enhance device command handling by improving value parsing and error handling"; doc: README.md § Set/Get (`parsed as JSON if possible … otherwise sent as a plain string`, `--dps N → plain scalar value only`)
 - Anchor: `tinytuya/__main__.py:123-129` (per-command DPS flags); `tinytuya/cli.py:209-255` (JSON parse at `:221-224`, get branches at `:226-242`, error/OK contract at `:248-255`)
@@ -101,10 +101,16 @@ The `monitor` subcommand SHALL connect with a persistent socket, print the initi
 - Anchor: `tinytuya/cli.py:258-300` (timers at `:265-266`, loop at `:276-298`)
 
 ### Requirement: API server: UDP discovery threads plus threaded HTTP control API with env configuration
-The bundled server SHALL run one thread per Tuya UDP discovery port (6666/6667/7000) decrypting broadcasts into a device database, and a `ThreadingHTTPServer` GET API on port 8888 (overridable via `APIPORT` env) with routes for device listing, status, set, turnon/turnoff, delayed off, cloud sync/config and offline listing; behavior SHALL be configurable via environment (`DEBUGMODE=yes`, `HOST` to pin the interface/broadcast address) or a leading `-d` argument, and the process SHALL exit on SIGTERM. An optional MQTT gateway (`server/mqtt/mqtt_gateway.py`) MAY bridge the server's `/devices` HTTP output to an MQTT broker using `mqtt.json` (topic/broker/port/pollingtime, defaults on unreadable config).
+The bundled server SHALL run one thread per Tuya UDP discovery port (6666/6667/7000) decrypting broadcasts into a device database, and a `ThreadingHTTPServer` GET API on port 8888 (env `APIPORT`) with routes for device listing, status, set, turnon/turnoff, delayed off, cloud sync/config and offline listing; behavior SHALL be configurable via environment (`DEBUGMODE=yes`, `HOST`) or a leading `-d` argument, and the process SHALL exit on SIGTERM.
 - Status: VERIFIED
-- Evidence: doc: server/README.md (endpoint table, Docker `-e DEBUGMODE`/`-e HOST`, port 8888); [commit e59d6bfb95f6] — "Add option to specify host for server"; [commit 93834cdfaa04] — "MQTT Gateway for Server"; [commit 518328ba7b21] — server build version bump to p16
-- Anchor: `server/server.py:78` (APIPORT), `:92-93` (DEBUGMODE/HOST), `:97-103` (HOST broadcast math), `:112-114` (`-d` flag), `:128` (SIGTERM), `:673-678` (HTTP server), `:691-694` (threads); `server/mqtt/mqtt_gateway.py:83-99` (readconfig with defaults)
+- Evidence: doc: server/README.md (endpoint table, Docker `-e DEBUGMODE`/`-e HOST`, port 8888); [commit e59d6bfb95f6] — "Add option to specify host for server"; [commit 518328ba7b21] — server build version bump to p16
+- Anchor: `server/server.py:78` (APIPORT), `:92-93` (DEBUGMODE/HOST), `:97-103` (HOST broadcast math), `:112-114` (`-d` flag), `:128` (SIGTERM), `:673-678` (HTTP server), `:691-694` (threads)
+
+### Requirement: Optional MQTT gateway bridging server device output to a broker
+The MQTT gateway SHALL bridge the server's `/devices` HTTP output to an MQTT broker per `mqtt.json` (topic/broker/port/pollingtime) when that config is present, SHALL apply built-in defaults when the config is unreadable, and SHALL remain inactive otherwise.
+- Status: VERIFIED
+- Evidence: [commit 93834cdfaa04] — "MQTT Gateway for Server"
+- Anchor: `server/mqtt/mqtt_gateway.py:83-99` (readconfig with defaults)
 
 ### Requirement: Offline PCAP decrypt tool keyed by devices.json
 The `tools/pcap_parse.py` utility SHALL read tcpdump PCAP files (via the optional `dpkt` module, with an install hint and hard failure when missing), decrypt Tuya traffic using local keys loaded from a `devices.json` (explicit `-d FILE`, else auto-probing `devices.json` and `../devices.json`), and offer `-z/--hide-zero-len` (suppress 0-length heartbeats) and `-s/--sortable` (device-ID-sortable output) flags.

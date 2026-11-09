@@ -17,7 +17,7 @@ This capability is the Tuya IoT Platform REST client: `tinytuya/Cloud.py` implem
 ## Requirements
 
 ### Requirement: Credential sourcing with config-file fallback and token reuse
-The `Cloud` constructor SHALL accept `apiRegion`, `apiKey`, `apiSecret`, `apiDeviceID`, an `initial_token` from a previous run, and a configurable `configFile` (default `tinytuya.json`); when key or secret is missing it SHALL load `apiRegion`/`apiKey`/`apiSecret`/optional `apiDeviceID` from that JSON file, raising `TypeError('Tuya Cloud Key and Secret required')` (with an `ERR_CLOUDKEY` error payload recorded on the instance) if neither arguments nor config supply them; when `initial_token` is supplied it SHALL skip the immediate token fetch and let the normal expiry path refresh it lazily on the first request that reports the token invalid.
+The `Cloud` constructor SHALL accept `apiRegion`, `apiKey`, `apiSecret`, `apiDeviceID`, an `initial_token` from a previous run, and a configurable `configFile` (default `tinytuya.json`); when key or secret is missing it SHALL load them from that JSON file, raising `TypeError('Tuya Cloud Key and Secret required')` if neither arguments nor config supply them; when `initial_token` is supplied it SHALL skip the immediate token fetch and refresh lazily via the normal expiry path.
 - Status: VERIFIED
 - Evidence: [commit 7eba3057c485] "Load cloud config file if available"; [commit 736ba6774d88] release-notes entry adding the `configFile` option; [commit 4413314b6dc9] "Allow passing an initial token from a previous run to Cloud init"; doc: API.md § Cloud Constructor (lines 729–744)
 - Anchor: `tinytuya/Cloud.py:50`; `tinytuya/Cloud.py:96`; `tinytuya/Cloud.py:103-120`; `tinytuya/Cloud.py:124-126`; `tinytuya/core/const.py:22`
@@ -29,7 +29,7 @@ The `Cloud` constructor SHALL accept `apiRegion`, `apiKey`, `apiSecret`, `apiDev
 - Anchor: `tinytuya/Cloud.py:128-145`
 
 ### Requirement: HMAC-SHA256 request signing, two algorithm generations
-Every request SHALL be signed with HMAC-SHA256 keyed by the API secret and sent upper-case hex in the `sign` header together with `client_id`, `t` (13-bit ms timestamp) and `sign_method: HMAC-SHA256`; with no token the signed payload SHALL be `apiKey + timestamp` and the secret additionally sent as a `secret` header, and with a token the payload SHALL be `apiKey + token + timestamp`; when `new_sign_algorithm` is true (the default) the payload SHALL additionally concatenate the HTTP method, SHA-256 hex of the body, the `Signature-Headers` entries and the request path, per the post-June-2021 Tuya signing update.
+Every request SHALL be signed with HMAC-SHA256 keyed by the API secret, sent upper-case hex in the `sign` header with `client_id`, `t` (ms timestamp) and `sign_method: HMAC-SHA256`; the payload SHALL be `apiKey + timestamp` when no token is held (the secret also sent in a `secret` header) and `apiKey + token + timestamp` with a token; with `new_sign_algorithm` true (default) the payload SHALL also concatenate the HTTP method, body SHA-256 hex, `Signature-Headers` entries and the path.
 - Status: VERIFIED
 - Evidence: [commit 9bb3656e6421] "Fix new Tuya IoT payload signature" (the 2021-06-30 algorithm update); [commit b538f78e2bb3] original Cloud API support; doc: `tinytuya/Cloud.py:66-77` header/signature reference; DESIGN.md line 106
 - Anchor: `tinytuya/Cloud.py:195-224`; `tinytuya/Cloud.py:202-208`
@@ -59,7 +59,7 @@ The client SHALL obtain an OAuth token from `token?grant_type=1`, return an `ERR
 - Anchor: `tinytuya/Cloud.py:319-333`
 
 ### Requirement: Full-account device listing via two endpoint strategies
-`getdevices()` SHALL use the legacy user-scoped flow (`/v1.0/devices/{id}` → uid → `/v1.0/users/{uid}/devices`, supporting a comma-separated `apiDeviceID`) when an `apiDeviceID` is configured, and otherwise the keyless paginated flow — `/v1.0/iot-01/associated-users/devices` (size 50, `last_row_key` paging) followed by a per-uid second fetch via `/v1.3/iot-03/devices` (page size 75) merged with `_update_device_list()` to recover local keys and gateway IDs; malformed entries in `oldlist` SHALL be logged and skipped.
+`getdevices()` SHALL use the legacy user-scoped flow (`/v1.0/devices/{id}` → uid → `/v1.0/users/{uid}/devices`, supporting a comma-separated `apiDeviceID`) when an `apiDeviceID` is configured, and otherwise the keyless paginated flow — `/v1.0/iot-01/associated-users/devices` with `last_row_key` paging followed by a per-uid second fetch via `/v1.3/iot-03/devices`, merged via `_update_device_list()` to recover local keys and gateway IDs.
 - Status: VERIFIED
 - Evidence: [commit a8fff854ddcc] rework to fetch all devices without an initial Device ID; [commit 74c0b19adcc0] second fetch to ensure the local key; [commit 5afef6ebceaf]; [commit f7cf7effb24d] device-list bug fix; [commit bd8408bd9039] malformed-entry logging
 - Anchor: `tinytuya/Cloud.py:427-476`; `tinytuya/Cloud.py:352-406`; `tinytuya/Cloud.py:338-350`; `tinytuya/Cloud.py:421-422`
@@ -71,7 +71,7 @@ The client SHALL obtain an OAuth token from `token?grant_type=1`, return an `ERR
 - Anchor: `tinytuya/Cloud.py:488-515`; `tinytuya/Cloud.py:548`
 
 ### Requirement: DP-name mapping download, caching and failure preservation
-With `include_map=True`, `getdevices()` SHALL download per-product DP mappings (merging the v1.1 `specifications` status and functions sets, normalizing unicode/temperature units and preserving raw JSON values), cache them per product id (`getmapping`/`getmappings`, preloadable via `setmappings`), treat Tuya code 2009 / "not support this device" as a legitimately empty mapping, never overwrite a good cached mapping with an empty result, and restore the previous run's mapping only when the new one is missing or explicitly `None` (key-absence sentinel).
+With `include_map=True`, `getdevices()` SHALL download per-product DP mappings, cache them per product id (`getmapping`/`getmappings`, preloadable via `setmappings`), treat Tuya code 2009 as a legitimately empty mapping, never overwrite a good cached mapping with an empty result, and restore the previous run's mapping only when the new one is missing or explicitly `None`.
 - Status: VERIFIED
 - Evidence: [commit 9fd5b924e0f0] new Cloud functions to download DP Name mappings; [commit cbe2ecff1d51] preserve device mappings on API failure; [commit 26e2929e0a5c] key-absence sentinel for mapping fallback; doc: API.md line 77 (`assign_dp_mappings` consumes these mappings)
 - Anchor: `tinytuya/Cloud.py:517-542`; `tinytuya/Cloud.py:853-882`; `tinytuya/Cloud.py:884-918`; `tinytuya/Cloud.py:920-942`; `tinytuya/core/core.py:155`
@@ -83,7 +83,7 @@ With `include_map=True`, `getdevices()` SHALL download per-product DP mappings (
 - Anchor: `tinytuya/Cloud.py:550-562`; `tinytuya/Cloud.py:564-602`
 
 ### Requirement: Per-device reads and command dispatch
-The client SHALL provide `getstatus`, `getfunctions` and `getproperties` against `iot-03/devices/{id}/{status|functions|specification}`, `getdps` against the v1.1 `devices/{id}/specifications` endpoint, `sendcommand(deviceid, commands, uri='iot-03/devices/')` POSTing a commands payload with an overridable URI, and `getconnectstatus` returning the device `online` flag — each returning an `ERR_PARAMS` error dict when the device id is missing and an `ERR_CLOUD` error dict when the cloud response is unsuccessful.
+The client SHALL provide `getstatus`, `getfunctions` and `getproperties` against `iot-03/devices/{id}/{status|functions|specification}`, `getdps` against the v1.1 `devices/{id}/specifications` endpoint, `sendcommand(deviceid, commands, uri='iot-03/devices/')` POSTing a commands payload, and `getconnectstatus` returning the device `online` flag; each SHALL return an `ERR_PARAMS` error dict when the device id is missing and an `ERR_CLOUD` error dict on unsuccessful cloud responses.
 - Status: VERIFIED
 - Evidence: doc: API.md lines 783–833 (method-by-method reference); [commit b538f78e2bb3] original Cloud API support
 - Anchor: `tinytuya/Cloud.py:604-642`; `tinytuya/Cloud.py:644-667`; `tinytuya/Cloud.py:669-692`; `tinytuya/Cloud.py:694-715`
@@ -101,7 +101,7 @@ Cloud methods SHALL return the shared error dict `{"Error": <text>, "Err": <code
 - Anchor: `tinytuya/core/error_helper.py:17-25`; `tinytuya/core/error_helper.py:46-52`; `tinytuya/Cloud.py:278-282`; `tinytuya/Cloud.py:604-623`
 
 ### Requirement: Rate-limit caution for automation use
-The library SHOULD steer users away from frequent cloud polling by documenting that free Tuya Developer Trial accounts impose strict API call limits, rather than enforcing client-side throttling.
+The shipped documentation SHALL warn that free Tuya Developer Trial accounts impose strict API call limits, and the client SHALL NOT enforce client-side throttling or backoff beyond its paging bounds.
 - Status: INFERRED
 - Evidence: [commit d887b06ed026] "Caution for Tuya Cloud API limits"; doc: API.md line 727 (rate-limit note); README.md line 506 (CAUTION block)
 - Anchor: anchor not located (documentation-only constraint; no client-side limiter exists in `tinytuya/Cloud.py`)
