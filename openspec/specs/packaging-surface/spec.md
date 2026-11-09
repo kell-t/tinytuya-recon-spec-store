@@ -1,6 +1,6 @@
 # Capability: packaging-surface
 
-Baseline: jasonacox/tinytuya v1.20.0 @ 8512d8364a9d0e351bbec2597bafa17595545b13 (2026-07-06).
+Baseline: jasonacox/tinytuya v1.20.0 @ 8512d8364a9d0e351bbec2597bafa17595545b13 (2026-07-06). | Pass 3 (scenario-ification) applied 2026-11-09
 
 ## Purpose
 
@@ -27,12 +27,12 @@ The package SHALL expose its whole user API from the top-level `tinytuya` namesp
 **Evidence**: doc: `tinytuya/__init__.py` module docstring is itself the exported-API catalog (classes, Device methods, Cloud methods); commit `b46865c1ce08` "clean up new imports in core.py"
 **Anchor**: `tinytuya/__init__.py:92-100`
 
+#### Scenario: Top-level device construction without submodules
+- **WHEN** user code runs `import tinytuya` and constructs a device as `tinytuya.OutletDevice(...)`
+- **THEN** the class SHALL resolve from the top-level namespace and the handle SHALL work without importing any submodule
+- Source: [relnote v1.7.1] "d = tinytuya.OutletDevice( '0123456789abcdef0123' )"
+- Source: doc: README.md § Programming with TinyTuya "After importing tinytuya, you create a device handle for the device you want to read or control"
 
-#### Scenario: Conformance check (derived)
-- **WHEN** the behavior described by this requirement is exercised
-- **THEN** The package SHALL expose its whole user API from the top-level `tinytuya` namespace: `OutletDevice`, `CoverDevice`, `BulbDevice` and `Cloud` are imported by name, and every public name of the `tinytuya.core` subpackage is re-exported via star-import, so `import tinytuya;
-- NOTE: SCENARIO-DEBT (derived, pass-4 conformance) — no scenario evidence in pass-3 corpus;
-  replace with evidence-backed scenarios on next recon pass.
 
 ### Requirement: No `__all__` gating on star re-exports
 The package SHALL NOT define `__all__` in any module; the public surface is therefore "every public name" of each star-imported core submodule, which keeps legacy helpers (e.g. `version`, `SCANTIME`, `DEVICEFILE`, `error_json`) importable from the top level as a compatibility contract.
@@ -92,12 +92,17 @@ At import time the package SHALL probe crypto backends in priority order pyca/cr
 **Evidence**: doc: README.md:49-53 (four supported crypto libraries); commit `18474664bc13` "Remove crypto import", commit `5f3fe554a1d0` "Add pyca/cryptography to setup.py…"
 **Anchor**: `tinytuya/core/crypto_helper.py:9-39` (priority loop :9, ≤3.0 skip :14-16, PyCrypto→PyCryptodome relabel :29, raise :38-39)
 
+#### Scenario: PyCA/cryptography adopted as the default backend
+- **WHEN** TinyTuya is installed normally on a system where no alternate crypto library was chosen
+- **THEN** PyCA/cryptography SHALL be the default crypto backend, with PyCryptodome, PyCrypto and pyaes available as other options
+- Source: doc: README.md § Encryption Notes "Tuya devices use AES encryption which is not available in the Python standard library. PyCA/cryptography is recommended and installed by default. Other options include PyCryptodome , PyCrypto and pyaes"
+- Source: [relnote v1.13.0] "It also adds pyca/cryptography as the default"
 
-#### Scenario: Conformance check (derived)
-- **WHEN** the behavior described by this requirement is exercised
-- **THEN** At import time the package SHALL probe crypto backends in priority order pyca/cryptography (skipping versions ≤ 3.0, which need a `backend=` parameter) → PyCryptodomex → PyCrypto (re-labelled PyCryptodome when `Crypto.version_info[0] >= 3`) → pyaes, adopt the first that imports, and SHALL raise `Mod
-- NOTE: SCENARIO-DEBT (derived, pass-4 conformance) — no scenario evidence in pass-3 corpus;
-  replace with evidence-backed scenarios on next recon pass.
+#### Scenario: Fallback when cryptography is older than the required floor
+- **WHEN** pyca/cryptography at version 3.1 or newer is not available in the environment
+- **THEN** the package SHALL fall back to PyCryptodome
+- Source: [relnote v1.13.1] "Require pyca/cryptography>=3.1 or fallback to PyCryptodome"
+
 
 ### Requirement: Install metadata adds exactly one crypto dependency
 `setup.py` SHALL install base dependencies `requests` and `colorama`, then probe distributions in order `cryptography` → `pycryptodome` → `pyaes` → `pycrypto` and append only the first already-installed one (defaulting to `cryptography` when none is present) to `install_requires` — so pip never force-installs a redundant crypto stack.
@@ -105,12 +110,17 @@ At import time the package SHALL probe crypto backends in priority order pyca/cr
 **Evidence**: doc: README.md:43 "Pip will attempt to install `cryptography`, `requests` and `colorama` if not already installed"; commit `5f3fe554a1d0` "Add pyca/cryptography to setup.py…"
 **Anchor**: `setup.py:15-26` (base deps :15-19, candidate list :21-26), `setup.py:28-37` (probe + append)
 
+#### Scenario: pip auto-installs base dependencies only when missing
+- **WHEN** a user runs python -m pip install tinytuya
+- **THEN** pip SHALL attempt to install cryptography, requests and colorama only if not already installed
+- Source: doc: README.md § TinyTuya Installation "Pip will attempt to install cryptography, requests and colorama if not already installed"
 
-#### Scenario: Conformance check (derived)
-- **WHEN** the behavior described by this requirement is exercised
-- **THEN** `setup.py` SHALL install base dependencies `requests` and `colorama`, then probe distributions in order `cryptography` → `pycryptodome` → `pyaes` → `pycrypto` and append only the first already-installed one (defaulting to `cryptography` when none is present) to `install_requires` — so pip never forc
-- NOTE: SCENARIO-DEBT (derived, pass-4 conformance) — no scenario evidence in pass-3 corpus;
-  replace with evidence-backed scenarios on next recon pass.
+#### Scenario: Dependency-free install on limited systems
+- **WHEN** installing on a space- or dependency-limited system, or when the user wants a different cryptography library
+- **THEN** the install SHALL proceed without automatic dependencies via python -m pip install --no-deps tinytuya, with the user manually installing a supported crypto library first
+- Source: doc: README.md § Alternate Install on Space- or Dependency-Limited Systems "install TinyTuya without automatic dependencies and manually install them yourself"
+- Source: doc: README.md § Alternate Install on Space- or Dependency-Limited Systems "Finally, install TinyTuya without dependencies: python -m pip install --no-deps tinytuya"
+
 
 ### Requirement: Requirements floor consistent with crypto probe
 The pinned requirements file SHALL set `cryptography>=3.1`, consistent with the runtime probe's rejection of cryptography ≤ 3.0, and document that the crypto dependency is substitutable; `requests` and `colorama` are listed unpinned, and `netifaces` is shipped commented-out as an optional discovery aid.
@@ -118,12 +128,16 @@ The pinned requirements file SHALL set `cryptography>=3.1`, consistent with the 
 **Evidence**: doc: README.md:47-59 "Alternate Install on Space- or Dependency-Limited Systems"; runtime skip at `tinytuya/core/crypto_helper.py:14-16`
 **Anchor**: `requirements.txt:2`; `tinytuya/core/crypto_helper.py:14-16`
 
+#### Scenario: Crypto floor with PyCryptodome fallback
+- **WHEN** the crypto dependency is resolved for an install
+- **THEN** it SHALL require pyca/cryptography>=3.1 or fall back to PyCryptodome
+- Source: [relnote v1.13.1] "Require pyca/cryptography>=3.1 or fallback to PyCryptodome"
 
-#### Scenario: Conformance check (derived)
-- **WHEN** the behavior described by this requirement is exercised
-- **THEN** The pinned requirements file SHALL set `cryptography>=3.1`, consistent with the runtime probe's rejection of cryptography ≤ 3.0, and document that the crypto dependency is substitutable;
-- NOTE: SCENARIO-DEBT (derived, pass-4 conformance) — no scenario evidence in pass-3 corpus;
-  replace with evidence-backed scenarios on next recon pass.
+#### Scenario: pyaes substitution limited to pre-3.5 devices
+- **WHEN** a user substitutes pyaes as the crypto library
+- **THEN** it SHALL work for Tuya Protocol <= 3.4 but will not work for 3.5 devices because pyaes does not support GCM
+- Source: doc: README.md § Encryption Notes "The pyaes library works for Tuya Protocol <= 3.4 but will not work for 3.5 devices. This is because pyaes does not support GCM which is required for v3.5 devices"
+
 
 ### Requirement: Console entry point executes CLI at module import
 The distribution SHALL register console script `tinytuya` pointing at `tinytuya.__main__:dummy`, where `dummy()` is intentionally a no-op — the CLI's argparse setup and dispatch run as module-level code at import — and help output SHALL adapt its program name between `python3 -m tinytuya` and the installed console script by inspecting `sys.argv[0]`.
@@ -131,12 +145,16 @@ The distribution SHALL register console script `tinytuya` pointing at `tinytuya.
 **Evidence**: doc: README.md:39-40 ("Optional: Install Command Line Tool — `pipx install tinytuya`"); commit `6b92610afad7` "Add version switch to CLI"
 **Anchor**: `setup.py:50` (entry_points); `tinytuya/__main__.py:268-270` (`def dummy(): pass`), `tinytuya/__main__.py:30` (prog sniffing)
 
+#### Scenario: Console command available after pipx install
+- **WHEN** the CLI is installed via pipx install tinytuya
+- **THEN** the standalone tinytuya console command SHALL be available, allowing for easier CLI use
+- Source: [relnote v1.14.0] "Add support for pipx install tinytuya as raised by @felipecrs in https://github.com/jasonacox/tinytuya/issues/500 allowing for easier CLI use."
 
-#### Scenario: Conformance check (derived)
-- **WHEN** the behavior described by this requirement is exercised
-- **THEN** The distribution SHALL register console script `tinytuya` pointing at `tinytuya.__main__:dummy`, where `dummy()` is intentionally a no-op — the CLI's argparse setup and dispatch run as module-level code at import — and help output SHALL adapt its program name between `python3 -m tinytuya` and the in
-- NOTE: SCENARIO-DEBT (derived, pass-4 conformance) — no scenario evidence in pass-3 corpus;
-  replace with evidence-backed scenarios on next recon pass.
+#### Scenario: Bare invocation shows Usage instead of scanning
+- **WHEN** a user runs tinytuya by itself with no command
+- **THEN** it SHALL produce a Usage page instead of running a scan; scanning requires tinytuya scan or python -m tinytuya scan
+- Source: [relnote v1.14.0] "Running tinytuya by itself will now produce a Usage page instead of running a scan. Use tinytuya scan or python -m tinytuya scan."
+
 
 ### Requirement: `version` subcommand reports installed version
 The CLI SHALL provide a `version` subcommand printing the installed library version sourced from the single-source `version` constant, and SHALL skip scanner/wizard device-file initialization for it (as for `list` and `help`).
@@ -144,12 +162,12 @@ The CLI SHALL provide a `version` subcommand printing the installed library vers
 **Evidence**: doc: RELEASE.md:54 "CLI: New `version` subcommand — `tinytuya version` prints the installed TinyTuya version" (v1.18.0); commit `6b92610afad7` "Add version switch to CLI"
 **Anchor**: `tinytuya/__main__.py:256-257` (dispatch/print), `tinytuya/__main__.py:215` (file-setup skip)
 
+#### Scenario: tinytuya version prints the installed version
+- **WHEN** a user runs the version subcommand (tinytuya version)
+- **THEN** the CLI SHALL print the installed TinyTuya version
+- Source: [relnote v1.18.0] "CLI: New version subcommand - tinytuya version prints the installed TinyTuya version."
+- Source: doc: README.md § Command Line "version Display the TinyTuya version."
 
-#### Scenario: Conformance check (derived)
-- **WHEN** the behavior described by this requirement is exercised
-- **THEN** The CLI SHALL provide a `version` subcommand printing the installed library version sourced from the single-source `version` constant, and SHALL skip scanner/wizard device-file initialization for it (as for `list` and `help`).
-- NOTE: SCENARIO-DEBT (derived, pass-4 conformance) — no scenario evidence in pass-3 corpus;
-  replace with evidence-backed scenarios on next recon pass.
 
 ### Requirement: Numeric error-code namespace and error_json contract
 The package SHALL export a stable numeric error-code namespace `ERR_JSON`=900 through `ERR_KEY_OR_VER`=914 with a human-readable string per code (including a `None` → "Unknown Error" entry), and `error_json(number, payload)` SHALL always return a dict shaped `{"Error": <message>, "Err": <code-as-string>, "Payload": <payload>}`, falling back to "Unknown Error" for unrecognized codes instead of raising.
@@ -157,12 +175,20 @@ The package SHALL export a stable numeric error-code namespace `ERR_JSON`=900 th
 **Evidence**: doc: RELEASE.md:24 (v1.20.0 "timeout errors report `ERR_TIMEOUT`… `error_json()` handles unknown codes"); the fallback is `error_codes.get(number, error_codes[None])`
 **Anchor**: `tinytuya/core/error_helper.py:10-24` (codes), `:26-43` (message map), `:46-51` (`error_json()`)
 
+#### Scenario: Known error code returns the dict error shape
+- **WHEN** a library function hits an error condition and returns details (e.g. timeout, code 902)
+- **THEN** it SHALL return a dict shaped Error / Err / Payload (Err as a string, e.g. "902") instead of raising an exception
+- Source: doc: README.md § TinyTuya Error Codes "Starting with v1.2.0 TinyTuya functions will return error details in the JSON data responses instead of raising exceptions"
+- Source: test: tests.py::TestErrorJson::test_known_code_shape
+- Source: test: tests.py::TestErrorJson::test_payload_preserved
 
-#### Scenario: Conformance check (derived)
-- **WHEN** the behavior described by this requirement is exercised
-- **THEN** The package SHALL export a stable numeric error-code namespace `ERR_JSON`=900 through `ERR_KEY_OR_VER`=914 with a human-readable string per code (including a `None` → "Unknown Error" entry), and `error_json(number, payload)` SHALL always return a dict shaped `{"Error": <message>, "Err": <code-as-str
-- NOTE: SCENARIO-DEBT (derived, pass-4 conformance) — no scenario evidence in pass-3 corpus;
-  replace with evidence-backed scenarios on next recon pass.
+#### Scenario: Unrecognized code falls back to Unknown Error
+- **WHEN** error_json() is called with an unrecognized numeric code (or no code at all)
+- **THEN** it SHALL return the Unknown Error message without raising
+- Source: test: tests.py::TestErrorJson::test_unknown_code_does_not_raise
+- Source: test: tests.py::TestErrorJson::test_default_none_code
+- Source: [relnote v1.20.0] "timeout errors report ERR_TIMEOUT; received_wrong_cid_queue is bounded; truncated frames raise DecodeError; error_json() handles unknown codes"
+
 
 ### Requirement: DecodeError exported for frame-level failures
 The package SHALL define and export a single library exception type `DecodeError(Exception)` through the core star-import chain, as the signal for undecodable/corrupt frames (e.g. headers claiming oversize payloads), distinct from the dict-shaped device error contract.
@@ -170,12 +196,16 @@ The package SHALL define and export a single library exception type `DecodeError
 **Evidence**: doc: RELEASE.md:24 (v1.20.0 "truncated frames raise `DecodeError`"); raised at `tinytuya/core/message_helper.py:97` against `MAX_PAYLOAD_LENGTH`
 **Anchor**: `tinytuya/core/exceptions.py:4-5`; re-exported via `tinytuya/core/__init__.py:7`
 
+#### Scenario: Oversize payload header raises DecodeError
+- **WHEN** a frame header claims a payload length above MAX_PAYLOAD_LENGTH
+- **THEN** header parsing SHALL raise DecodeError
+- Source: test: tests.py::TestParseHeader::test_oversized_payload_rejected
 
-#### Scenario: Conformance check (derived)
-- **WHEN** the behavior described by this requirement is exercised
-- **THEN** The package SHALL define and export a single library exception type `DecodeError(Exception)` through the core star-import chain, as the signal for undecodable/corrupt frames (e.g.
-- NOTE: SCENARIO-DEBT (derived, pass-4 conformance) — no scenario evidence in pass-3 corpus;
-  replace with evidence-backed scenarios on next recon pass.
+#### Scenario: Truncated frames raise DecodeError
+- **WHEN** a truncated frame is received
+- **THEN** the library SHALL raise DecodeError (v1.20.0 bug-fix behavior)
+- Source: [relnote v1.20.0] "timeout errors report ERR_TIMEOUT; received_wrong_cid_queue is bounded; truncated frames raise DecodeError; error_json() handles unknown codes"
+
 
 ### Requirement: Config-file names as package constants with override points
 The package SHALL define its configuration surface as overridable constants `CONFIGFILE='tinytuya.json'`, `DEVICEFILE='devices.json'`, `RAWFILE='tuya-raw.json'`, `SNAPSHOTFILE='snapshot.json'`, and SHALL allow per-invocation override: `Cloud(..., configFile=CONFIGFILE)` for credentials, CLI flags `-device-file`/`-snapshot-file`/`-raw-response-file`/`-credentials-file`, and wizard module-level rebinding.
@@ -183,12 +213,19 @@ The package SHALL define its configuration surface as overridable constants `CON
 **Evidence**: doc: README.md:619-628 (CLI file flags with those defaults), README.md:115-116 (wizard writes devices.json / tuya-raw.json / snapshot.json); commit `736ba6774d88` "Update release notes for version 1.17.4 to include Cloud configFile option"
 **Anchor**: `tinytuya/core/const.py:21-27`; `tinytuya/Cloud.py:50` (default arg), `:89`, `:107` (open); `tinytuya/wizard.py:52`; `tinytuya/__main__.py:102`, `:249`
 
+#### Scenario: Cloud constructor accepts a custom config file location
+- **WHEN** Cloud() is constructed with the configFile option
+- **THEN** it SHALL use the specified config file location; the default SHALL remain tinytuya.json
+- Source: [relnote v1.17.4] "Cloud: Add configFile option to the Cloud constructor, allowing users to specify the config file location (default remains 'tinytuya.json')"
+- Source: doc: README.md § Tuya Cloud Access "c = tinytuya.Cloud()  # uses tinytuya.json"
 
-#### Scenario: Conformance check (derived)
-- **WHEN** the behavior described by this requirement is exercised
-- **THEN** The package SHALL define its configuration surface as overridable constants `CONFIGFILE='tinytuya.json'`, `DEVICEFILE='devices.json'`, `RAWFILE='tuya-raw.json'`, `SNAPSHOTFILE='snapshot.json'`, and SHALL allow per-invocation override: `Cloud(..., configFile=CONFIGFILE)` for credentials, CLI flags `-
-- NOTE: SCENARIO-DEBT (derived, pass-4 conformance) — no scenario evidence in pass-3 corpus;
-  replace with evidence-backed scenarios on next recon pass.
+#### Scenario: CLI flags override each config-file default
+- **WHEN** a CLI command runs with -device-file, -snapshot-file, -raw-response-file or -credentials-file
+- **THEN** each named file SHALL replace the corresponding default (devices.json, snapshot.json, tuya-raw.json, tinytuya.json)
+- Source: doc: README.md § Command Line "-device-file FILE JSON file to load devices from [Default: devices.json]"
+- Source: doc: README.md § Command Line "-snapshot-file FILE JSON file to load/save snapshot from/to [Default: snapshot.json]"
+- Source: doc: README.md § Command Line "-credentials-file JSON file to load/save Cloud credentials from/to [Default: tinytuya.json]"
+
 
 ### Requirement: Centralized dual-format devices.json loader
 The library SHALL provide one public loader, `load_devicefile(fname=None)` defaulting to `DEVICEFILE`, that accepts both the flat `[{...}]` list and the `{"devices": [{...}]}` wrapped-dict format, coerces any other shape to an empty list, and returns `[]` on any failure instead of raising; library, CLI, scanner, wizard and server paths SHALL all consume it, and `device_info(dev_id)` SHALL resolve a single device through it.
@@ -196,12 +233,19 @@ The library SHALL provide one public loader, `load_devicefile(fname=None)` defau
 **Evidence**: doc: RELEASE.md:42 (v1.18.0 "All loading paths… now support both formats via a new centralized `load_devicefile()` helper"); commit `3cea89363d21` "feat: update version to 1.18.0, enhance device file loading, and improve error handling in CLI"; consumers at `tinytuya/cli.py:32`, `tinytuya/cli.py:86`, `tinytuya/wizard.py:119`, `tinytuya/scanner.py:1184`
 **Anchor**: `tinytuya/core/XenonDevice.py:65-89` (loader), `:91-108` (`device_info()`)
 
+#### Scenario: Both devices-file formats load through one helper
+- **WHEN** any loading path (library, CLI, scanner, wizard, API server) reads a devices file in the flat list format or the wrapped-dict format
+- **THEN** both formats SHALL load via the centralized load_devicefile() helper
+- Source: [relnote v1.18.0] "All loading paths (library, CLI, scanner, wizard, API server) now support both a flat"
+- Source: [relnote v1.18.0] "wrapped-dict format via a new centralized load_devicefile() helper"
 
-#### Scenario: Conformance check (derived)
-- **WHEN** the behavior described by this requirement is exercised
-- **THEN** The library SHALL provide one public loader, `load_devicefile(fname=None)` defaulting to `DEVICEFILE`, that accepts both the flat `[{...}]` list and the `{"devices": [{...}]}` wrapped-dict format, coerces any other shape to an empty list, and returns `[]` on any failure instead of raising;
-- NOTE: SCENARIO-DEBT (derived, pass-4 conformance) — no scenario evidence in pass-3 corpus;
-  replace with evidence-backed scenarios on next recon pass.
+#### Scenario: Missing or malformed device file returns an empty list
+- **WHEN** the devices file is missing, contains invalid JSON, or holds a shape other than list/wrapped-dict
+- **THEN** load_devicefile() SHALL return an empty list instead of raising
+- Source: test: tests.py::TestLoadDeviceFile::test_missing_file
+- Source: test: tests.py::TestLoadDeviceFile::test_invalid_json
+- Source: test: tests.py::TestLoadDeviceFile::test_non_list_non_dict
+
 
 ### Requirement: No declared interpreter floor despite Python-3-only support
 Packaging metadata SHALL gate installs on a minimum Python version — as of this pin it does not: neither `setup.py` nor `pyproject.toml` sets `python_requires` — while official Python 2.7 support was removed in v1.13.0 and dormant Python-2 compatibility shims (`from __future__` imports, `IS_PY2` branches, `raw_input` aliasing) remain in `tinytuya/core/core.py`/`tinytuya/core/crypto_helper.py`; classifiers declare "Programming Language :: Python :: 3" only.
@@ -209,12 +253,11 @@ Packaging metadata SHALL gate installs on a minimum Python version — as of thi
 **Evidence**: doc: RELEASE.md:233 (v1.13.0 notes: "Officially removes Python 2.7 support."); commit `b044a775492a` "Remove Python 2.7 support", commit `5591ec72fdc7` "Remove python 2.7 in doc", commit `bf24e363e0da` "Remove Python 3.6 build test as it's not available on 22.04"
 **Anchor**: absence in `setup.py:39-56` and `pyproject.toml:1-2`; shims at `tinytuya/core/core.py:79`, `:94-97`, `:112`; `tinytuya/core/crypto_helper.py:4`
 
+#### Scenario: Python 2.7 is no longer supported
+- **WHEN** a user runs TinyTuya on Python 2.7
+- **THEN** that configuration is unsupported: v1.13.0 officially removes Python 2.7 support
+- Source: [relnote v1.13.0] "Officially removes Python 2.7 support."
 
-#### Scenario: Conformance check (derived)
-- **WHEN** the behavior described by this requirement is exercised
-- **THEN** Packaging metadata SHALL gate installs on a minimum Python version — as of this pin it does not: neither `setup.py` nor `pyproject.toml` sets `python_requires` — while official Python 2.7 support was removed in v1.13.0 and dormant Python-2 compatibility shims (`from __future__` imports, `IS_PY2` bra
-- NOTE: SCENARIO-DEBT (derived, pass-4 conformance) — no scenario evidence in pass-3 corpus;
-  replace with evidence-backed scenarios on next recon pass.
 
 ## Known gaps / open questions
 - **Crypto priority mismatch (setup vs runtime).** `setup.py:21-26` probes `cryptography → pycryptodome → pyaes → pycrypto`, while `tinytuya/core/crypto_helper.py:9` prefers `pyca/cryptography → PyCryptodomex → PyCrypto → pyaes` — the pyaes/pycrypto positions are swapped, and setup probes the `pycryptodome` distribution (imports as `Crypto`) whereas runtime names the branch `PyCryptodomex` (`Cryptodome` namespace). Both work (the PyCrypto branch re-labels v3+ as PyCryptodome at `tinytuya/core/crypto_helper.py:29`), but install-time preference and run-time preference are not the same policy.
@@ -226,3 +269,10 @@ Packaging metadata SHALL gate installs on a minimum Python version — as of thi
 - **Entry-point-by-side-effect fragility.** The console script works only because importing `tinytuya.__main__` executes the CLI at module level (`tinytuya/__main__.py:30-33` argparse build runs on import); any future move of dispatch into a function without updating `setup.py:50` would ship a no-op `tinytuya` command. No test asserting console-script behavior was located in `recon/evidence/tests_inventory.txt`.
 - **`netifaces` policy drift.** Commented out in `setup.py:18` and `requirements.txt`, yet README.md and scanner docs mention it as needed on multi-interface machines; whether it is a soft extra or a manual step is not formalized.
 - **PR provenance thin.** Only 4 of 946 mined commits carry PR refs; packaging-history intent here is provenanced by commit subjects from `recon/evidence/bundle_packaging-surface.txt` (verified shas at pin), not by issue/PR discussion.
+
+## Scenario-ification notes
+- REQ "No `__all__` gating on star re-exports": no doc-grounded trigger; kept as invariant. (absence of `__all__` is a static code property; no Tier A/B/C text states a trigger/outcome for it)
+- REQ "Core aggregator with shadow-module re-export": no doc-grounded trigger; kept as invariant. (import-plumbing detail; no release note or doc describes the submodule aggregation contract)
+- REQ "Single-source version declaration": no doc-grounded trigger; kept as invariant. (single-source is a build-time invariant; release notes show bumps only — the consumer side is covered by the version-subcommand scenario under its own requirement)
+- REQ "Build-time version import drives setup metadata": no doc-grounded trigger; kept as invariant. (setup.py / pyproject build mechanics are undocumented in README, release notes and tests)
+

@@ -2,14 +2,15 @@
 
 Store: `github/jasonacox/tinytuya` (id `tinytuya`). Boot order: PLAYBOOK.md → this file. License MIT; private working model; license firewall — content never leaves this store.
 
-## CURRENT STATE (pass 1 COMPLETE, 2026-11-09)
+## CURRENT STATE (pass 3 COMPLETE, 2026-11-09; pass 1 complete 2026-11-09)
 
 - Baseline pin: `master-line tag v1.20.0 @ 8512d8364a9d0e351bbec2597bafa17595545b13` (annotated tag obj 8cd2e73, published 2026-07-06). `recon/baseline.txt`. Blobless clone at `repo/` — READ-ONLY for drafting.
-- Validation: `openspec validate --all --strict --store tinytuya` → **Totals: 8 passed, 0 failed**. Fleet: 118 requirements (116 VERIFIED / 2 INFERRED), 118 DERIVED scenarios all tagged `SCENARIO-DEBT (derived, pass-4 conformance)` — pass 1 had no scenario corpus; grounded scenarios are the pass-3 style follow-up.
+- Validation: `openspec validate --all --strict --store tinytuya` → **Totals: 8 passed, 0 failed**. Fleet: 118 requirements (116 VERIFIED / 2 INFERRED); **178 grounded scenarios** added pass-3 (Tier A relnotes / Tier B docs / Tier C pin-tests, all Source-cited) across 106 of 118 requirements; scenario debt 118 → **12** remaining `SCENARIO-DEBT (derived, pass-4 conformance)` placeholders (protocol-crypto 1, discovery 4, monitor 1, cloud-api 1, cli-wizard-tools 1, packaging-surface 4 — each documented under its draft's `## Scenario-ification notes` as code-only behavior).
+- Pass-3 grounding law honored: no WHEN derived from implementation code; requirement Status/Evidence/Anchor text append-only. Gate: `recon/scripts/audit_scenarios.py` (relnote/doc quotes ≥60% non-stopword overlap vs evidence; `test:` cites exact class+method grep at pin; grounded-vs-reqs tally). Relnote corpus: `recon/scripts/mine_relnotes.py` splits RELEASE.md → 75 `evidence/relnote_v*.txt`.
 - Per-cap requirements: protocol-crypto 10, device-control 15, device-types 17, discovery 15, monitor 15, cloud-api 15, cli-wizard-tools 16, packaging-surface 15. Drafts in `specs_draft/` (source of truth), converted specs in `openspec/specs/`.
-- History: 1,152 commits total (946 no-merge mined), 2020-09-03 .. 2026-07-02; only 4 carry `(#NNNN)` refs — evidence is docs + pin code + tests, history is intent-provenance only.
-- Evidence inventory (`recon/evidence/`): `commits.json` (946), `docs/` (12 normative docs incl. PROTOCOL.md 37KB, API.md 28KB, DESIGN.md, README 60KB, AGENTS.md, Release notes inside RELEASE.md), `tests_inventory.txt` (47 defs/classes in tests.py), `bundle_<cap>.txt` ×8, `verified_prs.json` (12 GitHub numbers — 7 PRs + 5 issues — verified live via API 2026-11-09; state/title recorded).
-- Scripts registered: `recon/scripts/mine_evidence.py` (phase 1), `recon/scripts/audit_drafts.py` (anchor existence + line-range, `[commit <12sha>]` resolves at pin, PR/issue cites must be in verified_prs.json allowlist, repo-root files like tests.py allowed unqualified).
+- History: 1,152 commits total (946 no-merge mined), 2020-09-03 .. 2026-07-02; only 4 carry `(#NNNN)` refs — evidence is docs + pin code + tests, history is intent-provenance only. Upstream master +42 commits vs pin (FakeTuyaDevice wire-test suite, AGENTS.md policy, scanner robustness) — none merged into a release; pin stands until v1.21.x tags.
+- Evidence inventory (`recon/evidence/`): `commits.json` (946), `docs/` (12 normative docs), `relnote_v*.txt` (75), `tests_inventory.txt` (47 defs/classes in tests.py), `bundle_<cap>.txt` ×8, `verified_prs.json` (12 GitHub numbers verified live via API).
+- Scripts registered: `recon/scripts/mine_evidence.py` (p1 phase-1), `audit_drafts.py` (p1 anchors/sha/numbers), `mine_relnotes.py` (p3), `audit_scenarios.py` (p3).
 
 ## Fleet drift register (verified at pin; candidate upstream doc-fix list)
 
@@ -29,6 +30,16 @@ Store: `github/jasonacox/tinytuya` (id `tinytuya`). Boot order: PLAYBOOK.md → 
 | Date | Pass | Pin | Outcome |
 |---|---|---|---|
 | 2026-11-09 | 1 | v1.20.0 @ 8512d836 | scope set (8 caps); evidence mined (946 commits, 12 docs, 8 bundles); drafts via 2×3 children + inline protocol-crypto; parent audit gate caught+fixed bare/relative anchors (W1: Monitor/XenonDevice/scanner/udp_helper/core/*/Contrib paths) and 1 placeholder sha; PR/issue cites verified via GitHub API (all 12 real, titles match); W2 self-reports audit-clean (write-scope clean); strict validate 8/8 green; 118 reqs 98.3% VERIFIED; scenario debt 118 derived → next: pass-3 scenario grounding, pass-2 tail check vs newer tags (none past v1.20.0 as of pin date) |
+| 2026-11-09 | 3 | v1.20.0 @ 8512d836 | scenario grounding via 3+3+2 fleet waves on disjoint drafts; groundwork: RELEASE.md → 75 relnote files + `audit_scenarios.py` gate (baseline-green first). 178 grounded scenarios on 106/118 reqs (Tier A/B/C, all Source-cited; ≥60% quote-overlap + exact test-cite gate); 12 reqs kept property-style with reasons (code-only behavior, listed in each draft's Scenario-ification notes). Parent audit per wave: write-scope clean ×3, 3 prose bare-path/quote FPs fixed by parent, 8-cite spot audit clean; strict validate 8/8 green after conversion (190 scenarios = 178 grounded + 12 derived); pin unchanged (master +42 unmerged) |
+
+## Pass-3 grounding flags (docs-vs-requirement tensions; verified at pin, specs unchanged)
+
+- API.md § set_timer says `dps_id=0` uses "the last DPS in the status"; pin behavior is numeric-max DP selection (relnote v1.20.0 + `tests.py::TestXenonDevice::test_set_timer_picks_numeric_max_dp`) — upstream doc imprecision, spec follows code-at-pin.
+- API.md § set_version example implies 3.3 required; relnote v1.18.0 clarifies "3.3 is not the required version".
+- README § Command Line: `--version` "defaults to 3.3 if omitted" vs relnote v1.18.0 "triggers an auto-scan instead of silently defaulting to v3.3" — requirement's reconciliation (3.3 only when scan finds nothing) not verbatim in either source.
+- relnote v1.10.1 claims capability-conditional blocking in `set_colour()/set_hsv()/set_colourtemp()` was removed (debug warning); code at pin returns `ERR_FUNCTION` (check reintroduced by v1.17.0 rewrite) — relnote history vs pin divergence, requirement correct at pin.
+- Cloud region matching "case-insensitive" (pass-1 requirement detail) has no Tier A/B statement — code-only, excluded from scenario clauses.
+- Monitor v1.20.0 relnote bullet "truncated frames raise DecodeError" belongs to `XenonDevice._receive`, not the Monitor buffer path — not used to ground Monitor scenarios.
 
 ## Scope decision (pass 1, 2026-11-09)
 
