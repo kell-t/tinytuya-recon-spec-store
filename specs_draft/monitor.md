@@ -219,7 +219,7 @@ The Monitor SHALL be presented as experimental: its API and internals are not fr
 The `tinytuya monitor` command SHALL connect with a persistent socket, print initial status, then loop: full status request every 30 s, heartbeat every 12 s when idle, otherwise listen for async updates via `receive()`; a receive error SHALL rate-limit retries with a 5 s sleep.
 - Status: VERIFIED
 - Evidence: commits [2a5ebf934067] Move CLI into new file and add monitor command, [cec1830af19a] Use persistent sockets for CLI monitor, [49dfafe96ba4] fix: correct argument description in CLI and improve device monitoring logic; doc: README.md:690-699, README.md:740-741
-- Anchor: `tinytuya/cli.py:258-300` (_monitor_device; timers 265-266, loop 275-298), `tinytuya/__main__.py:58` (subcommand)
+- Anchor: `tinytuya/cli.py:258-300` (_monitor_device; timers 265-266, loop 275-298), `tinytuya/__main__.py:58` (monitor entry)
 
 #### Scenario: tinytuya monitor persistent update loop
 - **WHEN** `tinytuya monitor` is run against a device

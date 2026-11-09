@@ -37,7 +37,7 @@ The library SHALL expose `OutletDevice`, `BulbDevice` and `CoverDevice` as subcl
 `OutletDevice.set_dimmer()` SHALL accept either a percentage (0–100, scaled to raw 0–255) or a raw `value`, default the dimmer to DPS index 3, clamp non-zero levels to a minimum of 25 and maximum of 255, and delegate to inherited `turn_on()` + `set_value()` — while a level of 0 SHALL turn the device off via `turn_off()` instead of writing a value.
 - Status: VERIFIED
 - Evidence: doc: API.md § OutletDevice (`d.set_dimmer(0) # turns device off via turn_off()`); OutletDevice is otherwise a pure Device subclass ("adds dimmer support")
-- Anchor: `tinytuya/OutletDevice.py:55-78` (scale at :66, off at :70-71, clamp at :73-76)
+- Anchor: `tinytuya/OutletDevice.py:55-78` (set_dimmer; scale at :66, off at :70-71, clamp at :73-76)
 
 #### Scenario: Dimmer percentage maps to the raw range on the default dimmer DPS
 - **WHEN** `set_dimmer()` is called with a percentage of 0-100 on a plug/switch with dimming support
@@ -208,7 +208,7 @@ The primary white/brightness/colour-temperature API SHALL be the percentage-base
 `CoverDevice` SHALL support exactly 8 open/close/stop/continue command vocabularies (COVER_TYPES 1–8: `open/close/stop/continue`; `true/false`; `'0'/'1'/'2'`; `'00'/'01'/'02'/'03'`; `fopen/fclose`; `on/off/stop`; `up/down/stop`; `ZZ/FZ/STOP`) and expose `open_cover()`, `close_cover()`, `stop_cover()` and `continue_cover()` which translate the action into the active type's command value.
 - Status: VERIFIED
 - Evidence: RELEASE.md v1.17.5 "CoverDevice: Major rewrite to support 8 different device command types with automatic detection"; issue #653 credit @make-all; commits `70810f61`, `8b7daecb`, `ef895fb4` ("#653")
-- Anchor: `tinytuya/CoverDevice.py:89-146` (table), `:236-300` (four action methods)
+- Anchor: `tinytuya/CoverDevice.py:89-146` (COVER_TYPES table), `:236-300` (four action methods)
 
 #### Scenario: Eight command vocabularies with automatic detection
 - **WHEN** a CoverDevice sends cover commands

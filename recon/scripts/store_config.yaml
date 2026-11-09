@@ -45,7 +45,7 @@ runtime_artifacts: [devices.json, snapshot.json, tuya-raw.json, tinytuya.json]
 # hints like 'loader' at `load_devicefile`); strict mode flags ~20
 # phrasings, all verified-located. Graduate: rewrite hints to literal
 # identifiers, then remove this knob. Tracked in cluster PRIORITY_LOG.
-anchor_hint_check: false
+anchor_hint_check: strict
 
 capabilities:
   protocol-crypto:

@@ -18,7 +18,7 @@ Local TCP control of Tuya devices: construction and address/version selection, s
 `XenonDevice` SHALL default to `connection_timeout=5`, `version=3.1`, `persist=False`, `connection_retry_limit=5`, `connection_retry_delay=5`, `port=6668` (TCPPORT), and a failed connect SHALL retry at most `socketRetryLimit` times with `socketRetryDelay` sleeps between attempts (total budget = timeout×limit + delay×(limit−1)).
 - Status: VERIFIED
 - Evidence: doc: API.md § XenonDevice Constructor (defaults + total-timeout formula); [commit f44daa364d09] — expose retry limit/delay via constructor; [commit e51c0d2669ee] — socketRetryDelay as parameter instead of fixed 5
-- Anchor: `tinytuya/core/XenonDevice.py:238-244` (signature), `:274-275` (socketRetryLimit/Delay), `:359` + `:423-424` (retry loop + delay sleep), `:391` (connect timeout); `tinytuya/core/const.py:10` (TCPPORT=6668)
+- Anchor: `tinytuya/core/XenonDevice.py:238-244` (def __init__ signature), `:274-275` (socketRetryLimit/Delay), `:359` + `:423-424` (retry loop + delay sleep), `:391` (connect timeout); `tinytuya/core/const.py:10` (TCPPORT=6668)
 
 #### Scenario: Documented constructor defaults and total-timeout budget
 - **WHEN** a device object is constructed without overriding `connection_timeout`, `connection_retry_limit` or `connection_retry_delay`
@@ -239,7 +239,7 @@ While connected persistently, every decoded response SHALL be merged into last-s
 `set_multiple_values(data)` SHALL send all pairs in one CONTROL when allowed, SHALL chunk into per-DP `set_value` calls when `len(data) > max_simultaneous_dps > 0`, and on a failed multi-DP send SHALL retry the first DP alone — if that succeeds it SHALL latch `max_simultaneous_dps = 1` and set the rest one by one.
 - Status: VERIFIED
 - Evidence: doc: API.md § set_multiple_values; [commit 0b5682c6040c] — modify set_multiple_values() to detect devices that cannot set multiple; [commit b5e93d3c2c40] — documentation for set_multiple_values()
-- Anchor: `tinytuya/core/Device.py:99-153` (chunking :123-131, capability probe + latch :141-152); `tinytuya/core/XenonDevice.py:243,293` (`max_simultaneous_dps`)
+- Anchor: `tinytuya/core/Device.py:99-153` (def set_multiple_values; chunking :123-131, capability probe + latch :141-152); `tinytuya/core/XenonDevice.py:243,293` (`max_simultaneous_dps`)
 
 #### Scenario: Multiple DPS set atomically in one request
 - **WHEN** `set_multiple_values({'20': True, '21': 'colour', '22': 800})` is called on a device that accepts multiple DPS per command
@@ -250,7 +250,7 @@ While connected persistently, every decoded response SHALL be merged into last-s
 `decrypt_udp()` SHALL transparently decrypt discovery broadcasts in all three shapes — raw AES-ECB under the static key `MD5("yGAdlopoPVldABfn")`, `55AA`-framed, and `6699`/GCM (stripping trailing NULs) — since this is what feeds `find_device`/auto-IP; it is decryption of received broadcasts only.
 - Status: VERIFIED
 - Evidence: doc: API.md § decrypt_udp; doc: DESIGN.md § Discovery (UDP 6666/6667/7000, static key, `decrypt_udp()` handles raw-ECB/55AA/6699)
-- Anchor: `tinytuya/core/udp_helper.py:21` (static key), `:23-44` (three-shape dispatch); `tinytuya/scanner.py:1536` (sole call site)
+- Anchor: `tinytuya/core/udp_helper.py:21` (udpkey static key), `:23-44` (three-shape dispatch); `tinytuya/scanner.py:1536` (sole call site)
 
 #### Scenario: Discovery broadcasts decrypt transparently in every shape
 - **WHEN** a raw UDP broadcast packet is received from a Tuya device

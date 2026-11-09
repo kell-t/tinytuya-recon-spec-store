@@ -38,7 +38,7 @@ The package SHALL run a command-line interface when invoked as `python -m tinytu
 The CLI SHALL register exactly these subcommands: `wizard`, `scan`, `devices`, `snapshot`, `json`, `list`, `version`, `help` plus the device-control set `on`, `off`, `set`, `get`, `monitor`, each as its own argparse subparser with per-command option matrices (control and `list` commands skip scan-oriented flags such as `-force`, `-no-broadcasts`, `-no-poll`; `json`/`list` skip most common flags).
 **Status**: VERIFIED
 **Evidence**: [commit 08ac8876f0f2] — "Enhance command line interface with device control and listing commands"; [commit 2a5ebf934067] — "Move CLI into new file and add monitor command"; doc: README.md § Command Line usage block
-**Anchor**: `tinytuya/__main__.py:41-65` (registry), `:64-98` (per-command option matrix), `:239-266` (dispatch)
+**Anchor**: `tinytuya/__main__.py:41-65` (cmd_list registry), `:64-98` (per-command option matrix), `:239-266` (dispatch)
 
 #### Scenario: Documented subcommand matrix
 - **WHEN** the CLI is invoked with one of its documented commands
@@ -208,7 +208,7 @@ If the device IP is unknown (absent or `--ip auto`) or the protocol version is u
 `on`/`off` SHALL call `turn_on()/turn_off()` on the resolved switch DPS (default 1); `set` SHALL require `--dps` and `--value`, parsing `--value` as JSON first and falling back to a plain string; `get` SHALL print the full status JSON without `--dps`, or the bare DPS value with `--dps`; any result containing `Err` SHALL print `Error <code>: <msg>` and exit non-zero, otherwise the JSON result (or `OK`) is printed.
 **Status**: VERIFIED
 **Evidence**: [commit e9a23af8c916] — "Enhance device command handling by improving value parsing and error handling"; doc: README.md § Set/Get (`parsed as JSON if possible … otherwise sent as a plain string`, `--dps N → plain scalar value only`)
-**Anchor**: `tinytuya/__main__.py:123-129` (per-command DPS flags); `tinytuya/cli.py:209-255` (JSON parse at `:221-224`, get branches at `:226-242`, error/OK contract at `:248-255`)
+**Anchor**: `tinytuya/__main__.py:123-129` (per-command --dps add_argument); `tinytuya/cli.py:209-255` (JSON parse at `:221-224`, get branches at `:226-242`, error/OK contract at `:248-255`)
 
 #### Scenario: Set value parsed as JSON with string fallback
 - **WHEN** a value is supplied with `--value` to the `set` command
@@ -226,7 +226,7 @@ If the device IP is unknown (absent or `--ip auto`) or the protocol version is u
 The `monitor` subcommand SHALL connect with a persistent socket, print the initial status, then loop: full `status()` poll every 30 s, `heartbeat()` every 12 s when idle, otherwise non-blocking `receive()` for asynchronous updates, printing every received payload, sleeping 5 s after an error response to throttle retries, and exiting cleanly on Ctrl-C.
 **Status**: VERIFIED
 **Evidence**: [commit cec1830af19a] — "Use persistent sockets for CLI monitor"; [commit 2a5ebf934067] — monitor command introduction; doc: README.md § Monitor (`sends a heartbeat every 12 seconds, and polls for a full status refresh every 30 seconds. Press Ctrl-C to exit`)
-**Anchor**: `tinytuya/cli.py:258-300` (timers at `:265-266`, loop at `:276-298`)
+**Anchor**: `tinytuya/cli.py:258-300` (def _monitor_device; timers at :265-266, loop at :276-298)
 
 #### Scenario: Monitor loop cadence and exit
 - **WHEN** the `monitor` command connects to the device

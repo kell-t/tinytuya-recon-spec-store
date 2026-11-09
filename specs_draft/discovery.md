@@ -34,7 +34,7 @@ The scanner SHALL listen for device broadcasts on UDP 6666 (3.1, plaintext), 666
 The scanner SHALL send an app-style 6699/GCM broadcast `{"from":"app","ip":"<client-ip>"}` to each interface's broadcast address on UDP 7000, re-sending every 6 seconds during the scan, because newer 3.5 devices stay silent until solicited. If every send fails, it SHALL log an error stating that v3.5 devices will not be found.
 - Status: VERIFIED
 - Evidence: commits [831f1131f17e] Make scanner send broadcasts to port 7000, [7d160a0f98ac] Allow device discovery packets on port 7000, [fcee73701ea0] better error message when sending scanner broadcasts fails; doc: PROTOCOL.md § "Discovery (v3.5)" (PROTOCOL.md:494-499, 524-531)
-- Anchor: `tinytuya/scanner.py:213-267` (send_discovery_request; payload at 242-244), `tinytuya/scanner.py:81` (BROADCASTTIME=6), `tinytuya/scanner.py:1670-1672` (periodic re-send)
+- Anchor: `tinytuya/scanner.py:213-267` (send_discovery_request; payload at 242-244), `tinytuya/scanner.py:81` (BROADCASTTIME=6), `tinytuya/scanner.py:1670-1672` (send_discovery_request periodic)
 
 #### Scenario: Silent v3.5 devices solicited on UDP 7000
 - **WHEN** recent v3.5 devices stop emitting unsolicited UDP/6667 broadcasts and remain silent
@@ -75,7 +75,7 @@ Discovery SHALL transparently decrypt broadcast payloads in all three wire forma
 `scanner.devices()` SHALL return a dictionary of discovered devices keyed by IP address, or by Device ID when `byID=True`, each entry carrying `ip`, `gwId`, `version`, `key`, `name`, `mac` and an `origin` field of `broadcast`, `forcescan`, or `cloud`.
 - Status: VERIFIED
 - Evidence: commits [a495c694990c] Complete rewrite of the scanner, now allows force-scanning of IP ranges, [0b199901c01f] Rewrite tinytuya.find_device() to use the scanner; doc: API.md:42-50 (deviceScan returns dictionary), README.md:714
-- Anchor: `tinytuya/scanner.py:1131-1151` (signature/params docstring), `tinytuya/scanner.py:1777-1795` (keying + `origin`), `tinytuya/scanner.py:1801-1809` (cloud-origin entries)
+- Anchor: `tinytuya/scanner.py:1131-1151` (def devices; signature/params docstring), `tinytuya/scanner.py:1777-1795` (keying + `origin`), `tinytuya/scanner.py:1801-1809` (tuyadevices cloud-origin entries)
 
 #### Scenario: deviceScan returns a device dictionary
 - **WHEN** `tinytuya.deviceScan()` completes a local-network scan
@@ -116,7 +116,7 @@ Force scanning SHALL accept explicit networks (list, nested list, or a single st
 For force-scanned devices of unknown version, the scanner SHALL send an unencrypted status request and classify the reaction: plaintext error reply ⇒ 3.1 (brute-force path); encrypted reply ⇒ 3.3; connection dropped three times ⇒ 3.4/3.5 session-key negotiation, assuming 3.4 unconfirmed and upgrading to 3.5 only when a 6699 prefix is seen in the response. A default-type device that connects-then-closes shall be retried once as `device22` (CONTROL_NEW).
 - Status: VERIFIED
 - Evidence: commits [d72f3085c5ea] Enhance device version detection for v3.4 and v3.5 in ForceScannedDevice class #671, [e9fd881cff54] Add force-scanning v3.5 devices to scanner, [7259b8dec70a] Rename scanner variable try_v35 to try_v35_with_v34, [5e066415e651] Scanner fix for v3.1 devices
-- Anchor: `tinytuya/scanner.py:606-624` (DP_QUERY/CONTROL_NEW probe), `tinytuya/scanner.py:662-684` (6699-vs-55AA prefix discrimination), `tinytuya/scanner.py:729-768` (3.1 vs 3.3 classification), `tinytuya/scanner.py:487-513` (device22 retry, then 3.4/3.5 negotiation)
+- Anchor: `tinytuya/scanner.py:606-624` (DP_QUERY/CONTROL_NEW probe), `tinytuya/scanner.py:662-684` (6699-vs-55AA prefix discrimination), `tinytuya/scanner.py:729-768` (FSCAN step machine; 3.1 vs 3.3 classification), `tinytuya/scanner.py:487-513` (device22 retry, then 3.4/3.5 negotiation)
 
 ### Requirement: Local-key brute forcing from devices.json
 Force scan SHALL attempt to match each found device's local key by trying keys from `devices.json` (decrypting captured payloads for 3.1/3.3, running session negotiation for 3.4/3.5), marking matched keys used, falling back to passive listening when the list is exhausted, and reporting "No matching key found" on failure.
@@ -194,7 +194,7 @@ The public `tinytuya.scan()` and `tinytuya.deviceScan()` SHALL remain available 
 A companion tool SHALL listen on UDP 6666/6667/7000, track app clients that announce themselves via port-7000 broadcasts, unicast raw device broadcasts to each active app client, and age clients out after twice the 6-second broadcast period — enabling apps on WiFi networks that block broadcasts.
 - Status: VERIFIED
 - Evidence: commits [155efba4086e] Add new tool: broadcast-relay, [36e3d11a4830] broadcast-relay: no need to bind the sending socket, [b9e41462dbdf] make it work with older versions of the scanner
-- Anchor: `tools/broadcast-relay.py:6` (purpose docstring), `tools/broadcast-relay.py:44-72` (three listeners), `tools/broadcast-relay.py:110-128` (app tracking/timer), `tools/broadcast-relay.py:154` (unicast sendto), `tools/broadcast-relay.py:14` (BROADCASTTIME=6)
+- Anchor: `tools/broadcast-relay.py:6` (broadcast packets docstring), `tools/broadcast-relay.py:44-72` (three listeners), `tools/broadcast-relay.py:110-128` (app tracking/timer), `tools/broadcast-relay.py:154` (unicast sendto), `tools/broadcast-relay.py:14` (BROADCASTTIME=6)
 
 ## Known gaps
 - "Sniffer mode" and "AP-mode scan" are named as discovery-owned in the recon ownership notes, but no feature by those names exists in code at the pin. The nearest grounded behaviors are the passive-listen states (`tinytuya/scanner.py:98` `FSCAN_v31_PASSIVE_LISTEN`, used at 541-545 and 772-778) and the offline capture analyzer `tools/pcap_parse.py:283` (parses 6666/6667/7000 UDP and 6668 TCP from pcap files). Not reconstructed as requirements — anchor not located.

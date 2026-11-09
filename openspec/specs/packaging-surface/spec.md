@@ -108,7 +108,7 @@ At import time the package SHALL probe crypto backends in priority order pyca/cr
 `setup.py` SHALL install base dependencies `requests` and `colorama`, then probe distributions in order `cryptography` → `pycryptodome` → `pyaes` → `pycrypto` and append only the first already-installed one (defaulting to `cryptography` when none is present) to `install_requires` — so pip never force-installs a redundant crypto stack.
 **Status**: VERIFIED
 **Evidence**: doc: README.md:43 "Pip will attempt to install `cryptography`, `requests` and `colorama` if not already installed"; commit `5f3fe554a1d0` "Add pyca/cryptography to setup.py…"
-**Anchor**: `setup.py:15-26` (base deps :15-19, candidate list :21-26), `setup.py:28-37` (probe + append)
+**Anchor**: `setup.py:15-26` (INSTALL_REQUIRES; base deps :15-19, candidate list :21-26), `setup.py:28-37` (probe + append)
 
 #### Scenario: pip auto-installs base dependencies only when missing
 - **WHEN** a user runs python -m pip install tinytuya
@@ -231,7 +231,7 @@ The package SHALL define its configuration surface as overridable constants `CON
 The library SHALL provide one public loader, `load_devicefile(fname=None)` defaulting to `DEVICEFILE`, that accepts both the flat `[{...}]` list and the `{"devices": [{...}]}` wrapped-dict format, coerces any other shape to an empty list, and returns `[]` on any failure instead of raising; library, CLI, scanner, wizard and server paths SHALL all consume it, and `device_info(dev_id)` SHALL resolve a single device through it.
 **Status**: VERIFIED
 **Evidence**: doc: RELEASE.md:42 (v1.18.0 "All loading paths… now support both formats via a new centralized `load_devicefile()` helper"); commit `3cea89363d21` "feat: update version to 1.18.0, enhance device file loading, and improve error handling in CLI"; consumers at `tinytuya/cli.py:32`, `tinytuya/cli.py:86`, `tinytuya/wizard.py:119`, `tinytuya/scanner.py:1184`
-**Anchor**: `tinytuya/core/XenonDevice.py:65-89` (loader), `:91-108` (`device_info()`)
+**Anchor**: `tinytuya/core/XenonDevice.py:65-89` (load_devicefile loader), `:91-108` (`device_info()`)
 
 #### Scenario: Both devices-file formats load through one helper
 - **WHEN** any loading path (library, CLI, scanner, wizard, API server) reads a devices file in the flat list format or the wrapped-dict format

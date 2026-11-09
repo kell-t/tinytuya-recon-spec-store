@@ -137,7 +137,7 @@ The client nonce SHALL be generated with `os.urandom(16)` on every negotiation (
 Command ids SHALL follow the upstream Tuya embedded SDK numbering (`tuya-iotos-embeded-sdk-wifi-ble-bk7231n/lan_protocol.h`), including `CONTROL=0x07`, `DP_QUERY=0x0a`, `CONTROL_NEW=0x0d`, `DP_QUERY_NEW=0x10`, `UPDATEDPS=0x12`, session ids 0x03–0x05, `REQ_DEVINFO=0x25`, `LAN_EXT_STREAM=0x40`.
 **Status**: VERIFIED
 **Evidence**: doc: PROTOCOL.md § Command IDs; upstream SDK reference cited in module header
-**Anchor**: `tinytuya/core/command_types.py:5` (upstream reference URL), `:6-28` (id table)
+**Anchor**: `tinytuya/core/command_types.py:5` (upstream Reference URL), `:6-28` (id table)
 
 #### Scenario: device22 DP query uses CONTROL_NEW (0x0D)
 - **WHEN** a device22 requires an explicit DPS list for its DP query
