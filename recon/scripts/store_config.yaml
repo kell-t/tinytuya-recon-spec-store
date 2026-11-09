@@ -1,0 +1,90 @@
+# store_config.yaml — tinytuya store, kit script knobs.
+# Source of truth for knobs is recon/PLAYBOOK.md + legacy mine_evidence CAPS;
+# this file mirrors what the kit scripts execute. Amended at scope/pin changes.
+
+pin_sha: "8512d8364a9d0e351bbec2597bafa17595545b13"   # tag v1.20.0, main
+
+# Evidence model: history carries almost no PR refs — commits.json is
+# provenance; docs+tests+pin code carry the evidence. GitHub-number cites
+# must be API-verified (verified_numbers.json).
+pr_ref_mode: ref-free
+
+# Ref-free store: the full history is the window (no ref-window cutoff).
+tail_after: null
+
+release_notes:
+  mode: relnote_files
+  source: recon/evidence/docs/RELEASE.md
+  header_regex: '(?m)^## (v[0-9][^\n]*)$'
+
+# Tier-C inventory source (test.py/testcontrib.py are manual scripts, not
+# pytest inventories).
+test_files: [tests.py]
+
+docs:
+  - PROTOCOL.md
+  - API.md
+  - DESIGN.md
+  - README.md
+  - AGENTS.md
+  - SECURITY.md
+  - RELEASE.md
+  - DP_Mapping.md
+  - docs/README.md
+  - tinytuya/Contrib/README.md
+  - server/README.md
+  - tools/README.md
+
+anchor_extensions: [py, md, ts, tsx, yaml, yml, json, sh, toml]
+
+# Data files the behavior writes at runtime (never in-repo): exempt from
+# the bare-path existence rule.
+runtime_artifacts: [devices.json, snapshot.json, tuya-raw.json, tinytuya.json]
+
+# tinytuya drafts predate the anchor-hint keyword convention (descriptive
+# hints like 'loader' at `load_devicefile`); strict mode flags ~20
+# phrasings, all verified-located. Graduate: rewrite hints to literal
+# identifiers, then remove this knob. Tracked in cluster PRIORITY_LOG.
+anchor_hint_check: false
+
+capabilities:
+  protocol-crypto:
+    subject_regex: 'protocol|encrypt|aes|gcm|hmac|session|key|pack|unpack|frame|checksum|crc|55aa|6699|version 3|v3\.'
+    scopes: [core]
+    code: [tinytuya/core/message_helper.py, tinytuya/core/crypto_helper.py,
+           tinytuya/core/XenonDevice.py, tinytuya/core/header.py,
+           tinytuya/core/command_types.py, PROTOCOL.md]
+  device-control:
+    subject_regex: 'status|set_|set\(|dps|timeout|retry|connect|receive|udpport|device22|heartbeat|state'
+    scopes: [core]
+    code: [tinytuya/core/XenonDevice.py, tinytuya/core/Device.py,
+           tinytuya/core/udp_helper.py, API.md]
+  device-types:
+    subject_regex: 'bulb|cover|outlet|contrib|dimmer|fan|ir |climate|socket|color'
+    scopes: [Contrib]
+    code: [tinytuya/OutletDevice.py, tinytuya/BulbDevice.py,
+           tinytuya/CoverDevice.py, tinytuya/Contrib, API.md, DP_Mapping.md]
+  discovery:
+    subject_regex: 'scan|broadcast|discover|udp|sniff|ap\b|wizard'
+    scopes: [tools]
+    code: [tinytuya/scanner.py, tinytuya/core/udp_helper.py,
+           tools/broadcast-relay.py, DESIGN.md]
+  monitor:
+    subject_regex: 'monitor|realtime|sniffer|listen'
+    scopes: [core]
+    code: [tinytuya/core/Monitor.py, PROTOCOL.md]
+  cloud-api:
+    subject_regex: 'cloud|token|sign|record|endpoint|rest|http|api key|v2|share|device list'
+    scopes: [cloud]
+    code: [tinytuya/Cloud.py, API.md, DESIGN.md]
+  cli-wizard-tools:
+    subject_regex: 'wizard|cli|main|server|mqtt|command|subcommand|help|example'
+    scopes: [cli, tools, examples]
+    code: [tinytuya/cli.py, tinytuya/__main__.py, tinytuya/wizard.py,
+           server/server.py, tools, examples]
+  packaging-surface:
+    subject_regex: 'export|import|version|exception|setup|pypi|release|init|depend|python'
+    scopes: [packaging]
+    code: [tinytuya/__init__.py, tinytuya/core/__init__.py,
+           tinytuya/core/exceptions.py, tinytuya/core/error_helper.py,
+           tinytuya/core/const.py, pyproject.toml, setup.py]

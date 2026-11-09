@@ -1,32 +1,44 @@
 #!/usr/bin/env python3
-"""Pass-3 groundwork: split evidence/docs/RELEASE.md into per-version
-recon/evidence/relnote_<ver>.txt files so drafts can cite
-`[relnote <ver>] "quote"` and audit_scenarios.py can word-overlap-verify.
-Version header shape in tinytuya RELEASE.md: '## vX.Y.Z - Title'.
-Idempotent: rewrites all relnote_*.txt each run."""
-import os, re, glob
+"""Split the in-tree release doc into per-version evidence/relnote_<ver>.txt
+so drafts can cite `[relnote <ver>] "quote"` and audit_scenarios.py can
+word-overlap-verify mechanically.
 
-STORE = "/opt/data/agent-github-spec-store/github/jasonacox/tinytuya"
-SRC = os.path.join(STORE, "recon/evidence/docs/RELEASE.md")
-OUT = os.path.join(STORE, "recon/evidence")
+Idempotent: rewrites all relnote_*.txt each run. Header/version shapes come
+from store_config.release_notes (header_regex, version_extract).
 
-text = open(SRC).read()
-# strip old
-for f in glob.glob(os.path.join(OUT, "relnote_*.txt")):
+If the repo publishes via GitHub Releases instead, fetch the API to
+evidence/releases.json ({tag, name, published_at, body} list) — the auditors
+read both corpora.
+"""
+import glob
+import os
+import re
+
+import common
+
+cfg = common.load_config()
+rn = cfg["release_notes"]
+src = os.path.join(common.STORE, rn["source"])
+out_dir = common.EV
+
+text = open(src).read()
+for f in glob.glob(os.path.join(out_dir, "relnote_*.txt")):
     os.remove(f)
 
-parts = re.split(r'(?m)^## (v[0-9][^\n]*)$', text)
-# parts[0] = preamble, then pairs (header, body)
+parts = re.split(rn["header_regex"], text)
+vrx = re.compile(rn.get("version_extract", r"^v?\d+\.\d+(\.\d+)?"))
 count = 0
 for i in range(1, len(parts) - 1, 2):
     header = parts[i].strip()
     body = parts[i + 1].strip()
-    ver = header.split(" - ")[0].strip()
-    ver = re.sub(r'[^v0-9.]', '', ver)
-    if not re.match(r'^v\d+\.\d+(\.\d+)?$', ver):
+    m = vrx.match(header.split(" - ")[0].strip())
+    if not m:
         print("SKIP weird version header:", header)
         continue
-    with open(os.path.join(OUT, f"relnote_{ver}.txt"), "w") as fh:
+    ver = m.group(0)
+    if not ver.startswith("v"):
+        ver = "v" + ver
+    with open(os.path.join(out_dir, "relnote_%s.txt" % ver), "w") as fh:
         fh.write(header + "\n" + body + "\n")
     count += 1
-print(f"wrote {count} relnote files from {SRC}")
+print("wrote %d relnote files from %s" % (count, src))

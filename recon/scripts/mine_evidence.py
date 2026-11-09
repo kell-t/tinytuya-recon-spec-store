@@ -1,32 +1,74 @@
 #!/usr/bin/env python3
-"""Phase-1 evidence mining for tinytuya store (pin 8512d836). No PR-ref filter:
-history carries almost no refs — commits.json is provenance, docs+tests+pin code
-carry the evidence. Writes recon/evidence/."""
-import json, os, re, subprocess
+"""Phase 1 evidence mining. Writes recon/evidence/.
 
-STORE = "/opt/data/agent-github-spec-store/github/jasonacox/tinytuya"
-REPO = os.path.join(STORE, "repo")
-EV = os.path.join(STORE, "recon", "evidence")
+Modes (store_config.pr_ref_mode):
+  pr-ref   — mine commits whose subjects end in (#NNNN); produce
+             pr_commits.json + pr_index.json (history is an index).
+  ref-free — mine the FULL log to commits.json (history is intent
+             provenance; evidence = docs + tests + pin code).
+Both modes: copy configured normative docs to evidence/docs/ (flattened
+names) and inventory tests (Tier-C grounding source).
+"""
+import json
+import os
+import re
+import subprocess
+import collections
+
+import common
+
+cfg = common.load_config()
+EV, REPO = common.EV, common.REPO
 os.makedirs(EV, exist_ok=True)
 
-# 1) full commit log at the pin (all commits, no filter)
 out = subprocess.run(["git", "-C", REPO, "log", "--no-merges",
                       "--format=%H|%ad|%s", "--date=short"],
                      capture_output=True, text=True, check=True).stdout
+conv = re.compile(r"^(feat|fix|refactor|perf|docs|test|chore|ci|revert"
+                  r"|security|style|build)(?:\(([^)]*)\))?(!)?:\s*(.*)$", re.I)
+prref = re.compile(r"\(#(\d+)\)\s*$")
+
 rows = []
 for line in out.splitlines():
-    p = line.split("|", 2)
-    if len(p) == 3:
-        rows.append({"sha": p[0][:12], "date": p[1], "subject": p[2]})
-json.dump(rows, open(os.path.join(EV, "commits.json"), "w"), indent=1)
-print("commits mined:", len(rows), "| window:", rows[-1]["date"], "..", rows[0]["date"])
+    parts = line.split("|", 2)
+    if len(parts) != 3:
+        continue
+    sha, date, subj = parts
+    m = prref.search(subj)
+    if cfg["pr_ref_mode"] == "pr-ref" and not m:
+        continue
+    c = conv.match(subj)
+    rows.append({
+        "sha": sha[:12], "date": date,
+        "pr": (int(m.group(1)) if m else None),
+        "subject": subj,
+        "type": (c.group(1).lower() if c else "other"),
+        "scope": (c.group(2) if c and c.group(2) else ""),
+    })
 
-# 2) normative doc corpus
-DOCS = ["PROTOCOL.md", "API.md", "DESIGN.md", "README.md", "AGENTS.md", "SECURITY.md",
-        "RELEASE.md", "DP_Mapping.md", "docs/README.md", "tinytuya/Contrib/README.md",
-        "server/README.md", "tools/README.md"]
-dd = os.path.join(EV, "docs"); os.makedirs(dd, exist_ok=True)
-for d in DOCS:
+if cfg["pr_ref_mode"] == "pr-ref":
+    by_pr = collections.defaultdict(list)
+    for r in rows:
+        by_pr[r["pr"]].append(r)
+    json.dump(rows, open(os.path.join(EV, "pr_commits.json"), "w"), indent=1)
+    pr_index = {str(pr): {"date": rs[0]["date"], "shas": [x["sha"] for x in rs],
+                          "subject": rs[0]["subject"]} for pr, rs in by_pr.items()}
+    json.dump(pr_index, open(os.path.join(EV, "pr_index.json"), "w"), indent=1)
+    print("pr_commits:", len(rows), "unique PRs:", len(by_pr))
+    dates = sorted(r["date"] for r in rows)
+    print("ref window:", dates[0], "..", dates[-1],
+          "  <-- if the tail ends before the pin, run mine_tail.py")
+    sc = collections.Counter(r["scope"] for r in rows if r["scope"])
+    print("top scopes:", sc.most_common(15))
+else:
+    json.dump(rows, open(os.path.join(EV, "commits.json"), "w"), indent=1)
+    print("commits mined:", len(rows), "| window:",
+          rows[-1]["date"], "..", rows[0]["date"])
+
+# normative doc corpus
+dd = os.path.join(EV, "docs")
+os.makedirs(dd, exist_ok=True)
+for d in cfg["docs"]:
     src = os.path.join(REPO, d)
     if os.path.exists(src):
         open(os.path.join(dd, d.replace("/", "_")), "w").write(open(src).read())
@@ -34,47 +76,20 @@ for d in DOCS:
     else:
         print("doc MISSING:", d)
 
-# 3) test inventory with anchors (tests.py; test.py/testcontrib.py are manual scripts)
-t = open(os.path.join(REPO, "tests.py")).read().splitlines()
-tests = [(i + 1, l) for i, l in enumerate(t) if re.match(r"\s*(class |def test|    def test)", l)]
-open(os.path.join(EV, "tests_inventory.txt"), "w").write(
-    "tests.py @ pin (line: def)\n" + "\n".join("%d: %s" % x for x in tests) + "\n")
-print("test defs/classes:", len(tests))
-
-# 4) per-capability bundles: file inventory + commit-subject matches
-CAPS = {
- "protocol-crypto": (r'protocol|encrypt|aes|gcm|hmac|session|key|pack|unpack|frame|checksum|crc|55aa|6699|version 3|v3\.',
-   ["tinytuya/core/message_helper.py", "tinytuya/core/crypto_helper.py",
-    "tinytuya/core/XenonDevice.py (negotiation)", "tinytuya/core/header.py",
-    "tinytuya/core/command_types.py", "PROTOCOL.md"]),
- "device-control": (r'status|set_|set\(|dps|timeout|retry|connect|receive|udpport|device22|heartbeat|state',
-   ["tinytuya/core/XenonDevice.py", "tinytuya/core/Device.py",
-    "tinytuya/core/udp_helper.py", "API.md § XenonDevice/Device"]),
- "device-types": (r'bulb|cover|outlet|thermostat|contrib|dimmer|fan|ir |climate|socket|color',
-   ["tinytuya/OutletDevice.py", "tinytuya/BulbDevice.py", "tinytuya/CoverDevice.py",
-    "tinytuya/Contrib/*", "API.md § OutletDevice/BulbDevice/CoverDevice", "DP_Mapping.md"]),
- "discovery": (r'scan|broadcast|discover|udp|sniff|ap\b|wizard',
-   ["tinytuya/scanner.py", "tinytuya/core/udp_helper.py", "tools/broadcast-relay.py",
-    "DESIGN.md § Discovery"]),
- "monitor": (r'monitor|realtime|sniffer|listen',
-   ["tinytuya/core/Monitor.py", "PROTOCOL.md § monitoring sections"]),
- "cloud-api": (r'cloud|token|sign|record|endpoint|rest|http|api key|v2|share|device list',
-   ["tinytuya/Cloud.py", "API.md § Cloud", "DESIGN.md § Cloud"]),
- "cli-wizard-tools": (r'wizard|cli|main|server|mqtt|command|subcommand|help|example',
-   ["tinytuya/cli.py", "tinytuya/__main__.py", "tinytuya/wizard.py",
-    "server/server.py", "tools/*", "examples/"]),
- "packaging-surface": (r'export|import|version|exception|setup|pypi|release|init|depend|python',
-   ["tinytuya/__init__.py", "tinytuya/core/__init__.py", "tinytuya/core/exceptions.py",
-    "tinytuya/core/error_helper.py", "tinytuya/core/const.py", "pyproject.toml", "setup.py"]),
-}
-for cap, (kw, files) in CAPS.items():
-    rx = re.compile(kw, re.I)
-    hits = [r for r in rows if rx.search(r["subject"])]
-    lines = ["# Bundle: %s — %d/%d commit-subject hits (full history; refs rare — subject = intent only, verify at pin)"
-             % (cap, len(hits), len(rows)), "# Primary code/doc inventory:",
-             *[("  - " + f) for f in files], ""]
-    for r in hits[:60]:
-        lines.append("%s [%s] %s" % (r["date"], r["sha"], r["subject"]))
-    open(os.path.join(EV, "bundle_%s.txt" % cap), "w").write("\n".join(lines) + "\n")
-    print("bundle_%s: %d hits" % (cap, len(hits)))
+# test inventory (Tier-C). Python-ish shapes by default; adapt the regex to
+# the source repo's test framework (pytest defs, JS describe/it, go TestXxx).
+inv = []
+for tf in cfg.get("test_files", []):
+    p = os.path.join(REPO, tf)
+    if not common.PinTree().exists(tf):
+        print("test file MISSING:", tf)
+        continue
+    lines = open(p, errors="ignore").read().splitlines()
+    hits = [(i + 1, l) for i, l in enumerate(lines)
+            if re.match(r"\s*(class |def test|    def test|describe\(|func Test)", l)]
+    inv.append("%s @ pin (line: decl)" % tf)
+    inv += ["%d: %s" % x for x in hits]
+    print("tests in", tf, ":", len(hits))
+if inv:
+    open(os.path.join(EV, "tests_inventory.txt"), "w").write("\n".join(inv) + "\n")
 print("done")
