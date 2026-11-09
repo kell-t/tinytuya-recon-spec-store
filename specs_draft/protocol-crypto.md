@@ -3,7 +3,7 @@
 Baseline: jasonacox/tinytuya v1.20.0 @ 8512d836 (2026-07-06).
 
 ## Summary
-The wire layer: Tuya local message framing in two transports (legacy `55AA` and v3.5 `6699`), payload integrity (CRC32 or HMAC-SHA256, or the AES-GCM tag), payload encryption (AES-ECB for 3.1–3.4, AES-GCM for 3.5), and the 3-message session-key negotiation used by protocol 3.4/3.5 devices. Implementation lives in `tinytuya/core/message_helper.py` (`pack_message`/`unpack_message`), `core/crypto_helper.py` (backend-agnostic AES wrapper), `core/header.py` (format constants), `core/command_types.py` (command ids), with session negotiation inside `core/XenonDevice.py`. PROTOCOL.md is the in-repo authority for per-revision behavior.
+The wire layer: Tuya local message framing in two transports (legacy `55AA` and v3.5 `6699`), payload integrity (CRC32 or HMAC-SHA256, or the AES-GCM tag), payload encryption (AES-ECB for 3.1–3.4, AES-GCM for 3.5), and the 3-message session-key negotiation used by protocol 3.4/3.5 devices. Implementation lives in `tinytuya/core/message_helper.py` (`pack_message`/`unpack_message`), `tinytuya/core/crypto_helper.py` (backend-agnostic AES wrapper), `tinytuya/core/header.py` (format constants), `tinytuya/core/command_types.py` (command ids), with session negotiation inside `tinytuya/core/XenonDevice.py`. PROTOCOL.md is the in-repo authority for per-revision behavior.
 
 ## Primary code locations
 - `tinytuya/core/message_helper.py` — pack/parse/unpack, suffix detection

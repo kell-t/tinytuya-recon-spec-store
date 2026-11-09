@@ -1,0 +1,14 @@
+{
+ "617": "Rewrite BulbDevice and rework set_multiple_values(), again",
+ "620": "Fix BulbDevice for non-bulb devices",
+ "625": "Add Singapore datacenter, update BulbDevice for non-bulb devices again",
+ "466": "Misc 2024-02-22",
+ "686": "Revert deprecated Contrib/__init__.py",
+ "711": "Add FloorFanDevice support for Comfort Zone floor standing tower fan (CZTF423S)",
+ "714": "fix: call detect_bulb() in *_percentage() methods before reading value_max",
+ "507": "ISSUE closed: Cannot connect to Smart Switch",
+ "653": "ISSUE closed: Cover Controls freezing up",
+ "671": "ISSUE closed: Fix: Scanner classifies device as v.3.4 when unable to confirm",
+ "247": "ISSUE closed: Tuya Protocol 3.5 - Globe lightbulb - Unexpected payload in scan & can't control",
+ "713": "ISSUE closed: set_brightness_percentage() - not working properly"
+}
