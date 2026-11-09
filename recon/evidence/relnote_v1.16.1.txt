@@ -1,0 +1,2 @@
+v1.16.1 - Scanner Error Handling
+* Adds error handling for cases when the scanner broadcasts fails by @x011 in https://github.com/jasonacox/tinytuya/pull/585 and @uzlonewolf in https://github.com/jasonacox/tinytuya/pull/587

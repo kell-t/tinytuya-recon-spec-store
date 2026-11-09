@@ -1,0 +1,2 @@
+v1.15.1 - Scanner Fixes
+* Fix scanner broadcast attempting to bind to the wrong IP address, introduced in v1.15.0

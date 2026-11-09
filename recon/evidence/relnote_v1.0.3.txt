@@ -1,0 +1,12 @@
+v1.0.3 - Device22 Fix
+* PyPi Version 1.0.3
+* Removed automatic device22 type selection.  The assumption that 22 character ID meant it needed dev_type device22 was discovered to be incorrect and there are Tuya devices with 22 character ID's that behave similar to default devices.  Device22 type is now available via a dev_type specification on initialization:
+```
+    OutletDevice(dev_id, address, local_key=None, dev_type='default')
+    CoverDevice(dev_id, address, local_key=None, dev_type='default')
+    BulbDevice(dev_id, address, local_key=None, dev_type='default')
+```
+* Added Tuya Command Types framework to definitions and payload dictionary per device type.
+* Bug fixes (1.0.2):
+    * Update SET to CONTROL command
+    * Fixed BulbDevice() `__init__`

@@ -1,0 +1,2 @@
+v1.18.1 - IR Learn Frame Fix
+* core: Added `MAX_PAYLOAD_LENGTH` constant (default 1440 bytes) in `tinytuya/core/const.py` to replace the hardcoded 1000-byte ceiling in `parse_header()`. Enables local IR learn frame capture from devices with larger payloads such as AC IR blasters. Fixes [#708](https://github.com/jasonacox/tinytuya/issues/708) via [#709](https://github.com/jasonacox/tinytuya/pull/709) by @ostjen.

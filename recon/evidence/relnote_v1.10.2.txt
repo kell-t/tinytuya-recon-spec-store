@@ -1,0 +1,4 @@
+v1.10.2 - Bug Fix for ThermostatDevice and Misc. Cleanup
+* PyPI 1.10.2
+* Fix Contrib.ThermostatDevice.SetSetpoint() by @uzlonewolf in https://github.com/jasonacox/tinytuya/pull/273
+* Added command line -debug flag and code cleanup based on pylint by @jasonacox in https://github.com/jasonacox/tinytuya/pull/276

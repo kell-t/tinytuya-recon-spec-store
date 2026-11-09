@@ -1,0 +1,13 @@
+v1.0.5 - Persistent Socket Connections
+* PyPi Version 1.0.5
+* Updated cipher json payload to mirror TuyAPI - hexdigest from `[8:][:16]` to `[8:][:24]`
+* Added optional persistent socket connection, NODELAY and configurable retry limit (@elfman03) #5 #6 #7
+```python
+    set_socketPersistent(False/True)   # False [default] or True
+    set_socketNODELAY(False/True)      # False or True [default]	    
+    set_socketRetryLimit(integer)      # retry count limit [default 5]
+```
+* Add some "scenes" supported by color bulbs (@elfman03) 
+```python
+    set_scene(scene):             # 1=nature, 3=rave, 4=rainbow
+```

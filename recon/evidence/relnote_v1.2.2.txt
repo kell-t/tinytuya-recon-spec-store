@@ -1,0 +1,19 @@
+v1.2.2 - Bug Fix for Bulb Functions
+* PyPi Version 1.2.2
+* Fix bug in set_white_percentage(): added missing self. PR #32
+* Fixed set_white_percentage: colour temp was incorrectly computed for B type Bulbs. PR #33
+* Moved setup **Wizard** out of module init to standalone import to save import load.
+
+Command line mode is still the same:
+```python
+python3 -m tinytuya wizard
+```
+
+Import now requires additional import to run Wizard programmatically:
+```python
+import tinytuya
+import tinytuya.wizard
+
+tinytuya.wizard.wizard()
+
+```

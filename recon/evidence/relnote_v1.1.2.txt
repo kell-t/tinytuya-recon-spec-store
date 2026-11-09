@@ -1,0 +1,4 @@
+v1.1.2 - Bug Fix or 3.1 Devices
+* PyPi Version 1.1.2
+* Bug Fix for 3.1 Devices using CONTROL command - updated to hexdigest[8:][:16]
+* See Issue: #11

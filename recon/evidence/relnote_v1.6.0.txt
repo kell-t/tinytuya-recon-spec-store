@@ -1,0 +1,5 @@
+v1.6.0 - Colorama for Terminal Color
+* PyPI 1.6.0
+* Add [colorama](https://github.com/tartley/colorama) terminal color capability for all platforms including MS Windows and stdout redirects
+* Fix to allow setting socket options to existing open sockets by @uzlonewolf in https://github.com/jasonacox/tinytuya/pull/140
+* BETA: Started standalone TinyTuya API Server ([see here](https://github.com/jasonacox/tinytuya/tree/master/server#tinytuya-api-server)). No change to core library.

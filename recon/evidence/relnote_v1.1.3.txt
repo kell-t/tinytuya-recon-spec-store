@@ -1,0 +1,12 @@
+v1.1.3 - Automatic IP Lookup
+* PyPi Version 1.1.3
+* Updated device read retry logic for minimum response payload (28 characters) (Issue #17)
+* Feature added to do automatic IP address lookup via network scan if _None_ or '0.0.0.0' is specified.  Example:
+```python
+    import tinytuya
+    ID = "01234567890123456789"
+    IP = None
+    KEY = "0123456789012345"
+    d = tinytuya.OutletDevice(ID,IP,KEY)
+    d.status()
+```

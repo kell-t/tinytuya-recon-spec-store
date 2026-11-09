@@ -1,0 +1,9 @@
+v1.1.0 - Setup Wizard
+* PyPi Version 1.1.0
+* Added TinyTuya Setup Wizard to help users grab device *LOCAL_KEY* from the Tuya Platform.
+* Added formatted terminal color output (optionally disabled with `-nocolor`) for interactive **Wizard** and **Scan** functions.
+
+```python
+python3 -m tinytuya wizard
+```
+s

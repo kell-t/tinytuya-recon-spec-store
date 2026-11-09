@@ -1,0 +1,3 @@
+v1.2.1 - Bug Fix for Command 0x12 UpdateDPS
+* PyPi Version 1.2.1
+* Fixed header for 0x12 Update DPS Command (see issue #8)

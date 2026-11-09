@@ -1,0 +1,21 @@
+v1.20.0 - Monitor Reliability, Security & Bug Fixes
+Release rollup. The **Monitor reliability** changes below ship in this PR; the
+**session crypto hardening** and **bug-fix** bullets come from their own PRs and
+are listed here so the release changelog is complete.
+
+### Monitor (experimental) reliability
+* **Monitor now owns reconnection.** Monitored devices are forced to fail fast on send errors (`socketRetryLimit = 0`) so a broken connection can no longer (a) block the single reactor thread inside the device's own retry/connect loop for tens of seconds, stalling every other monitored device, or (b) silently open a replacement socket the selector never watches — which previously caused a device to stop delivering updates with no disconnect ever reported (Linux/epoll) or spin in an error-log loop (Windows/select). See [#713](https://github.com/jasonacox/tinytuya/issues/713).
+* Heartbeat and queued-command send failures are now detected (vanished socket) and routed through the disconnect → auto-reconnect path.
+* Command dispatch is gated on selector registration state rather than `device.socket`, closing a race where a queued command could be sent on a socket the connector thread was still mid-handshake on.
+* The auto-reconnect connector thread uses an interruptible wait for its backoff, so `stop()` returns promptly instead of blocking up to `reconnect_backoff` seconds, and can no longer let a duplicate connector thread start.
+* Devices are unregistered from the selector by their stored fd (not the possibly-closed socket), and the command proxy only injects `nowait=True` for methods that accept it. Retry limits are restored when a device is removed or the Monitor is stopped.
+* Added the first offline unit tests for `Monitor` (fail-fast retry ownership, disconnect detection, command gating, proxy `nowait` handling).
+* **Note:** marshalling `add()`/`remove()` selector mutations onto the reactor thread remains a known follow-up for the [#713](https://github.com/jasonacox/tinytuya/issues/713) refactor.
+
+### Session crypto hardening (see security PR)
+* AES-GCM message nonces and the v3.4/v3.5 session-key client nonce now use `os.urandom` instead of a time-derived/constant value, eliminating nonce/IV reuse under a session key. Wire-compatible.
+* 6699/GCM frames that fail their authentication tag are rejected instead of being passed on as raw ciphertext.
+
+### Bug fixes (see bug-fix PR)
+* Cloud token-refresh retry preserves the query string; Cloud helpers return error dicts instead of raising on failed/empty responses.
+* `set_timer()` selects the timer DP numerically; timeout errors report `ERR_TIMEOUT`; `received_wrong_cid_queue` is bounded; truncated frames raise `DecodeError`; `error_json()` handles unknown codes; `BulbDevice` rgb8 hue offset fixed; scanner no longer mutates caller dicts; and more.

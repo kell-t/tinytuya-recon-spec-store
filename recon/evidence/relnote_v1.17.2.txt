@@ -1,0 +1,2 @@
+v1.17.2 - BulbDevice Fix
+* Add Singapore datacenter, update BulbDevice for non-bulb devices again by @uzlonewolf in https://github.com/jasonacox/tinytuya/pull/625

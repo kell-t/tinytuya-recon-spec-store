@@ -1,0 +1,14 @@
+v1.1.1 - BulbDevice Class Update
+* PyPi Version 1.1.1
+* Updated BulbDevice Class to support two types of bulbs with different DPS mappings and functions:
+        - Type A - Uses DPS index 1-5 and represents color with RGB+HSV
+        - Type B - Uses DPS index 20-27 (no index 1)
+* Updated Colour Support -  Index (DPS_INDEX_COLOUR) is assumed to be in the format:
+         - (Type A) Index: 5 in hex format: rrggbb0hhhssvv 
+         - (Type B) Index: 24 in hex format: hhhhssssvvvv 
+* New Functions to help abstract Bulb Type:
+        - `set_white_percentage(brightness=100, colourtemp=0):`
+        - `set_brightness_percentage(brightness=100):`
+        - `set_colourtemp_percentage(colourtemp=100):`
+        - `set_mode(mode='white'):`       # white, colour, scene, music
+* Example Script https://github.com/jasonacox/tinytuya/blob/master/examples/bulb.py

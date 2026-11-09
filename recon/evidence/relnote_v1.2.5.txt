@@ -1,0 +1,25 @@
+v1.2.5 - Send and Receive Functions
+* PyPi Version 1.2.5
+* Added raw mode `send()` and `receive()` function to allow direct control of payload transfers. Useful to monitor constant state changes via threads or continuous loops.  This example opens a Tuya device and watches for state changes (e.g. switch going on and off):
+
+```python
+import tinytuya
+
+d = tinytuya.OutletDevice('DEVICEID', 'DEVICEIP', 'DEVICEKEY')
+d.set_version(3.3)
+d.set_socketPersistent(True)
+
+print(" > Send Initial Query for Status < ")
+payload = d.generate_payload(tinytuya.DP_QUERY)
+d.send(payload)
+
+while(True):
+    # See if any data is available
+    data = d.receive()
+    print('Received Payload: %r' % data)
+
+    # Send a keyalive heartbeat ping
+    print(" > Send Heartbeat Ping < ")
+    payload = d.generate_payload(tinytuya.HEART_BEAT)
+    d.send(payload)
+```
