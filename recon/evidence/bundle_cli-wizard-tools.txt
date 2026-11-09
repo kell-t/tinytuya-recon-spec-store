@@ -1,0 +1,69 @@
+# Bundle: cli-wizard-tools — 162/946 commit-subject hits (full history; refs rare — subject = intent only, verify at pin)
+# Primary code/doc inventory:
+  - tinytuya/cli.py
+  - tinytuya/__main__.py
+  - tinytuya/wizard.py
+  - server/server.py
+  - tools/*
+  - examples/
+
+2026-06-28 [121b23d41ee2] README: add auto_reconnect=True to Monitor class example and features list
+2026-06-28 [9102a3eb446f] docs: add Monitor class section to README, showcase on_disconnect opt-in in examples
+2026-06-25 [101bc16c82e7] Update server.py
+2026-06-06 [f9b0972c6c18] Address review feedback: proxy pattern, command() rename, Copilot fixes
+2026-06-02 [5cd759d20128] Address maintainer feedback for FloorFanDevice
+2026-05-08 [8aab0d36ce56] Polish towel rail helper and docs
+2026-05-07 [634239aee400] Tidying up the example and removing references to "switch"
+2026-04-12 [e146453b57bb] docs: enhance CLI command descriptions and add monitoring feature details
+2026-04-12 [49dfafe96ba4] fix: correct argument description in CLI and improve device monitoring logic
+2026-04-12 [3cea89363d21] feat: update version to 1.18.0, enhance device file loading, and improve error handling in CLI
+2026-04-12 [518328ba7b21] feat: update README and server version to p16, enhance device file loading and error handling
+2026-04-11 [81d0365b955a] Update the info line in the Contrib/IRRemoteControlDevice examples
+2026-04-11 [2585b821cc03] Rework the examples for Contrib/IRRemoteControlDevice
+2026-04-11 [bf1c0b89934a] fix: use None default for send_command data arg (avoid mutable default)
+2026-03-15 [ba7b6d8a8a1b] docs: clarify version=3.3 is an example, not a universal default
+2026-03-15 [70f00e5ce3f2] docs: clarify set_version() example — 3.3 is not the required version
+2026-03-07 [97f2347c7928] Updated help text for "--ip"
+2026-03-07 [8105e6b636b2] Make sure CLI defaults to v3.3 if not found, and update --key message
+2026-03-07 [cec1830af19a] Use persistent sockets for CLI monitor, and update RELEASE.md
+2026-03-07 [2a5ebf934067] Move CLI into new file and add monitor command
+2026-03-06 [3f1ed917ace9] CLI: harden device key prompt and validation (re #689)
+2026-03-04 [754cc1c007cd] Enhance CLI key handling: prompt for missing keys and validate key length
+2026-03-01 [2a95d00f8f61] Update README and improve error messaging in scanner and wizard
+2026-02-21 [e9a23af8c916] Enhance device command handling by improving value parsing and error handling for version retrieval
+2026-02-21 [08ac8876f0f2] Enhance command line interface with device control and listing commands
+2026-01-01 [d3ce379232d6] Added star projector example
+2025-10-30 [ef895fb41214] Refactor CoverDevice command types and detection logic for clarity and accuracy #653
+2025-10-29 [70810f61f604] Enhance CoverDevice with support for 8 command types and automatic detection #653
+2025-10-11 [8b7daecba628] Enhance CoverDevice with automatic command type detection #653
+2025-08-05 [28ada7b9fa4a] Fix newline in Wizard region list
+2025-07-24 [63d37473b386] Update server.py with cross-platform memory usage stats using psutil #634
+2025-05-10 [75088d933576] Bulb examples and BulbDevice updates
+2025-04-26 [99cf5ff181b0] Update server/server.py
+2025-04-26 [c099234c7af2] Add cloud error handling and server recovery logic
+2025-02-05 [c685092ab7ce] Update example bulb-music.py
+2025-02-05 [6e323a48112a] Update bulb-music.py example
+2025-01-05 [6b92610afad7] Add version switch to CLI
+2024-12-31 [6115dd00e123] refactor: move protocol headers and command types consts to own files
+2024-11-12 [14e6b7a3f307] Add IoT core service renewal info to the setup wizard in the README
+2024-10-19 [438d88c7df2b] Add multiple device select example
+2024-10-18 [11f43ccbd23c] Add multi-threaded example
+2024-10-08 [c51b4c3f4074] Add CloudRequest example #541
+2024-07-08 [e59d6bfb95f6] Add option to specify host for server
+2024-07-07 [a1e35a250490] Add option to specify host for server
+2024-07-07 [728779de7d1e] Add broadcast for 3.5 devices to server
+2024-05-25 [71789638886b] Add pipx/entry_points support for CLI
+2024-05-25 [f46d8623dafe] Rewrite main to use argparse and add additional options
+2024-05-07 [db9680dc9759] Update README.md with examples and tips #492
+2024-05-05 [064b49d5d20b] Update Docker volume mounts in server README.md
+2024-02-22 [5e3930c23432] Simplify the Contrib/README example for PresenceDetectorDevice, and move the more complex example to examples/Contrib/PresenceDetectorDevice-example.py
+2024-02-07 [2b32d9520015] Docker example
+2024-01-16 [4cd7366769a3] add example for a string of XmCosy+ RGBW patio string lights
+2023-11-15 [736b980df8d8] Make fake-v35-device.py mimic an "unvalid" error message on unknown command
+2023-11-14 [2ddb6f2b8ee2] Server build version update
+2023-08-17 [ab18a712fec4] More examples/monitor.py updates
+2023-08-17 [7b713f576db5] Add some error handling to examples/monitor.py
+2023-08-17 [1c26c8333ca3] Give examples/monitor.py some much-needed love
+2023-07-24 [a809d28f2925] Update mqtt_gateway.py
+2023-06-11 [93834cdfaa04] MQTT Gateway for Server
+2023-05-22 [e1d0d50d2699] Server t7

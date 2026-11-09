@@ -1,0 +1,69 @@
+# Bundle: protocol-crypto — 67/946 commit-subject hits (full history; refs rare — subject = intent only, verify at pin)
+# Primary code/doc inventory:
+  - tinytuya/core/message_helper.py
+  - tinytuya/core/crypto_helper.py
+  - tinytuya/core/XenonDevice.py (negotiation)
+  - tinytuya/core/header.py
+  - tinytuya/core/command_types.py
+  - PROTOCOL.md
+
+2026-07-02 [d4a148ca5f93] Skip GCM IV randomness test when DEBUG is active (fixed IV by design)
+2026-07-02 [4d0786400447] security: use random nonces/IVs and enforce GCM auth on receive
+2026-07-02 [4c4818586536] docs: correct README/PROTOCOL inaccuracies and fix -region choices
+2026-05-27 [6e902967c9c8] Raise parse_header payload ceiling so large IR learn frames decode
+2026-04-12 [8ab0d0df4d31] fix: update import handling for package version retrieval in setup.py
+2026-04-12 [bd6bfb363305] Handle devices being in a dict under 'devices' key in devices.json
+2026-03-08 [26e2929e0a5c] fix(Cloud): use key-absence sentinel for mapping fallback (Copilot review)
+2026-03-07 [8105e6b636b2] Make sure CLI defaults to v3.3 if not found, and update --key message
+2026-03-06 [3f1ed917ace9] CLI: harden device key prompt and validation (re #689)
+2026-03-04 [754cc1c007cd] Enhance CLI key handling: prompt for missing keys and validate key length
+2026-03-04 [96bf927b878c] Enhance device key handling: prompt for key if omitted and validate length #688
+2026-01-10 [d72f3085c5ea] Enhance device version detection for v3.4 and v3.5 in ForceScannedDevice class #671
+2025-09-13 [d5a52f9fb0cc] Add comprehensive Tuya Local Protocol Reference documentation
+2025-08-08 [8d191d792cd7] Allow scanner to work even without GCM
+2025-01-05 [41e2b0c1dcb6] refactor: update Dockerfile to improve package installation and environment variables
+2024-12-31 [6115dd00e123] refactor: move protocol headers and command types consts to own files
+2024-07-07 [7d160a0f98ac] Allow device discovery packets on port 7000
+2024-06-23 [e9fd881cff54] Add force-scanning v3.5 devices to scanner
+2024-06-23 [d088823727d9] Add force-scanning v3.5 devices to scanner
+2023-11-15 [6f29f12877a9] Allow pyca/cryptography to GCM decrypt without the tag (makes it match PyCryptodome)
+2023-11-15 [e8d6aa45e3a2] Add "fake v3.5 device" script to tools/
+2023-11-14 [6194d0a57c65] Fix crypto iv for v3.5 devices
+2023-11-14 [9fce7640a84d] Fix tinytuya.find_device() and decrypt_udp() for v3.1 devices
+2023-11-14 [c7d4c2daf85a] Break AESCipher into smaller parts to make it easier to add other crypto libraries
+2023-08-16 [0c8caad3bfc9] Make connection/key errors more descriptive
+2023-05-06 [96967e639494] Fix "has_more" key error
+2023-04-18 [99a542e017d3] Add AES debug output #332
+2023-04-18 [1be11b2e6406] Remove requirement for PyCryptodome in scanner (allows pyaes when no devices are v3.5+)
+2023-04-16 [40722bab867f] Make detection of 'scan' keyword more robust
+2023-04-16 [27d097546495] Make detection of 'scan' keyword more robust
+2023-03-20 [74c0b19adcc0] Fetch the device list a 2nd time to make sure we have the local key
+2023-03-11 [97d2d66ce382] Highlight Local_Key #297
+2023-01-17 [79386a28bcf4] Update NotImplementedError re: GCM support #256
+2023-01-17 [d2bdf80dc374] Update encryption notes re: pyaes #256
+2023-01-16 [d23db5fbbcae] v3.5 support fix for scanner #247
+2023-01-15 [c2f3e24d968c] Fix v3.5 retcode and IV
+2023-01-14 [19f1abeb4b7c] Fix exception for empty key #252
+2023-01-14 [de107a34aa4a] Rework v3.5 session key calculation
+2023-01-14 [7bf972055550] Rework v3.5 session key calculation
+2023-01-14 [5e066415e651] Scanner fix for v3.1 devices
+2023-01-14 [5742dcb99ef3] Support for v3.5: there was an attempt
+2022-11-10 [ec71a100a0ad] Add head_key_to_pulses() and pulses_to_head_key() functions
+2022-10-28 [9edf1eb52f09] Do not filter if retrieved json dict does not contain 'result' key
+2022-10-04 [35c1842dbbea] Save keys listed in DEVICEFILE_SAVE_VALUES to devices.json, and rework wizard.py to use tinytuya.Cloud()
+2022-10-03 [e974484d3189] Add function to find device in devices.json, and try to look up the local key if not provided
+2022-10-03 [caae5efa1a3b] Fix unpack_message() so it unpacks the retcode correctly
+2022-09-12 [862409414913] _send_recv() can now close/reopen with v3.4 devices so remove the version check, and clean up socket closing
+2022-09-12 [170aba1602ca] Move message encryption/encoding into _send_receive() so v3.4 devices can be re-encrypted on socket close/reopen
+2022-09-12 [d63ad82614c1] Fix BulbDevice for v3.4 devices
+2022-09-11 [32af6d9d4b49] Force persistence for v3.4
+2022-09-11 [a60ffc61484b] v3.4 devices encrypt the header in addition to the payload, and the dps results are often in {data:{dps:{...}}
+2022-09-10 [1a33294e0c7d] Minor tweaks to session key code, mainly logging
+2022-09-10 [12483f4847f7] Some tweaks to v3.2 handling
+2022-09-09 [2f11d535c113] Add HMAC functions
+2022-09-09 [0c68f4b4d40c] Initial v3.4 stuff, still needs HMAC function
+2022-08-14 [5601eab234a7] Fix dps_to_request logic for 3.2 protocol #168
+2022-08-13 [8b9b1fecc7ac] Updated to support protocol 3.2
+2022-08-12 [3bd44352dd41] Add support for 3.2 protocol devices
+2022-08-12 [8bb2c9cce18c] Add support for 3.2 protocol devices #168
+2022-07-07 [ea1e30de06dc] More stringent error checking in parse_header() to help detect corrupt packets

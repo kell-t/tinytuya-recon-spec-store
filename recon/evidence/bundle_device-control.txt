@@ -1,0 +1,67 @@
+# Bundle: device-control — 101/946 commit-subject hits (full history; refs rare — subject = intent only, verify at pin)
+# Primary code/doc inventory:
+  - tinytuya/core/XenonDevice.py
+  - tinytuya/core/Device.py
+  - tinytuya/core/udp_helper.py
+  - API.md § XenonDevice/Device
+
+2026-07-02 [0d66872ffd97] fix(Monitor): make reconnection reliable and non-blocking; bump to v1.20.0
+2026-07-02 [4d0786400447] security: use random nonces/IVs and enforce GCM auth on receive
+2026-06-28 [121b23d41ee2] README: add auto_reconnect=True to Monitor class example and features list
+2026-06-28 [f3629a1f5985] Add Monitor auto_reconnect connector thread
+2026-06-28 [9102a3eb446f] docs: add Monitor class section to README, showcase on_disconnect opt-in in examples
+2026-06-28 [f30100c49572] Add support for IPv6/NAT64 device connection addresses
+2026-06-06 [835514c1d96d] Add Monitor class — single-thread multi-device status monitoring
+2026-04-11 [9ea07d061e1d] refactor: remove empty-DPS fallback per uzlonewolf review; keep RuntimeError on undetected control_type
+2026-04-11 [ae3776e84e37] fix(IRRemoteControlDevice): handle empty DPS on detect, raise on undetected control_type
+2026-03-15 [70f00e5ce3f2] docs: clarify set_version() example — 3.3 is not the required version
+2026-02-21 [c4fdcfb9a07d] Update pylint workflow to trigger on pull requests and refactor SoriaInverterDevice timeout handling
+2026-01-16 [ee4756e68bf6] Expand DPS detection ranges in XenonDevice to include missing values for weather station models #673
+2025-10-11 [732a3040d88f] Refactor CoverDevice methods to use DPS_INDEX_MOVE as default switch value
+2025-05-29 [e94b972f51cc] Fix BulbDevice set_bulb_type()
+2025-05-10 [fb2e4954276a] Add obsolete DPS_INDEX_* BulbDevice attributes back in
+2025-05-10 [38acb0cae809] Replace print statements with log.debug
+2025-05-08 [0b5682c6040c] Add status caching, modify set_multiple_values() to detect devices that cannot set multiple, and misc pylint fixes
+2024-10-19 [565e57819aee] Refactor threading.py to add error handling and heartbeat keepalive
+2024-10-19 [f15cecca59d4] Add error handling and heartbeat keepalive
+2024-06-23 [9420ec66f8d3] Make sure set_version() is given a float (#507)
+2024-02-24 [86d89a4184dc] Our purpose needs custom port + reduce delay when connection
+2024-02-07 [7677c5ea10a1] Light DPS
+2023-08-17 [c15837d04032] Add "check version" suggestion message when status() receives error
+2023-08-17 [f44daa364d09] Allow setting socketRetryLimit and socketRetryDelay (as connection_retry_limit and connection_retry_delay respectively) from the Device() constructor
+2023-08-17 [dd3ad7f091a2] Change heartbeat() default to `nowait=True` as HEART_BEAT does not return data
+2023-08-17 [71fb5410b74b] Add "check version" suggestion message when status() receives no data
+2023-08-16 [9c3b0d2fee91] Scan for new IP address then auto-IP is used and connection to last-known address fails
+2023-08-16 [0c8caad3bfc9] Make connection/key errors more descriptive
+2023-05-10 [791ef27059e0] refactor: set null value in dps_cache
+2023-05-10 [7a3eb33b6754] fix: dps_cache reset device
+2023-04-23 [bf1eac1494b7] Rework examples/async_send_receive.py
+2023-04-23 [e66d969dd9e7] Fix examples/getstatus.py
+2023-03-25 [679df59478a7] Process dpsValue quoted values #313
+2023-02-24 [b5e93d3c2c40] Add documentation for set_multiple_values() and add Cloud IR exmple
+2023-01-29 [ac1078fcbc73] Remove bulb attr based blocks to set_*()  #265
+2023-01-15 [637c9aeefd03] Map maxretry to scantime in scan functions #247
+2023-01-14 [11a3e2eb9720] Timeout error handling
+2023-01-13 [d5f483e9296b] Allow nowait for status(), and split message parsing into separate function
+2022-12-27 [d6b73a8a7305] Add page to modify device dps.
+2022-11-29 [5bac27006a45] Rework Zigbee Gateway handling to support persistent connections with multiple devices
+2022-10-15 [606242dc75a5] Add support for subdevices connected to gateway
+2022-10-21 [e51c0d2669ee] Added socketRetryDelay as parameter instead of fixed value = 5.
+2022-09-12 [c01993d60996] Catch timeouts in new function
+2022-09-12 [170aba1602ca] Move message encryption/encoding into _send_receive() so v3.4 devices can be re-encrypted on socket close/reopen
+2022-09-11 [19c6495d20bd] Better error/timeout handling for 3.4 devices
+2022-09-11 [a60ffc61484b] v3.4 devices encrypt the header in addition to the payload, and the dps results are often in {data:{dps:{...}}
+2022-09-10 [563182a16988] Add device22 check back in, is it really needed?
+2022-09-01 [f8bd7febada7] optimize detect_available_dps
+2022-08-15 [55af8d1d7493] skip DPS detection if it has already been set
+2022-08-14 [89e3ceb35ad5] Add dps "1" seed to discovery for 3.2 prot
+2022-08-14 [5601eab234a7] Fix dps_to_request logic for 3.2 protocol #168
+2022-08-12 [e3c7358ac426] Fix set_version() for float
+2022-07-07 [873818411372] Handle closed connections while receiving
+2022-07-07 [7e2eae05ec3c] Handle closed connections while receiving
+2022-07-07 [54bf5459a1c5] Rework _receive() so it searches for the prefix if there is junk before the message
+2022-07-07 [8528e03565d6] Rework _send_receive() to separate read and write retries, and retry reads on corrupt messages and null payloads
+2022-07-05 [9570eea2aa1e] Rename DPS config 'class' to 'selfclass'
+2022-07-05 [6be73229ab76] Do not retry on decode error (restores previous behavior)
+2022-07-05 [6f43e77dfab7] Make parse_header() and unpack_message() (and, by extension, _receive()) raise an exception instead of returning None when not enough data was received
+2022-07-01 [0a45cc9c6a1f] Add Cloud API syncing with auto-retry

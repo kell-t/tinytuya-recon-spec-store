@@ -1,0 +1,69 @@
+# Bundle: device-types — 132/946 commit-subject hits (full history; refs rare — subject = intent only, verify at pin)
+# Primary code/doc inventory:
+  - tinytuya/OutletDevice.py
+  - tinytuya/BulbDevice.py
+  - tinytuya/CoverDevice.py
+  - tinytuya/Contrib/*
+  - API.md § OutletDevice/BulbDevice/CoverDevice
+  - DP_Mapping.md
+
+2026-07-02 [27aa6986ed52] fix: correct 16 verified bugs across Cloud, core, Bulb, scanner, Monitor
+2026-06-28 [34e6f449525b] Update testcontrib.py and Contrib/README.md to use preferred import pattern
+2026-06-13 [eed3b648ea17] fix: call detect_bulb() before reading value_max in *_percentage() methods
+2026-06-02 [5cd759d20128] Address maintainer feedback for FloorFanDevice
+2026-06-02 [884f0af1312d] Add FloorFanDevice support for Comfort Zone floor standing tower fan (CZTF423S)
+2026-05-27 [6e902967c9c8] Raise parse_header payload ceiling so large IR learn frames decode
+2026-04-11 [81d0365b955a] Update the info line in the Contrib/IRRemoteControlDevice examples
+2026-04-11 [2585b821cc03] Rework the examples for Contrib/IRRemoteControlDevice
+2026-03-07 [cec1830af19a] Use persistent sockets for CLI monitor, and update RELEASE.md
+2026-02-23 [1f38a8e7b782] Revert deprecated Contrib/__init__.py
+2026-02-21 [cf63c88196e8] Update tinytuya/Contrib/SoriaInverterDevice.py
+2026-02-21 [7ee87bcca6b0] Update tinytuya/Contrib/SoriaInverterDevice.py
+2026-02-21 [c1d565d201db] Typo fix Update tinytuya/Contrib/__init__.py
+2026-02-21 [0aeb7df79237] Typo fix tinytuya/Contrib/SoriaInverterDevice.py
+2026-02-21 [fdd4a79efd65] indentation fix tinytuya/Contrib/SoriaInverterDevice.py
+2026-02-21 [710c6ecbbc0e] Update tinytuya/Contrib/SoriaInverterDevice.py
+2025-10-30 [ef895fb41214] Refactor CoverDevice command types and detection logic for clarity and accuracy #653
+2025-10-29 [b96da804417c] Enhance CoverDevice documentation and detection logic for improved automatic type identification
+2025-10-29 [70810f61f604] Enhance CoverDevice with support for 8 command types and automatic detection #653
+2025-10-11 [732a3040d88f] Refactor CoverDevice methods to use DPS_INDEX_MOVE as default switch value
+2025-10-11 [8b7daecba628] Enhance CoverDevice with automatic command type detection #653
+2025-08-09 [78505b78c164] Update RELEASE.md for v1.17.3 - Make colorama dependency optional
+2025-08-08 [a3cb6976ee6e] Relax color check as colorama is only required on Windows
+2025-08-05 [33a90d4e5f7b] Make colorama optional
+2025-06-04 [635c545d217e] Add release notes for v1.17.2 - BulbDevice Fix
+2025-06-04 [bb45944e3a30] Update BulbDevice for non-bulb devices (again)
+2025-05-31 [fce1d3c37f72] Update RELEASE.md for v1.17.1 - Fix BulbDevice for non-bulb devices
+2025-05-29 [b2c633152667] Update BulbDevice unit tests
+2025-05-29 [e94b972f51cc] Fix BulbDevice set_bulb_type()
+2025-05-27 [81cb85d048da] Fix BulbDevice when used with non-bulb devices
+2025-05-25 [c5c02a4a48ae] Update version to 1.17.0 and add release notes for BulbDevice rewrite
+2025-05-19 [b6e08cd7c4ac] BulbDevice tweaks
+2025-05-17 [023aec86bf4e] BulbDevice clean-up
+2025-05-10 [75088d933576] Bulb examples and BulbDevice updates
+2025-05-10 [fb2e4954276a] Add obsolete DPS_INDEX_* BulbDevice attributes back in
+2025-05-10 [6fa3fbd81a8e] BulbDevice clean-up
+2025-05-08 [fc153a73a6fb] Add unit test for bulb type C
+2025-05-08 [2ebd086d5a0a] Rework Bulb unit tests
+2025-05-08 [ff3a500037f4] Rewrite BulbDevice
+2025-04-28 [36e3d11a4830] broadcast-relay: no need to bind the sending socket
+2025-04-26 [c099234c7af2] Add cloud error handling and server recovery logic
+2025-02-05 [c685092ab7ce] Update example bulb-music.py
+2025-02-05 [f49411f38d9a] Update bulb-music.py
+2025-02-05 [6e323a48112a] Update bulb-music.py example
+2025-02-02 [55e0b0cf9e50] Add contributors section to README.md
+2025-01-25 [56f41fa72c0d] Fix WinError 10022: Handle invalid socket arguments in send_discovery_request
+2025-01-05 [3f56596ce925] Add new contributions and refactoring details
+2024-12-12 [7ea70cb9a735] contrib: add WiFiDualMeterDevice.py
+2024-12-09 [82e999b83e4a] Update ColorfulX7Device.py
+2024-12-06 [0d92db643599] Create new device Colorful-X7 Device
+2024-07-07 [b00882a442bd] Close the broadcast sockets once we're done with them
+2024-07-07 [2fbb69158cc3] Allow calling send_discovery_request() without an argument
+2024-07-07 [7d160a0f98ac] Allow device discovery packets on port 7000
+2024-05-26 [9a17a0ac5b16] Raise error for unknown bulb types
+2024-02-22 [7082afe96605] Update Contrib README for __init__.py deprecation
+2024-02-22 [5e3930c23432] Simplify the Contrib/README example for PresenceDetectorDevice, and move the more complex example to examples/Contrib/PresenceDetectorDevice-example.py
+2024-02-22 [c9b700028f6e] Update Contrib README for __init__.py deprication
+2024-02-22 [1dcba48605c3] Depricate tinytuya/Contrib/__init__.py
+2024-02-22 [93773f12df1a] Tweaks to Contrib/PresenceDetectorDevice
+2024-01-17 [c8041ac98e0b] fix chase when the number of colors in the colors list is not exactly six

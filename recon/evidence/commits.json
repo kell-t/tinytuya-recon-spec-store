@@ -1,0 +1,4732 @@
+[
+ {
+  "sha": "8169204ef606",
+  "date": "2026-07-02",
+  "subject": "fix(Monitor): address Copilot review findings"
+ },
+ {
+  "sha": "0d66872ffd97",
+  "date": "2026-07-02",
+  "subject": "fix(Monitor): make reconnection reliable and non-blocking; bump to v1.20.0"
+ },
+ {
+  "sha": "d04ad6d6a955",
+  "date": "2026-07-05",
+  "subject": "Fix rgb8 docstring format: rrggbb0hhhssvv \u2192 rrggbbhhhhssvv"
+ },
+ {
+  "sha": "d4a148ca5f93",
+  "date": "2026-07-02",
+  "subject": "Skip GCM IV randomness test when DEBUG is active (fixed IV by design)"
+ },
+ {
+  "sha": "b8289b682dcb",
+  "date": "2026-07-02",
+  "subject": "Remove W0102 pylint suppression \u2014 mutable default arg is gone (tuyadevices=None)"
+ },
+ {
+  "sha": "cdc351cabfee",
+  "date": "2026-07-02",
+  "subject": "Restore debug-mode fixed IV for troubleshooting"
+ },
+ {
+  "sha": "294a965a431d",
+  "date": "2026-07-02",
+  "subject": "Potential fix for pull request finding"
+ },
+ {
+  "sha": "19a641c062b0",
+  "date": "2026-07-02",
+  "subject": "Potential fix for pull request finding"
+ },
+ {
+  "sha": "27aa6986ed52",
+  "date": "2026-07-02",
+  "subject": "fix: correct 16 verified bugs across Cloud, core, Bulb, scanner, Monitor"
+ },
+ {
+  "sha": "4d0786400447",
+  "date": "2026-07-02",
+  "subject": "security: use random nonces/IVs and enforce GCM auth on receive"
+ },
+ {
+  "sha": "2dd488774631",
+  "date": "2026-07-02",
+  "subject": "docs: add DESIGN.md and AGENTS.md to guide future development"
+ },
+ {
+  "sha": "4c4818586536",
+  "date": "2026-07-02",
+  "subject": "docs: correct README/PROTOCOL inaccuracies and fix -region choices"
+ },
+ {
+  "sha": "121b23d41ee2",
+  "date": "2026-06-28",
+  "subject": "README: add auto_reconnect=True to Monitor class example and features list"
+ },
+ {
+  "sha": "f40dfb2110f8",
+  "date": "2026-06-28",
+  "subject": "Add Experimental note for Monitor Class"
+ },
+ {
+  "sha": "d3bdd7078583",
+  "date": "2026-06-28",
+  "subject": "release: bump version to 1.19.0, update RELEASE.md for Monitor + community fixes"
+ },
+ {
+  "sha": "f3629a1f5985",
+  "date": "2026-06-28",
+  "subject": "Add Monitor auto_reconnect connector thread"
+ },
+ {
+  "sha": "34e6f449525b",
+  "date": "2026-06-28",
+  "subject": "Update testcontrib.py and Contrib/README.md to use preferred import pattern"
+ },
+ {
+  "sha": "9102a3eb446f",
+  "date": "2026-06-28",
+  "subject": "docs: add Monitor class section to README, showcase on_disconnect opt-in in examples"
+ },
+ {
+  "sha": "f30100c49572",
+  "date": "2026-06-28",
+  "subject": "Add support for IPv6/NAT64 device connection addresses"
+ },
+ {
+  "sha": "3841d1babc6d",
+  "date": "2026-06-28",
+  "subject": "Add post-detect guard to *_percentage() methods + regression test"
+ },
+ {
+  "sha": "eed3b648ea17",
+  "date": "2026-06-13",
+  "subject": "fix: call detect_bulb() before reading value_max in *_percentage() methods"
+ },
+ {
+  "sha": "00574f78f19e",
+  "date": "2026-06-25",
+  "subject": "Cloud: send PUT/DELETE with the real HTTP method"
+ },
+ {
+  "sha": "101bc16c82e7",
+  "date": "2026-06-25",
+  "subject": "Update server.py"
+ },
+ {
+  "sha": "f9b0972c6c18",
+  "date": "2026-06-06",
+  "subject": "Address review feedback: proxy pattern, command() rename, Copilot fixes"
+ },
+ {
+  "sha": "835514c1d96d",
+  "date": "2026-06-06",
+  "subject": "Add Monitor class \u2014 single-thread multi-device status monitoring"
+ },
+ {
+  "sha": "5cd759d20128",
+  "date": "2026-06-02",
+  "subject": "Address maintainer feedback for FloorFanDevice"
+ },
+ {
+  "sha": "884f0af1312d",
+  "date": "2026-06-02",
+  "subject": "Add FloorFanDevice support for Comfort Zone floor standing tower fan (CZTF423S)"
+ },
+ {
+  "sha": "b6f692a18ddd",
+  "date": "2026-05-28",
+  "subject": "release: bump version to 1.18.1, update RELEASE.md for MAX_PAYLOAD_LENGTH fix"
+ },
+ {
+  "sha": "0f38679d7972",
+  "date": "2026-05-27",
+  "subject": "Lower MAX_PAYLOAD_LENGTH to 1440 and move it to const.py"
+ },
+ {
+  "sha": "6e902967c9c8",
+  "date": "2026-05-27",
+  "subject": "Raise parse_header payload ceiling so large IR learn frames decode"
+ },
+ {
+  "sha": "8aab0d36ce56",
+  "date": "2026-05-08",
+  "subject": "Polish towel rail helper and docs"
+ },
+ {
+  "sha": "a2730a72d4e9",
+  "date": "2026-05-08",
+  "subject": "Timer doesn't count down, it only shows you what it is set to"
+ },
+ {
+  "sha": "634239aee400",
+  "date": "2026-05-07",
+  "subject": "Tidying up the example and removing references to \"switch\""
+ },
+ {
+  "sha": "100c16ed59ac",
+  "date": "2026-04-26",
+  "subject": "Clarifying comments and tidying up nits"
+ },
+ {
+  "sha": "7c68f621c092",
+  "date": "2026-04-26",
+  "subject": "hot not heat"
+ },
+ {
+  "sha": "ebb74cd89059",
+  "date": "2026-04-25",
+  "subject": "Wrapping as needed"
+ },
+ {
+  "sha": "b57080149b54",
+  "date": "2026-04-25",
+  "subject": "Renaming room to current and adding the docs"
+ },
+ {
+  "sha": "781a734c33bc",
+  "date": "2026-04-25",
+  "subject": "The timer is effectively the number of 6 minute time slices (10 for 1 hour, 15 for 90 minutes etc) so it seems like minutes is the easiest representation to expose. It only accepts 30 minute increments so we can enforce that also"
+ },
+ {
+  "sha": "454003952dfc",
+  "date": "2026-04-24",
+  "subject": "Adding First stab of TowelRailHeatingElement"
+ },
+ {
+  "sha": "1b3f3bcc1529",
+  "date": "2026-04-12",
+  "subject": "feat: update release notes for v1.18.0"
+ },
+ {
+  "sha": "e146453b57bb",
+  "date": "2026-04-12",
+  "subject": "docs: enhance CLI command descriptions and add monitoring feature details"
+ },
+ {
+  "sha": "8ab0d0df4d31",
+  "date": "2026-04-12",
+  "subject": "fix: update import handling for package version retrieval in setup.py"
+ },
+ {
+  "sha": "49dfafe96ba4",
+  "date": "2026-04-12",
+  "subject": "fix: correct argument description in CLI and improve device monitoring logic"
+ },
+ {
+  "sha": "3cea89363d21",
+  "date": "2026-04-12",
+  "subject": "feat: update version to 1.18.0, enhance device file loading, and improve error handling in CLI"
+ },
+ {
+  "sha": "518328ba7b21",
+  "date": "2026-04-12",
+  "subject": "feat: update README and server version to p16, enhance device file loading and error handling"
+ },
+ {
+  "sha": "fe36c7f2df9e",
+  "date": "2026-04-12",
+  "subject": "feat: enhance device error handling and add comprehensive tests for load_devicefile function"
+ },
+ {
+  "sha": "ff9d4a316c5d",
+  "date": "2026-04-12",
+  "subject": "feat: implement load_devicefile function and update device loading across the codebase"
+ },
+ {
+  "sha": "bd6bfb363305",
+  "date": "2026-04-12",
+  "subject": "Handle devices being in a dict under 'devices' key in devices.json"
+ },
+ {
+  "sha": "81d0365b955a",
+  "date": "2026-04-11",
+  "subject": "Update the info line in the Contrib/IRRemoteControlDevice examples"
+ },
+ {
+  "sha": "2585b821cc03",
+  "date": "2026-04-11",
+  "subject": "Rework the examples for Contrib/IRRemoteControlDevice"
+ },
+ {
+  "sha": "9ea07d061e1d",
+  "date": "2026-04-11",
+  "subject": "refactor: remove empty-DPS fallback per uzlonewolf review; keep RuntimeError on undetected control_type"
+ },
+ {
+  "sha": "bf1c0b89934a",
+  "date": "2026-04-11",
+  "subject": "fix: use None default for send_command data arg (avoid mutable default)"
+ },
+ {
+  "sha": "ae3776e84e37",
+  "date": "2026-04-11",
+  "subject": "fix(IRRemoteControlDevice): handle empty DPS on detect, raise on undetected control_type"
+ },
+ {
+  "sha": "ba7b6d8a8a1b",
+  "date": "2026-03-15",
+  "subject": "docs: clarify version=3.3 is an example, not a universal default"
+ },
+ {
+  "sha": "70f00e5ce3f2",
+  "date": "2026-03-15",
+  "subject": "docs: clarify set_version() example \u2014 3.3 is not the required version"
+ },
+ {
+  "sha": "26e2929e0a5c",
+  "date": "2026-03-08",
+  "subject": "fix(Cloud): use key-absence sentinel for mapping fallback (Copilot review)"
+ },
+ {
+  "sha": "cbe2ecff1d51",
+  "date": "2026-03-08",
+  "subject": "fix(Cloud): preserve device mappings on API failure in getdevices()"
+ },
+ {
+  "sha": "97f2347c7928",
+  "date": "2026-03-07",
+  "subject": "Updated help text for \"--ip\""
+ },
+ {
+  "sha": "88488d7e20ee",
+  "date": "2026-03-07",
+  "subject": "Fix \"--ip Auto\" detection"
+ },
+ {
+  "sha": "8105e6b636b2",
+  "date": "2026-03-07",
+  "subject": "Make sure CLI defaults to v3.3 if not found, and update --key message"
+ },
+ {
+  "sha": "cec1830af19a",
+  "date": "2026-03-07",
+  "subject": "Use persistent sockets for CLI monitor, and update RELEASE.md"
+ },
+ {
+  "sha": "a6bdef71517a",
+  "date": "2026-03-07",
+  "subject": "Tell scanner to not save snapshot file when only looking for certain devices"
+ },
+ {
+  "sha": "2a5ebf934067",
+  "date": "2026-03-07",
+  "subject": "Move CLI into new file and add monitor command"
+ },
+ {
+  "sha": "3f1ed917ace9",
+  "date": "2026-03-06",
+  "subject": "CLI: harden device key prompt and validation (re #689)"
+ },
+ {
+  "sha": "754cc1c007cd",
+  "date": "2026-03-04",
+  "subject": "Enhance CLI key handling: prompt for missing keys and validate key length"
+ },
+ {
+  "sha": "96bf927b878c",
+  "date": "2026-03-04",
+  "subject": "Enhance device key handling: prompt for key if omitted and validate length #688"
+ },
+ {
+  "sha": "2a95d00f8f61",
+  "date": "2026-03-01",
+  "subject": "Update README and improve error messaging in scanner and wizard"
+ },
+ {
+  "sha": "1f38a8e7b782",
+  "date": "2026-02-23",
+  "subject": "Revert deprecated Contrib/__init__.py"
+ },
+ {
+  "sha": "31adb0b04c76",
+  "date": "2026-02-22",
+  "subject": "v1.17.6: Fix RFRemoteControlDevice bugs and update version to 1.17.6 #683"
+ },
+ {
+  "sha": "c4d3bb95cd59",
+  "date": "2026-02-22",
+  "subject": "Fix RFRemoteControlDevice rf_send_button silently sending malformed payloads"
+ },
+ {
+  "sha": "e89b9fb38361",
+  "date": "2026-02-21",
+  "subject": "Add 'issues/' to .gitignore for local issue response archives"
+ },
+ {
+  "sha": "931bb7aad11a",
+  "date": "2026-02-21",
+  "subject": "Update RELEASE.md to reflect the addition of SoriaInverterDevice and correct version formatting"
+ },
+ {
+  "sha": "c4fdcfb9a07d",
+  "date": "2026-02-21",
+  "subject": "Update pylint workflow to trigger on pull requests and refactor SoriaInverterDevice timeout handling"
+ },
+ {
+  "sha": "00dd0cd419fe",
+  "date": "2026-02-21",
+  "subject": "Align super() call to existing style"
+ },
+ {
+  "sha": "e9a23af8c916",
+  "date": "2026-02-21",
+  "subject": "Enhance device command handling by improving value parsing and error handling for version retrieval"
+ },
+ {
+  "sha": "15f96ef9f997",
+  "date": "2026-02-21",
+  "subject": "Change file name"
+ },
+ {
+  "sha": "cf63c88196e8",
+  "date": "2026-02-21",
+  "subject": "Update tinytuya/Contrib/SoriaInverterDevice.py"
+ },
+ {
+  "sha": "7ee87bcca6b0",
+  "date": "2026-02-21",
+  "subject": "Update tinytuya/Contrib/SoriaInverterDevice.py"
+ },
+ {
+  "sha": "c1d565d201db",
+  "date": "2026-02-21",
+  "subject": "Typo fix Update tinytuya/Contrib/__init__.py"
+ },
+ {
+  "sha": "0aeb7df79237",
+  "date": "2026-02-21",
+  "subject": "Typo fix tinytuya/Contrib/SoriaInverterDevice.py"
+ },
+ {
+  "sha": "fdd4a79efd65",
+  "date": "2026-02-21",
+  "subject": "indentation fix tinytuya/Contrib/SoriaInverterDevice.py"
+ },
+ {
+  "sha": "710c6ecbbc0e",
+  "date": "2026-02-21",
+  "subject": "Update tinytuya/Contrib/SoriaInverterDevice.py"
+ },
+ {
+  "sha": "08ac8876f0f2",
+  "date": "2026-02-21",
+  "subject": "Enhance command line interface with device control and listing commands"
+ },
+ {
+  "sha": "1cc26544e5ae",
+  "date": "2026-02-20",
+  "subject": "Add SoriaInverterDevice in tinytuya"
+ },
+ {
+  "sha": "ee4756e68bf6",
+  "date": "2026-01-16",
+  "subject": "Expand DPS detection ranges in XenonDevice to include missing values for weather station models #673"
+ },
+ {
+  "sha": "d72f3085c5ea",
+  "date": "2026-01-10",
+  "subject": "Enhance device version detection for v3.4 and v3.5 in ForceScannedDevice class #671"
+ },
+ {
+  "sha": "3b67b2c659c3",
+  "date": "2026-01-03",
+  "subject": "Added author line"
+ },
+ {
+  "sha": "521472273d32",
+  "date": "2026-01-03",
+  "subject": "Added author line"
+ },
+ {
+  "sha": "1e68d53b92ce",
+  "date": "2026-01-03",
+  "subject": "Added author line"
+ },
+ {
+  "sha": "d3ce379232d6",
+  "date": "2026-01-01",
+  "subject": "Added star projector example"
+ },
+ {
+  "sha": "7f9839e861ee",
+  "date": "2025-11-04",
+  "subject": "Add Dart Flutter port of TinyTuya to README"
+ },
+ {
+  "sha": "ef895fb41214",
+  "date": "2025-10-30",
+  "subject": "Refactor CoverDevice command types and detection logic for clarity and accuracy #653"
+ },
+ {
+  "sha": "b96da804417c",
+  "date": "2025-10-29",
+  "subject": "Enhance CoverDevice documentation and detection logic for improved automatic type identification"
+ },
+ {
+  "sha": "70810f61f604",
+  "date": "2025-10-29",
+  "subject": "Enhance CoverDevice with support for 8 command types and automatic detection #653"
+ },
+ {
+  "sha": "732a3040d88f",
+  "date": "2025-10-11",
+  "subject": "Refactor CoverDevice methods to use DPS_INDEX_MOVE as default switch value"
+ },
+ {
+  "sha": "8b7daecba628",
+  "date": "2025-10-11",
+  "subject": "Enhance CoverDevice with automatic command type detection #653"
+ },
+ {
+  "sha": "d5a52f9fb0cc",
+  "date": "2025-09-13",
+  "subject": "Add comprehensive Tuya Local Protocol Reference documentation"
+ },
+ {
+  "sha": "736ba6774d88",
+  "date": "2025-08-24",
+  "subject": "Update release notes for version 1.17.4 to include Cloud configFile option"
+ },
+ {
+  "sha": "7ca1b531ee8a",
+  "date": "2025-08-24",
+  "subject": "Bump version to 1.17.4 and add Release notes"
+ },
+ {
+  "sha": "7c64b31dc9aa",
+  "date": "2025-08-23",
+  "subject": "Shifted configFile kwarg to the end as requested by @jasonacox and made it default to the core/const.py provided CONFIGFILE as requested by @uzlonewolf"
+ },
+ {
+  "sha": "b9ab8a483542",
+  "date": "2025-08-22",
+  "subject": "Add constructor option to specify configfile"
+ },
+ {
+  "sha": "78505b78c164",
+  "date": "2025-08-09",
+  "subject": "Update RELEASE.md for v1.17.3 - Make colorama dependency optional"
+ },
+ {
+  "sha": "8d191d792cd7",
+  "date": "2025-08-08",
+  "subject": "Allow scanner to work even without GCM"
+ },
+ {
+  "sha": "a3cb6976ee6e",
+  "date": "2025-08-08",
+  "subject": "Relax color check as colorama is only required on Windows"
+ },
+ {
+  "sha": "e271f35bf290",
+  "date": "2025-08-08",
+  "subject": "Add alternate install to README.md"
+ },
+ {
+  "sha": "33a90d4e5f7b",
+  "date": "2025-08-05",
+  "subject": "Make colorama optional"
+ },
+ {
+  "sha": "28ada7b9fa4a",
+  "date": "2025-08-05",
+  "subject": "Fix newline in Wizard region list"
+ },
+ {
+  "sha": "63d37473b386",
+  "date": "2025-07-24",
+  "subject": "Update server.py with cross-platform memory usage stats using psutil #634"
+ },
+ {
+  "sha": "f12455a692a1",
+  "date": "2025-06-14",
+  "subject": "Update README to include 'sg' region in API configuration #627"
+ },
+ {
+  "sha": "635c545d217e",
+  "date": "2025-06-04",
+  "subject": "Add release notes for v1.17.2 - BulbDevice Fix"
+ },
+ {
+  "sha": "97f608f8cd87",
+  "date": "2025-06-04",
+  "subject": "Fix Singapore datacenter URL"
+ },
+ {
+  "sha": "bb45944e3a30",
+  "date": "2025-06-04",
+  "subject": "Update BulbDevice for non-bulb devices (again)"
+ },
+ {
+  "sha": "1d97627875dd",
+  "date": "2025-06-04",
+  "subject": "Add new Singapore datacenter to Cloud"
+ },
+ {
+  "sha": "fce1d3c37f72",
+  "date": "2025-05-31",
+  "subject": "Update RELEASE.md for v1.17.1 - Fix BulbDevice for non-bulb devices"
+ },
+ {
+  "sha": "b2c633152667",
+  "date": "2025-05-29",
+  "subject": "Update BulbDevice unit tests"
+ },
+ {
+  "sha": "e94b972f51cc",
+  "date": "2025-05-29",
+  "subject": "Fix BulbDevice set_bulb_type()"
+ },
+ {
+  "sha": "cd99020e4fa4",
+  "date": "2025-05-27",
+  "subject": "Bump version number"
+ },
+ {
+  "sha": "81cb85d048da",
+  "date": "2025-05-27",
+  "subject": "Fix BulbDevice when used with non-bulb devices"
+ },
+ {
+  "sha": "c5c02a4a48ae",
+  "date": "2025-05-25",
+  "subject": "Update version to 1.17.0 and add release notes for BulbDevice rewrite"
+ },
+ {
+  "sha": "a2486e834cef",
+  "date": "2025-05-19",
+  "subject": "Check retcode and store in d.cmd_retcode"
+ },
+ {
+  "sha": "424e07897f58",
+  "date": "2025-05-19",
+  "subject": "Cache raw sent/recv TuyaMessage so the user can check the retcode if they want"
+ },
+ {
+  "sha": "b6e08cd7c4ac",
+  "date": "2025-05-19",
+  "subject": "BulbDevice tweaks"
+ },
+ {
+  "sha": "023aec86bf4e",
+  "date": "2025-05-17",
+  "subject": "BulbDevice clean-up"
+ },
+ {
+  "sha": "75088d933576",
+  "date": "2025-05-10",
+  "subject": "Bulb examples and BulbDevice updates"
+ },
+ {
+  "sha": "fb2e4954276a",
+  "date": "2025-05-10",
+  "subject": "Add obsolete DPS_INDEX_* BulbDevice attributes back in"
+ },
+ {
+  "sha": "6fa3fbd81a8e",
+  "date": "2025-05-10",
+  "subject": "BulbDevice clean-up"
+ },
+ {
+  "sha": "fc153a73a6fb",
+  "date": "2025-05-08",
+  "subject": "Add unit test for bulb type C"
+ },
+ {
+  "sha": "38acb0cae809",
+  "date": "2025-05-10",
+  "subject": "Replace print statements with log.debug"
+ },
+ {
+  "sha": "1f9cbd2b3c1a",
+  "date": "2025-05-09",
+  "subject": "Change print to log.debug"
+ },
+ {
+  "sha": "2ebd086d5a0a",
+  "date": "2025-05-08",
+  "subject": "Rework Bulb unit tests"
+ },
+ {
+  "sha": "080ee5ae9ddb",
+  "date": "2025-05-08",
+  "subject": "Fix music mode DP"
+ },
+ {
+  "sha": "ff3a500037f4",
+  "date": "2025-05-08",
+  "subject": "Rewrite BulbDevice"
+ },
+ {
+  "sha": "978881e1fd3a",
+  "date": "2025-05-08",
+  "subject": "Clean up line endings in core.py"
+ },
+ {
+  "sha": "0b5682c6040c",
+  "date": "2025-05-08",
+  "subject": "Add status caching, modify set_multiple_values() to detect devices that cannot set multiple, and misc pylint fixes"
+ },
+ {
+  "sha": "7075b18343f0",
+  "date": "2025-05-07",
+  "subject": "Fix initialization bug with python2 (embedded devices)"
+ },
+ {
+  "sha": "b9e41462dbdf",
+  "date": "2025-04-28",
+  "subject": "broadcast-relay: make it work with older versions of the scanner"
+ },
+ {
+  "sha": "36e3d11a4830",
+  "date": "2025-04-28",
+  "subject": "broadcast-relay: no need to bind the sending socket"
+ },
+ {
+  "sha": "155efba4086e",
+  "date": "2025-04-28",
+  "subject": "Add new tool: broadcast-relay"
+ },
+ {
+  "sha": "bd8408bd9039",
+  "date": "2025-04-26",
+  "subject": "Update logging for malformed device entries in Cloud module"
+ },
+ {
+  "sha": "5df9cc10be03",
+  "date": "2025-04-26",
+  "subject": "Add dev_id"
+ },
+ {
+  "sha": "0b19eb8bec9b",
+  "date": "2025-04-26",
+  "subject": "Add warning for malformed entry"
+ },
+ {
+  "sha": "99cf5ff181b0",
+  "date": "2025-04-26",
+  "subject": "Update server/server.py"
+ },
+ {
+  "sha": "c099234c7af2",
+  "date": "2025-04-26",
+  "subject": "Add cloud error handling and server recovery logic"
+ },
+ {
+  "sha": "3bdd4c7ec58f",
+  "date": "2025-04-26",
+  "subject": "Updates to tools/pcap_parse.py"
+ },
+ {
+  "sha": "7f3f20f822ad",
+  "date": "2025-04-26",
+  "subject": "Bump version to 1.16.2 and update release notes"
+ },
+ {
+  "sha": "bf24e363e0da",
+  "date": "2025-04-22",
+  "subject": "Remove Python 3.6 build test as it's not available on 22.04"
+ },
+ {
+  "sha": "192ffdcf6e86",
+  "date": "2025-04-22",
+  "subject": "Update Github build test versions"
+ },
+ {
+  "sha": "3abdb0c46f6b",
+  "date": "2025-04-22",
+  "subject": "Add a sanity check before handling the invalid binary JSON data"
+ },
+ {
+  "sha": "4c3c7f8f6b85",
+  "date": "2025-04-22",
+  "subject": "Handle invalid binary data in the JSON from the device better"
+ },
+ {
+  "sha": "559940b3da80",
+  "date": "2025-03-15",
+  "subject": "Add AmbiTuya to TinyTuya Powered Projects list"
+ },
+ {
+  "sha": "c685092ab7ce",
+  "date": "2025-02-05",
+  "subject": "Update example bulb-music.py"
+ },
+ {
+  "sha": "f49411f38d9a",
+  "date": "2025-02-05",
+  "subject": "Update bulb-music.py"
+ },
+ {
+  "sha": "6e323a48112a",
+  "date": "2025-02-05",
+  "subject": "Update bulb-music.py example"
+ },
+ {
+  "sha": "55e0b0cf9e50",
+  "date": "2025-02-02",
+  "subject": "Add contributors section to README.md"
+ },
+ {
+  "sha": "c70e3a58c432",
+  "date": "2025-01-25",
+  "subject": "Update release notes for v1.16.1 and increment version number to include scanner error handling improvements"
+ },
+ {
+  "sha": "fcee73701ea0",
+  "date": "2025-01-25",
+  "subject": "Add better error message when sending scanner broadcasts fails"
+ },
+ {
+  "sha": "57e02572ea54",
+  "date": "2025-01-25",
+  "subject": "Add better error message when sending scanner broadcasts fails"
+ },
+ {
+  "sha": "56f41fa72c0d",
+  "date": "2025-01-25",
+  "subject": "Fix WinError 10022: Handle invalid socket arguments in send_discovery_request"
+ },
+ {
+  "sha": "3f56596ce925",
+  "date": "2025-01-05",
+  "subject": "Add new contributions and refactoring details"
+ },
+ {
+  "sha": "41e2b0c1dcb6",
+  "date": "2025-01-05",
+  "subject": "refactor: update Dockerfile to improve package installation and environment variables"
+ },
+ {
+  "sha": "cb6894eb9edb",
+  "date": "2025-01-05",
+  "subject": "Update CI workflow to run both test.py and tests.py"
+ },
+ {
+  "sha": "6b92610afad7",
+  "date": "2025-01-05",
+  "subject": "Add version switch to CLI"
+ },
+ {
+  "sha": "dc2e2e4eda83",
+  "date": "2025-01-04",
+  "subject": "fix: update tests.py to pass, add to github workflow"
+ },
+ {
+  "sha": "b90172457960",
+  "date": "2025-01-04",
+  "subject": "fix import of scanner, fix pylint"
+ },
+ {
+  "sha": "3d47dc78d5e1",
+  "date": "2025-01-01",
+  "subject": "fix: change `version` to `self.version`"
+ },
+ {
+  "sha": "7fa261bb835d",
+  "date": "2025-01-01",
+  "subject": "Remove unused library version variables"
+ },
+ {
+  "sha": "fece5c3a19bb",
+  "date": "2025-01-01",
+  "subject": "v1.16.0 prep"
+ },
+ {
+  "sha": "be63f9b4fe79",
+  "date": "2024-12-31",
+  "subject": "fix import"
+ },
+ {
+  "sha": "6115dd00e123",
+  "date": "2024-12-31",
+  "subject": "refactor: move protocol headers and command types consts to own files"
+ },
+ {
+  "sha": "b46865c1ce08",
+  "date": "2024-12-31",
+  "subject": "clean up new imports in core.py"
+ },
+ {
+  "sha": "b5d0b24e623a",
+  "date": "2024-12-31",
+  "subject": "refactor: move core.py and new files to core/ folder"
+ },
+ {
+  "sha": "ff4b2f25eeca",
+  "date": "2024-12-31",
+  "subject": "refactor udp decryption to own file"
+ },
+ {
+  "sha": "6cedd1f28a31",
+  "date": "2024-12-31",
+  "subject": "refactor: move XenonDevice and friends to own file"
+ },
+ {
+  "sha": "aa54133936ea",
+  "date": "2024-12-31",
+  "subject": "revert unintended changes"
+ },
+ {
+  "sha": "2dfe7c1f0a2b",
+  "date": "2024-12-31",
+  "subject": "more refactoring"
+ },
+ {
+  "sha": "6b1eba0aca0e",
+  "date": "2024-12-31",
+  "subject": "refactor some code into its own file"
+ },
+ {
+  "sha": "7ea70cb9a735",
+  "date": "2024-12-12",
+  "subject": "contrib: add WiFiDualMeterDevice.py"
+ },
+ {
+  "sha": "8599c3c14b29",
+  "date": "2024-12-12",
+  "subject": "Add DP table for WIFI Dual Meter"
+ },
+ {
+  "sha": "82e999b83e4a",
+  "date": "2024-12-09",
+  "subject": "Update ColorfulX7Device.py"
+ },
+ {
+  "sha": "745620271fa6",
+  "date": "2024-12-06",
+  "subject": "Update README.md"
+ },
+ {
+  "sha": "0d92db643599",
+  "date": "2024-12-06",
+  "subject": "Create new device Colorful-X7 Device"
+ },
+ {
+  "sha": "14e6b7a3f307",
+  "date": "2024-11-12",
+  "subject": "Add IoT core service renewal info to the setup wizard in the README"
+ },
+ {
+  "sha": "565e57819aee",
+  "date": "2024-10-19",
+  "subject": "Refactor threading.py to add error handling and heartbeat keepalive"
+ },
+ {
+  "sha": "f15cecca59d4",
+  "date": "2024-10-19",
+  "subject": "Add error handling and heartbeat keepalive"
+ },
+ {
+  "sha": "438d88c7df2b",
+  "date": "2024-10-19",
+  "subject": "Add multiple device select example"
+ },
+ {
+  "sha": "11f43ccbd23c",
+  "date": "2024-10-18",
+  "subject": "Add multi-threaded example"
+ },
+ {
+  "sha": "c51b4c3f4074",
+  "date": "2024-10-08",
+  "subject": "Add CloudRequest example #541"
+ },
+ {
+  "sha": "c711c689339a",
+  "date": "2024-08-02",
+  "subject": "Add README section"
+ },
+ {
+  "sha": "a71854c85801",
+  "date": "2024-08-02",
+  "subject": "Add electric blanket device support"
+ },
+ {
+  "sha": "62c9ad4bf5a5",
+  "date": "2024-07-19",
+  "subject": "Revert netifaces requirement"
+ },
+ {
+  "sha": "07fdbd69da1a",
+  "date": "2024-07-19",
+  "subject": "Documentation update"
+ },
+ {
+  "sha": "43f3e491038e",
+  "date": "2024-07-19",
+  "subject": "Bump version and edit documentation"
+ },
+ {
+  "sha": "679a2796e475",
+  "date": "2024-07-19",
+  "subject": "Revert netifaces requirement"
+ },
+ {
+  "sha": "f0f1e0bace57",
+  "date": "2024-07-19",
+  "subject": "Handle exception when binding to IP address fails"
+ },
+ {
+  "sha": "adad4cd56702",
+  "date": "2024-07-08",
+  "subject": "Fix IP address binding when netifaces/psutil are not available"
+ },
+ {
+  "sha": "e59d6bfb95f6",
+  "date": "2024-07-08",
+  "subject": "Add option to specify host for server"
+ },
+ {
+  "sha": "2b495bca257c",
+  "date": "2024-07-08",
+  "subject": "Add network configuration for force scan"
+ },
+ {
+  "sha": "a1e35a250490",
+  "date": "2024-07-07",
+  "subject": "Add option to specify host for server"
+ },
+ {
+  "sha": "1f375108ec44",
+  "date": "2024-07-07",
+  "subject": "Add netifaces as an install requirement"
+ },
+ {
+  "sha": "3aea26172d29",
+  "date": "2024-07-07",
+  "subject": "Release notes"
+ },
+ {
+  "sha": "728779de7d1e",
+  "date": "2024-07-07",
+  "subject": "Add broadcast for 3.5 devices to server"
+ },
+ {
+  "sha": "b00882a442bd",
+  "date": "2024-07-07",
+  "subject": "Close the broadcast sockets once we're done with them"
+ },
+ {
+  "sha": "c6dba30c6eae",
+  "date": "2024-07-07",
+  "subject": "Also use psutil to get the force-scan IP list if netifaces is not available"
+ },
+ {
+  "sha": "0b199901c01f",
+  "date": "2024-07-07",
+  "subject": "Rewrite tinytuya.find_device() to use the scanner"
+ },
+ {
+  "sha": "2fbb69158cc3",
+  "date": "2024-07-07",
+  "subject": "Allow calling send_discovery_request() without an argument"
+ },
+ {
+  "sha": "a20b080b462f",
+  "date": "2024-07-07",
+  "subject": "Fix incorrect message log level"
+ },
+ {
+  "sha": "6073a8cecb84",
+  "date": "2024-07-07",
+  "subject": "Add port 7000 support to tools/pcap_parse.py"
+ },
+ {
+  "sha": "4d4653846319",
+  "date": "2024-07-07",
+  "subject": "Update control panel image"
+ },
+ {
+  "sha": "831f1131f17e",
+  "date": "2024-07-07",
+  "subject": "Make scanner send broadcasts to port 7000"
+ },
+ {
+  "sha": "5f38b49e0146",
+  "date": "2024-07-07",
+  "subject": "Add \"Force Scan\" button and UI updates"
+ },
+ {
+  "sha": "ff6abf2275da",
+  "date": "2024-07-07",
+  "subject": "Add get_ip_to_broadcast() function to scanner"
+ },
+ {
+  "sha": "7d160a0f98ac",
+  "date": "2024-07-07",
+  "subject": "Allow device discovery packets on port 7000"
+ },
+ {
+  "sha": "da6d01b808da",
+  "date": "2024-06-25",
+  "subject": "Refactor _print_device_info function to include verbose flag"
+ },
+ {
+  "sha": "133fd359fdd8",
+  "date": "2024-06-24",
+  "subject": "Allow host bits in the force-scan network list"
+ },
+ {
+  "sha": "9420ec66f8d3",
+  "date": "2024-06-23",
+  "subject": "Make sure set_version() is given a float (#507)"
+ },
+ {
+  "sha": "7259b8dec70a",
+  "date": "2024-06-23",
+  "subject": "Rename scanner variable try_v35 to a more descriptive try_v35_with_v34"
+ },
+ {
+  "sha": "0690e8c60bfc",
+  "date": "2024-06-23",
+  "subject": "v1.14.2 Notes"
+ },
+ {
+  "sha": "e9fd881cff54",
+  "date": "2024-06-23",
+  "subject": "Add force-scanning v3.5 devices to scanner"
+ },
+ {
+  "sha": "d088823727d9",
+  "date": "2024-06-23",
+  "subject": "Add force-scanning v3.5 devices to scanner"
+ },
+ {
+  "sha": "d3bc3d08ba56",
+  "date": "2024-06-22",
+  "subject": "Allow a string as the force-scan list"
+ },
+ {
+  "sha": "d3be0ac645fc",
+  "date": "2024-06-22",
+  "subject": "Fix scanner force-scanning"
+ },
+ {
+  "sha": "9a17a0ac5b16",
+  "date": "2024-05-26",
+  "subject": "Raise error for unknown bulb types"
+ },
+ {
+  "sha": "1133f1114d6d",
+  "date": "2024-05-26",
+  "subject": "Doc updates for v1.14.0 and #501"
+ },
+ {
+  "sha": "6d870abadc1f",
+  "date": "2024-05-26",
+  "subject": "more argparse cleanup"
+ },
+ {
+  "sha": "dcb92b0890a3",
+  "date": "2024-05-26",
+  "subject": "argparse cleanup"
+ },
+ {
+  "sha": "dd39363deca1",
+  "date": "2024-05-25",
+  "subject": "Cleanup pylint errors"
+ },
+ {
+  "sha": "c1f6e07c24be",
+  "date": "2024-05-25",
+  "subject": "Cleanup pylint errors"
+ },
+ {
+  "sha": "2360fa3ce9e6",
+  "date": "2024-05-25",
+  "subject": "Update workflows and bump version"
+ },
+ {
+  "sha": "71789638886b",
+  "date": "2024-05-25",
+  "subject": "Add pipx/entry_points support for CLI"
+ },
+ {
+  "sha": "f46d8623dafe",
+  "date": "2024-05-25",
+  "subject": "Rewrite main to use argparse and add additional options"
+ },
+ {
+  "sha": "db9680dc9759",
+  "date": "2024-05-07",
+  "subject": "Update README.md with examples and tips #492"
+ },
+ {
+  "sha": "b0f7be7600a1",
+  "date": "2024-05-06",
+  "subject": "Update Dockerfile to use Python 3.12-bookworm and remove rust build"
+ },
+ {
+  "sha": "8615b8515ce7",
+  "date": "2024-05-05",
+  "subject": "Update API Documentation #490"
+ },
+ {
+  "sha": "064b49d5d20b",
+  "date": "2024-05-05",
+  "subject": "Update Docker volume mounts in server README.md"
+ },
+ {
+  "sha": "e4c366c58f0b",
+  "date": "2024-05-06",
+  "subject": "README:  Warn users about use of guest accounts"
+ },
+ {
+  "sha": "1ac906f68fdc",
+  "date": "2024-02-25",
+  "subject": "Add rust for arm/v7 targets"
+ },
+ {
+  "sha": "8971b802d5e4",
+  "date": "2024-02-24",
+  "subject": "Add release notes"
+ },
+ {
+  "sha": "18474664bc13",
+  "date": "2024-02-24",
+  "subject": "Remove crypto import"
+ },
+ {
+  "sha": "0d0e5d8534c9",
+  "date": "2024-02-24",
+  "subject": "v1.13.2 Notes"
+ },
+ {
+  "sha": "6676d8df3c2e",
+  "date": "2024-02-24",
+  "subject": "Add #468 to Release Notes"
+ },
+ {
+  "sha": "86d89a4184dc",
+  "date": "2024-02-24",
+  "subject": "Our purpose needs custom port + reduce delay when connection"
+ },
+ {
+  "sha": "477d965596cb",
+  "date": "2024-02-24",
+  "subject": "v1.13.2 prep"
+ },
+ {
+  "sha": "7082afe96605",
+  "date": "2024-02-22",
+  "subject": "Update Contrib README for __init__.py deprecation"
+ },
+ {
+  "sha": "5e3930c23432",
+  "date": "2024-02-22",
+  "subject": "Simplify the Contrib/README example for PresenceDetectorDevice, and move the more complex example to examples/Contrib/PresenceDetectorDevice-example.py"
+ },
+ {
+  "sha": "c9b700028f6e",
+  "date": "2024-02-22",
+  "subject": "Update Contrib README for __init__.py deprication"
+ },
+ {
+  "sha": "f84834b845b0",
+  "date": "2024-02-22",
+  "subject": "Add note to README about browser theming/Dark Reader QR code scanning"
+ },
+ {
+  "sha": "1dcba48605c3",
+  "date": "2024-02-22",
+  "subject": "Depricate tinytuya/Contrib/__init__.py"
+ },
+ {
+  "sha": "93773f12df1a",
+  "date": "2024-02-22",
+  "subject": "Tweaks to Contrib/PresenceDetectorDevice"
+ },
+ {
+  "sha": "2b32d9520015",
+  "date": "2024-02-07",
+  "subject": "Docker example"
+ },
+ {
+  "sha": "7677c5ea10a1",
+  "date": "2024-02-07",
+  "subject": "Light DPS"
+ },
+ {
+  "sha": "bd1b8f872144",
+  "date": "2024-02-02",
+  "subject": "Link Tuya App Account instructions #454"
+ },
+ {
+  "sha": "d45473d1fd57",
+  "date": "2024-01-29",
+  "subject": "Adding support for Presence Detector Device like https://www.amazon.com/gp/product/B0BZCRNY14ZZ"
+ },
+ {
+  "sha": "c8041ac98e0b",
+  "date": "2024-01-17",
+  "subject": "fix chase when the number of colors in the colors list is not exactly six"
+ },
+ {
+  "sha": "4cd7366769a3",
+  "date": "2024-01-16",
+  "subject": "add example for a string of XmCosy+ RGBW patio string lights"
+ },
+ {
+  "sha": "887ebb4dee09",
+  "date": "2024-01-10",
+  "subject": "Update LICENSE"
+ },
+ {
+  "sha": "cd92a7dd45fb",
+  "date": "2023-11-15",
+  "subject": "v1.13.1"
+ },
+ {
+  "sha": "736b980df8d8",
+  "date": "2023-11-15",
+  "subject": "Make fake-v35-device.py mimic an \"unvalid\" error message on unknown command"
+ },
+ {
+  "sha": "6f29f12877a9",
+  "date": "2023-11-15",
+  "subject": "Allow pyca/cryptography to GCM decrypt without the tag (makes it match PyCryptodome)"
+ },
+ {
+  "sha": "e8d6aa45e3a2",
+  "date": "2023-11-15",
+  "subject": "Add \"fake v3.5 device\" script to tools/"
+ },
+ {
+  "sha": "7d94c8001901",
+  "date": "2023-11-15",
+  "subject": "Require pyca/cryptography>=3.1"
+ },
+ {
+  "sha": "5591ec72fdc7",
+  "date": "2023-11-14",
+  "subject": "Remove python 2.7 in doc"
+ },
+ {
+  "sha": "6194d0a57c65",
+  "date": "2023-11-14",
+  "subject": "Fix crypto iv for v3.5 devices"
+ },
+ {
+  "sha": "b59dc2a0b15d",
+  "date": "2023-11-14",
+  "subject": "Update requirements.txt to use pyca/cryptography"
+ },
+ {
+  "sha": "159ac7a87e4f",
+  "date": "2023-11-14",
+  "subject": "Clean up crypto iv generation"
+ },
+ {
+  "sha": "286f080140ab",
+  "date": "2023-11-14",
+  "subject": "Clean up crypto iv generation"
+ },
+ {
+  "sha": "8596bc896c6f",
+  "date": "2023-11-14",
+  "subject": "Change wording on crypto module not found error"
+ },
+ {
+  "sha": "37540d402121",
+  "date": "2023-11-14",
+  "subject": "v1.13.0"
+ },
+ {
+  "sha": "b044a775492a",
+  "date": "2023-11-14",
+  "subject": "Remove Python 2.7 support #376"
+ },
+ {
+  "sha": "2ddb6f2b8ee2",
+  "date": "2023-11-14",
+  "subject": "Server build version update"
+ },
+ {
+  "sha": "669a98fe0657",
+  "date": "2023-11-14",
+  "subject": "Update version to 1.13.0"
+ },
+ {
+  "sha": "5f3fe554a1d0",
+  "date": "2023-11-14",
+  "subject": "Add pyca/cryptography to setup.py and some minor docu updates"
+ },
+ {
+  "sha": "0eabf2d460b6",
+  "date": "2023-11-14",
+  "subject": "Minor scanner docu update"
+ },
+ {
+  "sha": "866a52cc78a5",
+  "date": "2023-11-14",
+  "subject": "Fix infinite loop in IRRemoteControlDevice.detect_control_type() (closes #403)"
+ },
+ {
+  "sha": "9fce7640a84d",
+  "date": "2023-11-14",
+  "subject": "Fix tinytuya.find_device() and decrypt_udp() for v3.1 devices"
+ },
+ {
+  "sha": "173180b9b148",
+  "date": "2023-11-14",
+  "subject": "Add support for pyca/cryptography, and make it preferred"
+ },
+ {
+  "sha": "c7d4c2daf85a",
+  "date": "2023-11-14",
+  "subject": "Break AESCipher into smaller parts to make it easier to add other crypto libraries"
+ },
+ {
+  "sha": "b18c444083a7",
+  "date": "2023-10-06",
+  "subject": "Setup instruction updates #413"
+ },
+ {
+  "sha": "5d2f5488744e",
+  "date": "2023-08-31",
+  "subject": "v1.12.11"
+ },
+ {
+  "sha": "f046c7293545",
+  "date": "2023-08-31",
+  "subject": "Fix local var collision #402"
+ },
+ {
+  "sha": "64713c1a3065",
+  "date": "2023-08-17",
+  "subject": "v1.12.10 updates"
+ },
+ {
+  "sha": "0ac7597005e7",
+  "date": "2023-08-17",
+  "subject": "v1.12.10"
+ },
+ {
+  "sha": "ab18a712fec4",
+  "date": "2023-08-17",
+  "subject": "More examples/monitor.py updates"
+ },
+ {
+  "sha": "7b713f576db5",
+  "date": "2023-08-17",
+  "subject": "Add some error handling to examples/monitor.py"
+ },
+ {
+  "sha": "c15837d04032",
+  "date": "2023-08-17",
+  "subject": "Add \"check version\" suggestion message when status() receives error"
+ },
+ {
+  "sha": "f44daa364d09",
+  "date": "2023-08-17",
+  "subject": "Allow setting socketRetryLimit and socketRetryDelay (as connection_retry_limit and connection_retry_delay respectively) from the Device() constructor"
+ },
+ {
+  "sha": "1c26c8333ca3",
+  "date": "2023-08-17",
+  "subject": "Give examples/monitor.py some much-needed love"
+ },
+ {
+  "sha": "dd3ad7f091a2",
+  "date": "2023-08-17",
+  "subject": "Change heartbeat() default to `nowait=True` as HEART_BEAT does not return data"
+ },
+ {
+  "sha": "71fb5410b74b",
+  "date": "2023-08-17",
+  "subject": "Add \"check version\" suggestion message when status() receives no data"
+ },
+ {
+  "sha": "17f7538ef981",
+  "date": "2023-08-16",
+  "subject": "Minor updates"
+ },
+ {
+  "sha": "9c3b0d2fee91",
+  "date": "2023-08-16",
+  "subject": "Scan for new IP address then auto-IP is used and connection to last-known address fails"
+ },
+ {
+  "sha": "b64fb93e6948",
+  "date": "2023-08-16",
+  "subject": "Allow multiple concurrent scans under some operation systems"
+ },
+ {
+  "sha": "0c8caad3bfc9",
+  "date": "2023-08-16",
+  "subject": "Make connection/key errors more descriptive"
+ },
+ {
+  "sha": "a809d28f2925",
+  "date": "2023-07-24",
+  "subject": "Update mqtt_gateway.py"
+ },
+ {
+  "sha": "ea1444c859de",
+  "date": "2023-07-19",
+  "subject": "Update Setup PDF #387"
+ },
+ {
+  "sha": "02c24fe9fbfd",
+  "date": "2023-07-19",
+  "subject": "Remove \"Smart Home Scene Linkage\" #387"
+ },
+ {
+  "sha": "df6a4591d3dd",
+  "date": "2023-07-04",
+  "subject": "v1.12.9"
+ },
+ {
+  "sha": "7bba52e899cb",
+  "date": "2023-07-04",
+  "subject": "Fix logic to ignore icon and last_ip"
+ },
+ {
+  "sha": "7d5c479538df",
+  "date": "2023-07-04",
+  "subject": "Add getdevices() fix"
+ },
+ {
+  "sha": "f7cf7effb24d",
+  "date": "2023-07-04",
+  "subject": "Cloud getdevices() bug #381"
+ },
+ {
+  "sha": "4c6f814e500e",
+  "date": "2023-07-04",
+  "subject": "Handle import issue with urllib3 #377"
+ },
+ {
+  "sha": "ef5486128832",
+  "date": "2023-06-20",
+  "subject": "Add test for python 3.9 and 3.10"
+ },
+ {
+  "sha": "7c925d25bb9b",
+  "date": "2023-06-20",
+  "subject": "Remove python 2.7 tests"
+ },
+ {
+  "sha": "6348ab2ca36d",
+  "date": "2023-06-18",
+  "subject": "Remove python-dotenv from requirements.txt"
+ },
+ {
+  "sha": "e7c8c9379332",
+  "date": "2023-06-18",
+  "subject": "Make the dotenv module optional"
+ },
+ {
+  "sha": "b93eb9ca0ebb",
+  "date": "2023-06-18",
+  "subject": "Add python-dotenv in requirements.txt"
+ },
+ {
+  "sha": "91216bb261bf",
+  "date": "2023-06-18",
+  "subject": "Add Contrib support for Inverter Heat Pump such as Fairland IPHR55"
+ },
+ {
+  "sha": "8e132caf8757",
+  "date": "2023-06-17",
+  "subject": "Correct data type"
+ },
+ {
+  "sha": "be0a1cb8a4ec",
+  "date": "2023-06-17",
+  "subject": "Avoid exception if username/pwassword not defined or empty"
+ },
+ {
+  "sha": "8c114161b6bc",
+  "date": "2023-06-17",
+  "subject": "Do not use hardcoded port number"
+ },
+ {
+  "sha": "a345df4ae017",
+  "date": "2023-06-11",
+  "subject": "Clean up"
+ },
+ {
+  "sha": "fbb97005c92e",
+  "date": "2023-06-11",
+  "subject": "Remove additional update routine"
+ },
+ {
+  "sha": "93834cdfaa04",
+  "date": "2023-06-11",
+  "subject": "MQTT Gateway for Server"
+ },
+ {
+  "sha": "9f5fabbb9a8e",
+  "date": "2023-06-11",
+  "subject": "Time goes by\u2026"
+ },
+ {
+  "sha": "797690e69943",
+  "date": "2023-06-11",
+  "subject": "Doubled import; Typo"
+ },
+ {
+  "sha": "aac041e05406",
+  "date": "2023-06-11",
+  "subject": "Mapping for DP IDs (#353)"
+ },
+ {
+  "sha": "b6ed23e5a90a",
+  "date": "2023-05-31",
+  "subject": "v1.12.8"
+ },
+ {
+  "sha": "2f5a99674ff7",
+  "date": "2023-05-31",
+  "subject": "Fix adding mappings to existing devices"
+ },
+ {
+  "sha": "55db2c59f933",
+  "date": "2023-05-31",
+  "subject": "Add instructions on how to change the Control Instruction Mode to DP_Mapping.md"
+ },
+ {
+  "sha": "09d8698c6e89",
+  "date": "2023-05-31",
+  "subject": "Update version v1.12.8"
+ },
+ {
+  "sha": "dc3f54cb9a7e",
+  "date": "2023-05-31",
+  "subject": "Move DP mappings from mappings.json to devices.json"
+ },
+ {
+  "sha": "01611fc4f366",
+  "date": "2023-05-26",
+  "subject": "Modify assign_dp_mappings() to allow a mappings dict instead of just a file name"
+ },
+ {
+  "sha": "d987f0bdd4ad",
+  "date": "2023-05-26",
+  "subject": "Add assign_dp_mappings() function to add mappings to an entire tuyadevice list"
+ },
+ {
+  "sha": "4fa22230382a",
+  "date": "2023-05-26",
+  "subject": "Add \"_dp_\" to the names of the new mapping functions"
+ },
+ {
+  "sha": "37d7e31b911a",
+  "date": "2023-05-26",
+  "subject": "Fix typo in find_mapping()"
+ },
+ {
+  "sha": "cbabd2a2fffe",
+  "date": "2023-05-26",
+  "subject": "Add find_mapping() and documentation"
+ },
+ {
+  "sha": "9fd5b924e0f0",
+  "date": "2023-05-24",
+  "subject": "New Cloud functions to download DP Name mappings"
+ },
+ {
+  "sha": "e1d0d50d2699",
+  "date": "2023-05-22",
+  "subject": "Server t7"
+ },
+ {
+  "sha": "d53478843efc",
+  "date": "2023-05-22",
+  "subject": "Typo"
+ },
+ {
+  "sha": "6be7eef04a69",
+  "date": "2023-05-22",
+  "subject": "getDeviceIDbyName as seperate function"
+ },
+ {
+  "sha": "b327a671538d",
+  "date": "2023-05-21",
+  "subject": "Use {DeviceName} instead of {DeviceID} alternatively for API commands"
+ },
+ {
+  "sha": "69c8340244a5",
+  "date": "2023-05-10",
+  "subject": "v1.12.7"
+ },
+ {
+  "sha": "791ef27059e0",
+  "date": "2023-05-10",
+  "subject": "refactor: set null value in dps_cache"
+ },
+ {
+  "sha": "7a3eb33b6754",
+  "date": "2023-05-10",
+  "subject": "fix: dps_cache reset device"
+ },
+ {
+  "sha": "240d824c32bc",
+  "date": "2023-05-09",
+  "subject": "Domoticz plugin link"
+ },
+ {
+  "sha": "1e8c9823c237",
+  "date": "2023-05-06",
+  "subject": "v1.12.6"
+ },
+ {
+  "sha": "03359cdf68c9",
+  "date": "2023-05-06",
+  "subject": "Add Contrib support for IR+RF devices such as the S11"
+ },
+ {
+  "sha": "96967e639494",
+  "date": "2023-05-06",
+  "subject": "Fix \"has_more\" key error"
+ },
+ {
+  "sha": "06bf90403d7e",
+  "date": "2023-04-28",
+  "subject": "Add PyPI"
+ },
+ {
+  "sha": "ca77a8ca8f67",
+  "date": "2023-04-28",
+  "subject": "Document 'Auto' discovery for IP address #337"
+ },
+ {
+  "sha": "77b3300e857a",
+  "date": "2023-04-23",
+  "subject": "Add links for Issues"
+ },
+ {
+  "sha": "c1d184bc33c8",
+  "date": "2023-04-23",
+  "subject": "Add PR to release #335 #336"
+ },
+ {
+  "sha": "bf1eac1494b7",
+  "date": "2023-04-23",
+  "subject": "Rework examples/async_send_receive.py"
+ },
+ {
+  "sha": "3060e8b7f827",
+  "date": "2023-04-23",
+  "subject": "Revert setting Content-type header on Cloud non-POST requests"
+ },
+ {
+  "sha": "e66d969dd9e7",
+  "date": "2023-04-23",
+  "subject": "Fix examples/getstatus.py"
+ },
+ {
+  "sha": "791ab3773cbd",
+  "date": "2023-04-23",
+  "subject": "Normalize ability/ablilty in scanner"
+ },
+ {
+  "sha": "b7518e9559bf",
+  "date": "2023-04-23",
+  "subject": "Update README.md"
+ },
+ {
+  "sha": "de222a5bae96",
+  "date": "2023-04-18",
+  "subject": "Fix pylint error"
+ },
+ {
+  "sha": "99a542e017d3",
+  "date": "2023-04-18",
+  "subject": "Add AES debug output #332"
+ },
+ {
+  "sha": "1be11b2e6406",
+  "date": "2023-04-18",
+  "subject": "Remove requirement for PyCryptodome in scanner (allows pyaes when no devices are v3.5+)"
+ },
+ {
+  "sha": "032aee22c8ee",
+  "date": "2023-04-16",
+  "subject": "v1.12.4 #331"
+ },
+ {
+  "sha": "40722bab867f",
+  "date": "2023-04-16",
+  "subject": "Make detection of 'scan' keyword more robust"
+ },
+ {
+  "sha": "27d097546495",
+  "date": "2023-04-16",
+  "subject": "Make detection of 'scan' keyword more robust"
+ },
+ {
+  "sha": "6c4182a13cd9",
+  "date": "2023-04-16",
+  "subject": "Allow wizard to scan for a Device ID to use"
+ },
+ {
+  "sha": "a66ee1b07729",
+  "date": "2023-04-11",
+  "subject": "v1.12.3 #324 #326"
+ },
+ {
+  "sha": "d6d7b1be7ba9",
+  "date": "2023-04-11",
+  "subject": "Fix fan_run_time typo in Contrib/ThermostatDevice (#326)"
+ },
+ {
+  "sha": "c53a2d3886f4",
+  "date": "2023-04-11",
+  "subject": "Update comments"
+ },
+ {
+  "sha": "b077f49dd8af",
+  "date": "2023-04-11",
+  "subject": "Cloud device list and Content-Type update"
+ },
+ {
+  "sha": "679df59478a7",
+  "date": "2023-03-25",
+  "subject": "Process dpsValue quoted values #313"
+ },
+ {
+  "sha": "71a06019a561",
+  "date": "2023-03-25",
+  "subject": "Add env DEBUG setting"
+ },
+ {
+  "sha": "825b48394cf1",
+  "date": "2023-03-25",
+  "subject": "Add debug mode to server"
+ },
+ {
+  "sha": "26c75ebaf642",
+  "date": "2023-03-25",
+  "subject": "Add URL parsing to send quoted commands #313"
+ },
+ {
+  "sha": "3816702bf0c8",
+  "date": "2023-03-25",
+  "subject": "Add control panel screenshots"
+ },
+ {
+  "sha": "318f62d04b0e",
+  "date": "2023-03-25",
+  "subject": "Fix typo"
+ },
+ {
+  "sha": "8b601ec9b47c",
+  "date": "2023-03-25",
+  "subject": "Minor edits in troubleshooting"
+ },
+ {
+  "sha": "b46ba8fe8a83",
+  "date": "2023-03-24",
+  "subject": "Add server updates"
+ },
+ {
+  "sha": "7983beb2ac56",
+  "date": "2023-03-24",
+  "subject": "Data tables"
+ },
+ {
+  "sha": "6f629d7e3695",
+  "date": "2023-03-24",
+  "subject": "v1.12.2"
+ },
+ {
+  "sha": "cc856747651e",
+  "date": "2023-03-24",
+  "subject": "Add Usage"
+ },
+ {
+  "sha": "93465511297e",
+  "date": "2023-03-24",
+  "subject": "Example Usage"
+ },
+ {
+  "sha": "1e72748398e4",
+  "date": "2023-03-24",
+  "subject": "TinyTuya Tools"
+ },
+ {
+  "sha": "d59fdf954696",
+  "date": "2023-03-24",
+  "subject": "Gateway/sub-device updates, payload_dict reworked, and subdev_query() added (#308)"
+ },
+ {
+  "sha": "65dc9d006daf",
+  "date": "2023-03-24",
+  "subject": "Output format tweaks"
+ },
+ {
+  "sha": "f10bd37e6cd9",
+  "date": "2023-03-24",
+  "subject": "Docu update"
+ },
+ {
+  "sha": "4bd5189ab89e",
+  "date": "2023-03-24",
+  "subject": "Add pcap parser to tools/"
+ },
+ {
+  "sha": "187a17b28fab",
+  "date": "2023-03-24",
+  "subject": "Add *.pcap and *~ to .gitignore"
+ },
+ {
+  "sha": "00f5ab4d59a6",
+  "date": "2023-03-22",
+  "subject": "v1.12.1"
+ },
+ {
+  "sha": "7ec77ea69943",
+  "date": "2023-03-20",
+  "subject": "Cloud/wizard fixes"
+ },
+ {
+  "sha": "74c0b19adcc0",
+  "date": "2023-03-20",
+  "subject": "Fetch the device list a 2nd time to make sure we have the local key"
+ },
+ {
+  "sha": "54d650f03782",
+  "date": "2023-03-19",
+  "subject": "v1.12.1 placeholder"
+ },
+ {
+  "sha": "55fb285e23d7",
+  "date": "2023-03-18",
+  "subject": "improve sendcommand"
+ },
+ {
+  "sha": "aaec061135e2",
+  "date": "2023-03-11",
+  "subject": "v1.12.0 release"
+ },
+ {
+  "sha": "8c32950f210c",
+  "date": "2023-03-11",
+  "subject": "Add firewall allow note - closes #117"
+ },
+ {
+  "sha": "36f2bb0bf767",
+  "date": "2023-03-11",
+  "subject": "Update comments for cid/node_id changes"
+ },
+ {
+  "sha": "768e0f192302",
+  "date": "2023-03-11",
+  "subject": "Add more comments about sub-device parent detection"
+ },
+ {
+  "sha": "3dc3b84f7814",
+  "date": "2023-03-11",
+  "subject": "Add inline comments for parent-child logic"
+ },
+ {
+  "sha": "97d2d66ce382",
+  "date": "2023-03-11",
+  "subject": "Highlight Local_Key #297"
+ },
+ {
+  "sha": "6e7c40a6ad56",
+  "date": "2023-03-09",
+  "subject": "Updates for Zigbee/gateway handling, and node_id is now an alias for cid"
+ },
+ {
+  "sha": "9846a2e69d92",
+  "date": "2023-03-09",
+  "subject": "Clean up new parent device detection a bit"
+ },
+ {
+  "sha": "64de5b49d1cd",
+  "date": "2023-03-09",
+  "subject": "Set parent to '' if not found"
+ },
+ {
+  "sha": "997bec95b5df",
+  "date": "2023-03-09",
+  "subject": "Tighten up parent device detection in the Wizard"
+ },
+ {
+  "sha": "b73187e9fe8f",
+  "date": "2023-03-07",
+  "subject": "Update core.py"
+ },
+ {
+  "sha": "2fcffde35bad",
+  "date": "2023-03-04",
+  "subject": "v1.11.0"
+ },
+ {
+  "sha": "bddb9736b01b",
+  "date": "2023-03-03",
+  "subject": "Move creation of tuya-raw.json file info block into Wizard"
+ },
+ {
+  "sha": "5afef6ebceaf",
+  "date": "2023-03-03",
+  "subject": "Finish reworking Cloud device list"
+ },
+ {
+  "sha": "85b95456f632",
+  "date": "2023-03-01",
+  "subject": "simplify"
+ },
+ {
+  "sha": "381c8d18cbc7",
+  "date": "2023-03-01",
+  "subject": "remove unused function"
+ },
+ {
+  "sha": "662e7d2a7e3f",
+  "date": "2023-02-25",
+  "subject": "PyPI typo"
+ },
+ {
+  "sha": "ac56beb5630a",
+  "date": "2023-02-25",
+  "subject": "v1.10.3"
+ },
+ {
+  "sha": "d8a25b46c05e",
+  "date": "2023-02-25",
+  "subject": "Update wizard to not require apiDeviceID"
+ },
+ {
+  "sha": "a8fff854ddcc",
+  "date": "2023-02-25",
+  "subject": "Rework Cloud device list fetching to get all devices and without an initial Device ID"
+ },
+ {
+  "sha": "242cd2c09658",
+  "date": "2023-02-24",
+  "subject": "Better Cloud device log evtype handling"
+ },
+ {
+  "sha": "4413314b6dc9",
+  "date": "2023-02-24",
+  "subject": "Allow passing an initial token from a previous run to Cloud init"
+ },
+ {
+  "sha": "b5e93d3c2c40",
+  "date": "2023-02-24",
+  "subject": "Add documentation for set_multiple_values() and add Cloud IR exmple"
+ },
+ {
+  "sha": "4df14afeeead",
+  "date": "2023-02-23",
+  "subject": "Add UDP 7000 broadcast"
+ },
+ {
+  "sha": "8b1c59d62cc0",
+  "date": "2023-02-18",
+  "subject": "Delegate % processing."
+ },
+ {
+  "sha": "94e8e29c6574",
+  "date": "2023-02-17",
+  "subject": "Fix typo"
+ },
+ {
+  "sha": "9240bc6984c9",
+  "date": "2023-02-17",
+  "subject": "Update params"
+ },
+ {
+  "sha": "8d9ebb3baf85",
+  "date": "2023-02-17",
+  "subject": "Remove unused vars"
+ },
+ {
+  "sha": "adb2a1052624",
+  "date": "2023-02-17",
+  "subject": "Removed unused hsvarray assignment"
+ },
+ {
+  "sha": "8a9ced0be0b9",
+  "date": "2023-02-17",
+  "subject": "Log message formatting"
+ },
+ {
+  "sha": "c09cfc582f17",
+  "date": "2023-02-16",
+  "subject": "Add tuya-local reference"
+ },
+ {
+  "sha": "442b5e7c6e52",
+  "date": "2023-02-13",
+  "subject": "Fix params leak in getdevicelog() #219"
+ },
+ {
+  "sha": "9c0f002c3339",
+  "date": "2023-02-09",
+  "subject": "Fix space"
+ },
+ {
+  "sha": "3b634b0c0f02",
+  "date": "2023-02-09",
+  "subject": "Add shortcut flags and update usage"
+ },
+ {
+  "sha": "62d8662f3946",
+  "date": "2023-02-09",
+  "subject": "v1.10.2"
+ },
+ {
+  "sha": "0b7a87ad0bec",
+  "date": "2023-02-08",
+  "subject": "Check for pylint errors only"
+ },
+ {
+  "sha": "5089da9d0a94",
+  "date": "2023-02-08",
+  "subject": "Narrow to core files only"
+ },
+ {
+  "sha": "d760eab0f35f",
+  "date": "2023-02-08",
+  "subject": "Revert mode setting"
+ },
+ {
+  "sha": "8c078e0a4fce",
+  "date": "2023-02-08",
+  "subject": "Add net/mask"
+ },
+ {
+  "sha": "3b15b0fd41f6",
+  "date": "2023-02-04",
+  "subject": "Basic pylint"
+ },
+ {
+  "sha": "8ab908ad9733",
+  "date": "2023-02-04",
+  "subject": "Full pylint output"
+ },
+ {
+  "sha": "ea2589726b11",
+  "date": "2023-02-04",
+  "subject": "Fix pylint errors in contrib"
+ },
+ {
+  "sha": "fa9097036a27",
+  "date": "2023-02-04",
+  "subject": "Pylint file list"
+ },
+ {
+  "sha": "032dc0157bfc",
+  "date": "2023-02-04",
+  "subject": "Show all pylint"
+ },
+ {
+  "sha": "d85bb23af663",
+  "date": "2023-02-04",
+  "subject": "Restrict pylint to tinytuya"
+ },
+ {
+  "sha": "54ad9cf1e494",
+  "date": "2023-02-04",
+  "subject": "Misc pylint code cleanup"
+ },
+ {
+  "sha": "f0c326ebbc26",
+  "date": "2023-02-04",
+  "subject": "Update command line"
+ },
+ {
+  "sha": "97676ebdf657",
+  "date": "2023-02-04",
+  "subject": "Remove deprecated UI tool"
+ },
+ {
+  "sha": "606b50461f6a",
+  "date": "2023-02-04",
+  "subject": "Add debug mode switch to CLI"
+ },
+ {
+  "sha": "91d06122f66b",
+  "date": "2023-02-01",
+  "subject": "Fix Contrib.ThermostatDevice.SetSetpoint()"
+ },
+ {
+  "sha": "8c774c96644f",
+  "date": "2023-01-30",
+  "subject": "Update uses: actions"
+ },
+ {
+  "sha": "13653aa13016",
+  "date": "2023-01-30",
+  "subject": "Switch to actions/setup-python@v4"
+ },
+ {
+  "sha": "64975cf5f067",
+  "date": "2023-01-30",
+  "subject": "Remove bad-whitespace"
+ },
+ {
+  "sha": "a7f3e94d9b44",
+  "date": "2023-01-30",
+  "subject": "Error only mode pylint"
+ },
+ {
+  "sha": "2d808c0f6c82",
+  "date": "2023-01-30",
+  "subject": "Add pylint"
+ },
+ {
+  "sha": "ebe8be61b7f3",
+  "date": "2023-01-29",
+  "subject": "v1.10.1"
+ },
+ {
+  "sha": "8b2835e47958",
+  "date": "2023-01-29",
+  "subject": "v1.10.1"
+ },
+ {
+  "sha": "ac1078fcbc73",
+  "date": "2023-01-29",
+  "subject": "Remove bulb attr based blocks to set_*()  #265"
+ },
+ {
+  "sha": "6cf5acf344c4",
+  "date": "2023-01-29",
+  "subject": "Fix _process_message() missing params #266"
+ },
+ {
+  "sha": "4b22c8103a69",
+  "date": "2023-01-21",
+  "subject": "Add \"Skip this step\" to IoT instructions #15"
+ },
+ {
+  "sha": "f970a05eb9cd",
+  "date": "2023-01-21",
+  "subject": "Add Tuya doc ref link"
+ },
+ {
+  "sha": "79386a28bcf4",
+  "date": "2023-01-17",
+  "subject": "Update NotImplementedError re: GCM support #256"
+ },
+ {
+  "sha": "d2bdf80dc374",
+  "date": "2023-01-17",
+  "subject": "Update encryption notes re: pyaes #256"
+ },
+ {
+  "sha": "e5eed9f2319e",
+  "date": "2023-01-16",
+  "subject": "Upgrade to Python 3.10"
+ },
+ {
+  "sha": "249da632a225",
+  "date": "2023-01-16",
+  "subject": "Add WiFi Air Quality Detector #251"
+ },
+ {
+  "sha": "6f1e7252d806",
+  "date": "2023-01-16",
+  "subject": "Update release notes v1.10.0"
+ },
+ {
+  "sha": "633235959378",
+  "date": "2023-01-16",
+  "subject": "Skip devices w/o IP address"
+ },
+ {
+  "sha": "6c0ec2633834",
+  "date": "2023-01-16",
+  "subject": "v1.10.0"
+ },
+ {
+  "sha": "868c17c3a705",
+  "date": "2023-01-16",
+  "subject": "Fix item to itm #262"
+ },
+ {
+  "sha": "404acc054bce",
+  "date": "2023-01-16",
+  "subject": "Normalize snapshot.json fields and add \"version\" to devices.json"
+ },
+ {
+  "sha": "a474c756c1d3",
+  "date": "2023-01-16",
+  "subject": "Scanner fixes and Wizard rework"
+ },
+ {
+  "sha": "19e2cbe5de2c",
+  "date": "2023-01-16",
+  "subject": "Release notes"
+ },
+ {
+  "sha": "d23db5fbbcae",
+  "date": "2023-01-16",
+  "subject": "v3.5 support fix for scanner #247"
+ },
+ {
+  "sha": "c2f3e24d968c",
+  "date": "2023-01-15",
+  "subject": "Fix v3.5 retcode and IV"
+ },
+ {
+  "sha": "e6d4899c61e3",
+  "date": "2023-01-15",
+  "subject": "Release notes for pending v1.10.0"
+ },
+ {
+  "sha": "637c9aeefd03",
+  "date": "2023-01-15",
+  "subject": "Map maxretry to scantime in scan functions #247"
+ },
+ {
+  "sha": "11a3e2eb9720",
+  "date": "2023-01-14",
+  "subject": "Timeout error handling"
+ },
+ {
+  "sha": "d33aa032e831",
+  "date": "2023-01-14",
+  "subject": "v1.10.0 prep"
+ },
+ {
+  "sha": "bee593fa2e9a",
+  "date": "2023-01-14",
+  "subject": "Error handling for devices.json input"
+ },
+ {
+  "sha": "19f1abeb4b7c",
+  "date": "2023-01-14",
+  "subject": "Fix exception for empty key #252"
+ },
+ {
+  "sha": "12cf5b589253",
+  "date": "2023-01-14",
+  "subject": "Fix typos in PREFIX_ globals #252"
+ },
+ {
+  "sha": "de107a34aa4a",
+  "date": "2023-01-14",
+  "subject": "Rework v3.5 session key calculation"
+ },
+ {
+  "sha": "7bf972055550",
+  "date": "2023-01-14",
+  "subject": "Rework v3.5 session key calculation"
+ },
+ {
+  "sha": "5e066415e651",
+  "date": "2023-01-14",
+  "subject": "Scanner fix for v3.1 devices"
+ },
+ {
+  "sha": "47a4ac87d738",
+  "date": "2023-01-14",
+  "subject": "Fix retcode detection"
+ },
+ {
+  "sha": "0caf951bae52",
+  "date": "2023-01-14",
+  "subject": "Use fixed iv when debugging"
+ },
+ {
+  "sha": "1bedc29d193e",
+  "date": "2023-01-14",
+  "subject": "Strip trailing NULs to make the scanner JSON parser happy"
+ },
+ {
+  "sha": "061bf10dad62",
+  "date": "2023-01-14",
+  "subject": "Make python2 happy"
+ },
+ {
+  "sha": "5742dcb99ef3",
+  "date": "2023-01-14",
+  "subject": "Support for v3.5: there was an attempt"
+ },
+ {
+  "sha": "b5870d19d975",
+  "date": "2023-01-14",
+  "subject": "Fix conditional causing duplicate devices"
+ },
+ {
+  "sha": "e52cc07e39ed",
+  "date": "2023-01-14",
+  "subject": "Fixes for new scanner"
+ },
+ {
+  "sha": "44e1b69afe70",
+  "date": "2023-01-13",
+  "subject": "v1.9.2"
+ },
+ {
+  "sha": "d5f483e9296b",
+  "date": "2023-01-13",
+  "subject": "Allow nowait for status(), and split message parsing into separate function"
+ },
+ {
+  "sha": "a495c694990c",
+  "date": "2023-01-13",
+  "subject": "Complete rewrite of the scanner, now allows force-scanning of IP ranges"
+ },
+ {
+  "sha": "d6b73a8a7305",
+  "date": "2022-12-27",
+  "subject": "Add page to modify device dps."
+ },
+ {
+  "sha": "a55c949f4fb6",
+  "date": "2022-12-21",
+  "subject": "Replaced thread with threading.timer."
+ },
+ {
+  "sha": "ba09171613f6",
+  "date": "2022-12-17",
+  "subject": "Updated readme for delayedoff and help."
+ },
+ {
+  "sha": "b9c7e9cee8f8",
+  "date": "2022-12-17",
+  "subject": "Added delayedoff functionality and help command."
+ },
+ {
+  "sha": "d887b06ed026",
+  "date": "2022-12-12",
+  "subject": "Caution for Tuya Cloud API limits #236"
+ },
+ {
+  "sha": "d67862e9d689",
+  "date": "2022-12-12",
+  "subject": "Rework getdevicelog() to handle fetching more when \"has_next\" is True"
+ },
+ {
+  "sha": "1cffdde67a1c",
+  "date": "2022-12-12",
+  "subject": "Rework getdevicelog() to handle fetching more when \"has_next\" is True"
+ },
+ {
+  "sha": "47bdc6e714b3",
+  "date": "2022-12-02",
+  "subject": "Fix _gettoken() bug #229"
+ },
+ {
+  "sha": "8aead98d8991",
+  "date": "2022-12-02",
+  "subject": "Prep for 1.9.0 release"
+ },
+ {
+  "sha": "72320c0465d3",
+  "date": "2022-12-02",
+  "subject": "Fix control type detection after device is rebooted"
+ },
+ {
+  "sha": "b40e32d225b3",
+  "date": "2022-12-02",
+  "subject": "Add Zigbee Gateway example"
+ },
+ {
+  "sha": "2bf893a9642b",
+  "date": "2022-12-02",
+  "subject": "Rework Cloud log start/end times, and update documentation"
+ },
+ {
+  "sha": "b97dd53a4d89",
+  "date": "2022-12-02",
+  "subject": "IRRemoteControlDevice documentation update"
+ },
+ {
+  "sha": "057a1fb989cc",
+  "date": "2022-12-02",
+  "subject": "Add support for newer IR devices, and several IR format converters"
+ },
+ {
+  "sha": "1312824e4861",
+  "date": "2022-11-29",
+  "subject": "Fix sending Zigbee commands"
+ },
+ {
+  "sha": "5bac27006a45",
+  "date": "2022-11-29",
+  "subject": "Rework Zigbee Gateway handling to support persistent connections with multiple devices"
+ },
+ {
+  "sha": "606242dc75a5",
+  "date": "2022-10-15",
+  "subject": "Add support for subdevices connected to gateway"
+ },
+ {
+  "sha": "92fa49bd72eb",
+  "date": "2022-11-23",
+  "subject": "Fix GH actions bug with latest ubuntu image"
+ },
+ {
+  "sha": "f5b2cf78e054",
+  "date": "2022-11-22",
+  "subject": "Prep for 1.8.0 release"
+ },
+ {
+  "sha": "f866f5fcc54c",
+  "date": "2022-11-22",
+  "subject": "Update README with new Cloud functions"
+ },
+ {
+  "sha": "9a1e0cd0d6fa",
+  "date": "2022-11-22",
+  "subject": "Standardize deviceid and make error check catch \"\" (empty string) in addition to None, and include a URL example in cloudrequest() comments"
+ },
+ {
+  "sha": "19947ab3b054",
+  "date": "2022-11-22",
+  "subject": "Standardize deviceid and make error check catch \"\" (empty string) in addition to None, and include a URL example in cloudrequest() comments"
+ },
+ {
+  "sha": "44f52876e203",
+  "date": "2022-11-22",
+  "subject": "Abort requests on token-fetch failure"
+ },
+ {
+  "sha": "94b7f61ca875",
+  "date": "2022-11-22",
+  "subject": "Raise TypeError instead of ValueError to more closely mimic existing behavior"
+ },
+ {
+  "sha": "8393e6c71446",
+  "date": "2022-11-22",
+  "subject": "Add fetching device logs to Cloud, and generic URLs"
+ },
+ {
+  "sha": "167f2f762fa4",
+  "date": "2022-11-16",
+  "subject": "Add AtorchTemperatureController"
+ },
+ {
+  "sha": "ec71a100a0ad",
+  "date": "2022-11-10",
+  "subject": "Add head_key_to_pulses() and pulses_to_head_key() functions"
+ },
+ {
+  "sha": "0e989ca32702",
+  "date": "2022-10-31",
+  "subject": "v1.7.2 - Fix Contrib Devices Bug"
+ },
+ {
+  "sha": "0535d8946db5",
+  "date": "2022-10-28",
+  "subject": "Another error handling tweak to Cloud.getdevices()"
+ },
+ {
+  "sha": "70d998345bcf",
+  "date": "2022-10-28",
+  "subject": "Contrib.ClimateDevice comment tweaks"
+ },
+ {
+  "sha": "4474fd1549f6",
+  "date": "2022-10-28",
+  "subject": "Another error handling tweak to Cloud.getdevices()"
+ },
+ {
+  "sha": "3684ee96abec",
+  "date": "2022-10-28",
+  "subject": "Restore the reference to 'self' in all __init__() functions, and make sure __init__() exceptions are printed correctly"
+ },
+ {
+  "sha": "9edf1eb52f09",
+  "date": "2022-10-28",
+  "subject": "Do not filter if retrieved json dict does not contain 'result' key"
+ },
+ {
+  "sha": "e51c0d2669ee",
+  "date": "2022-10-21",
+  "subject": "Added socketRetryDelay as parameter instead of fixed value = 5."
+ },
+ {
+  "sha": "da267471c327",
+  "date": "2022-10-12",
+  "subject": "Add more info to repr(device)"
+ },
+ {
+  "sha": "c90f31a15824",
+  "date": "2022-10-12",
+  "subject": "Make wizard gracefully handle wrong Region/DeviceID"
+ },
+ {
+  "sha": "b393b3989dd1",
+  "date": "2022-10-07",
+  "subject": "v1.7.1 Release"
+ },
+ {
+  "sha": "735dadcf1b97",
+  "date": "2022-10-05",
+  "subject": "Change find_device() to return a dict"
+ },
+ {
+  "sha": "0bc13f234f98",
+  "date": "2022-10-05",
+  "subject": "Add a simple example for the ClimateDevice module."
+ },
+ {
+  "sha": "ce657710d472",
+  "date": "2022-10-04",
+  "subject": "Release notes update"
+ },
+ {
+  "sha": "7c42a7438fd2",
+  "date": "2022-10-04",
+  "subject": "Remove forgotton json_mac_data variable"
+ },
+ {
+  "sha": "3979e73bae5d",
+  "date": "2022-10-04",
+  "subject": "Make find_device() return all the device data instead of just the gwId"
+ },
+ {
+  "sha": "a8a0d27b1a9a",
+  "date": "2022-10-04",
+  "subject": "Add Climate device module for portable air conditioners. Tested with the Fral Supercool 19.2SC."
+ },
+ {
+  "sha": "35c1842dbbea",
+  "date": "2022-10-04",
+  "subject": "Save keys listed in DEVICEFILE_SAVE_VALUES to devices.json, and rework wizard.py to use tinytuya.Cloud()"
+ },
+ {
+  "sha": "ebd2a0e91a3d",
+  "date": "2022-10-04",
+  "subject": "Add persist= as an optional constructor argument, rework submodule __init__() calls, and update documentation"
+ },
+ {
+  "sha": "c1bf6d2918e2",
+  "date": "2022-10-03",
+  "subject": "Release notes for #187"
+ },
+ {
+  "sha": "8eb9d807463f",
+  "date": "2022-10-03",
+  "subject": "Make the IP address argument optional"
+ },
+ {
+  "sha": "e974484d3189",
+  "date": "2022-10-03",
+  "subject": "Add function to find device in devices.json, and try to look up the local key if not provided"
+ },
+ {
+  "sha": "2700f360fd39",
+  "date": "2022-10-03",
+  "subject": "v1.7.1 Prep and Notes"
+ },
+ {
+  "sha": "9f96d452f55f",
+  "date": "2022-10-03",
+  "subject": "Fix missing dev_id when device not found"
+ },
+ {
+  "sha": "bf12d43f403e",
+  "date": "2022-10-03",
+  "subject": "Restore \\r\\n line endings"
+ },
+ {
+  "sha": "5ffad19e3d33",
+  "date": "2022-10-03",
+  "subject": "Rename tinytuya.find() to tinytuya.find_device() and allow searching by IP instead of dev_id"
+ },
+ {
+  "sha": "8d77c030965b",
+  "date": "2022-10-03",
+  "subject": "Move find() out of XenonDevice (alias added for backwards compatibility)"
+ },
+ {
+  "sha": "caae5efa1a3b",
+  "date": "2022-10-03",
+  "subject": "Fix unpack_message() so it unpacks the retcode correctly"
+ },
+ {
+  "sha": "7f86d69e9def",
+  "date": "2022-10-03",
+  "subject": "Rework find() to be a lot faster"
+ },
+ {
+  "sha": "bfc55760748b",
+  "date": "2022-09-29",
+  "subject": "fix(readme): Remove unneeded indentation before Code Snippets"
+ },
+ {
+  "sha": "6d5c7b0374c4",
+  "date": "2022-09-29",
+  "subject": "fix(readme): Standardize indentation for code snippets"
+ },
+ {
+  "sha": "5123f656cc50",
+  "date": "2022-09-24",
+  "subject": "PyPI v1.7.0"
+ },
+ {
+  "sha": "197eed32b232",
+  "date": "2022-09-24",
+  "subject": "Security Policy"
+ },
+ {
+  "sha": "97925e725504",
+  "date": "2022-09-24",
+  "subject": "v1.7.0 Prep"
+ },
+ {
+  "sha": "45413a5c936a",
+  "date": "2022-09-24",
+  "subject": "v1.7.0 Prep"
+ },
+ {
+  "sha": "520e2573dba4",
+  "date": "2022-09-12",
+  "subject": "Restore dev_type when changing version away from 3.4"
+ },
+ {
+  "sha": "637d67cdacf9",
+  "date": "2022-09-12",
+  "subject": "Restore dev_type when changing version away from 3.4"
+ },
+ {
+  "sha": "c01993d60996",
+  "date": "2022-09-12",
+  "subject": "Catch timeouts in new function"
+ },
+ {
+  "sha": "862409414913",
+  "date": "2022-09-12",
+  "subject": "_send_recv() can now close/reopen with v3.4 devices so remove the version check, and clean up socket closing"
+ },
+ {
+  "sha": "064ac925fc80",
+  "date": "2022-09-12",
+  "subject": "Allow passing version= to constructor and set default to 3.1"
+ },
+ {
+  "sha": "0248cd59c6a4",
+  "date": "2022-09-12",
+  "subject": "Allow passing version= to constructor and set default to 3.1"
+ },
+ {
+  "sha": "170aba1602ca",
+  "date": "2022-09-12",
+  "subject": "Move message encryption/encoding into _send_receive() so v3.4 devices can be re-encrypted on socket close/reopen"
+ },
+ {
+  "sha": "d63ad82614c1",
+  "date": "2022-09-12",
+  "subject": "Fix BulbDevice for v3.4 devices"
+ },
+ {
+  "sha": "2e395bb6d5e8",
+  "date": "2022-09-12",
+  "subject": "Close non-persistent sockets after sending command"
+ },
+ {
+  "sha": "614a431b1bed",
+  "date": "2022-09-11",
+  "subject": "Stage v1.7.0"
+ },
+ {
+  "sha": "32af6d9d4b49",
+  "date": "2022-09-11",
+  "subject": "Force persistence for v3.4"
+ },
+ {
+  "sha": "19c6495d20bd",
+  "date": "2022-09-11",
+  "subject": "Better error/timeout handling for 3.4 devices"
+ },
+ {
+  "sha": "a60ffc61484b",
+  "date": "2022-09-11",
+  "subject": "v3.4 devices encrypt the header in addition to the payload, and the dps results are often in {data:{dps:{...}}"
+ },
+ {
+  "sha": "563182a16988",
+  "date": "2022-09-10",
+  "subject": "Add device22 check back in, is it really needed?"
+ },
+ {
+  "sha": "d0ee0be3d003",
+  "date": "2022-09-10",
+  "subject": "Make it work!"
+ },
+ {
+  "sha": "1a33294e0c7d",
+  "date": "2022-09-10",
+  "subject": "Minor tweaks to session key code, mainly logging"
+ },
+ {
+  "sha": "12483f4847f7",
+  "date": "2022-09-10",
+  "subject": "Some tweaks to v3.2 handling"
+ },
+ {
+  "sha": "fe4fe9c3d286",
+  "date": "2022-09-09",
+  "subject": "Python 2.7/3.6 fixes"
+ },
+ {
+  "sha": "782b469ee4c3",
+  "date": "2022-09-09",
+  "subject": "Fixes"
+ },
+ {
+  "sha": "6870dcc0b608",
+  "date": "2022-09-09",
+  "subject": "Rework find() to be a lot faster, because why not"
+ },
+ {
+  "sha": "2f11d535c113",
+  "date": "2022-09-09",
+  "subject": "Add HMAC functions"
+ },
+ {
+  "sha": "0c68f4b4d40c",
+  "date": "2022-09-09",
+  "subject": "Initial v3.4 stuff, still needs HMAC function"
+ },
+ {
+  "sha": "f8bd7febada7",
+  "date": "2022-09-01",
+  "subject": "optimize detect_available_dps"
+ },
+ {
+  "sha": "f6704446edc4",
+  "date": "2022-08-31",
+  "subject": "Add sensor \"temperature_used\" attribute to match new firmware version"
+ },
+ {
+  "sha": "8780ed4b6db0",
+  "date": "2022-08-31",
+  "subject": "Fix logging"
+ },
+ {
+  "sha": "1dccc1a88141",
+  "date": "2022-08-31",
+  "subject": "Fix the example comments to match the mirrored bits"
+ },
+ {
+  "sha": "3883cc5a3afb",
+  "date": "2022-08-31",
+  "subject": "Mirror the bits for addresses and data"
+ },
+ {
+  "sha": "ed7709ea115c",
+  "date": "2022-08-31",
+  "subject": "Include expected output in comment in example"
+ },
+ {
+  "sha": "c3ff5f689c4c",
+  "date": "2022-08-31",
+  "subject": "Make pronto_to_pulses() return an empty list on failure instead of None"
+ },
+ {
+  "sha": "87b8078a18d7",
+  "date": "2022-08-31",
+  "subject": "Update example to include functions to convert to/from NEC, Samsung, and Pronto IR codes"
+ },
+ {
+  "sha": "1f1e04acb3bf",
+  "date": "2022-08-31",
+  "subject": "Update example to include functions to convert to/from NEC, Samsung, and Pronto IR codes"
+ },
+ {
+  "sha": "fd0fc4ddede8",
+  "date": "2022-08-31",
+  "subject": "Add functions to convert to/from NEC, Samsung, and Pronto IR codes to IRRemoteControlDevice"
+ },
+ {
+  "sha": "053d72659962",
+  "date": "2022-08-21",
+  "subject": "Add DoorbellDevice #162"
+ },
+ {
+  "sha": "c31ceae628e7",
+  "date": "2022-08-15",
+  "subject": "v1.6.6 release notes"
+ },
+ {
+  "sha": "55af8d1d7493",
+  "date": "2022-08-15",
+  "subject": "skip DPS detection if it has already been set"
+ },
+ {
+  "sha": "89e3ceb35ad5",
+  "date": "2022-08-14",
+  "subject": "Add dps \"1\" seed to discovery for 3.2 prot"
+ },
+ {
+  "sha": "5601eab234a7",
+  "date": "2022-08-14",
+  "subject": "Fix dps_to_request logic for 3.2 protocol #168"
+ },
+ {
+  "sha": "9a1d6c096b72",
+  "date": "2022-08-13",
+  "subject": "Fix examples to support 3.2"
+ },
+ {
+  "sha": "8b9b1fecc7ac",
+  "date": "2022-08-13",
+  "subject": "Updated to support protocol 3.2"
+ },
+ {
+  "sha": "e3c7358ac426",
+  "date": "2022-08-12",
+  "subject": "Fix set_version() for float"
+ },
+ {
+  "sha": "3bd44352dd41",
+  "date": "2022-08-12",
+  "subject": "Add support for 3.2 protocol devices"
+ },
+ {
+  "sha": "8bb2c9cce18c",
+  "date": "2022-08-12",
+  "subject": "Add support for 3.2 protocol devices #168"
+ },
+ {
+  "sha": "a777fe2e2caf",
+  "date": "2022-08-09",
+  "subject": "Prep v1.6.6"
+ },
+ {
+  "sha": "ecf5d03e6483",
+  "date": "2022-08-09",
+  "subject": "Updated readme"
+ },
+ {
+  "sha": "601d4b2c54c7",
+  "date": "2022-08-09",
+  "subject": "Implemented SocketDevice"
+ },
+ {
+  "sha": "237805781744",
+  "date": "2022-08-06",
+  "subject": "Remove sym-link"
+ },
+ {
+  "sha": "76e11704442c",
+  "date": "2022-08-06",
+  "subject": "Fix typo"
+ },
+ {
+  "sha": "e70107592079",
+  "date": "2022-08-06",
+  "subject": "v1.6.5"
+ },
+ {
+  "sha": "d3206ea5c2f3",
+  "date": "2022-08-06",
+  "subject": "Add automatic C/F and time conversion when setting schedule periods"
+ },
+ {
+  "sha": "2f6cd72131ec",
+  "date": "2022-08-06",
+  "subject": "Update comments for payload_dict"
+ },
+ {
+  "sha": "187c46adacea",
+  "date": "2022-08-06",
+  "subject": "Update comment wording"
+ },
+ {
+  "sha": "cda48227d7cb",
+  "date": "2022-08-06",
+  "subject": "Fix copypasta in IRRemoteControlDevice"
+ },
+ {
+  "sha": "14db7088a963",
+  "date": "2022-08-06",
+  "subject": "Fix copypasta in IRRemoteControlDevice"
+ },
+ {
+  "sha": "92bcfc53740f",
+  "date": "2022-08-06",
+  "subject": "Rework payload_dict and realign the command list to match Tuya's API"
+ },
+ {
+  "sha": "1e577fda3015",
+  "date": "2022-08-01",
+  "subject": "Fixing the minor mistake"
+ },
+ {
+  "sha": "d00b0fb892bb",
+  "date": "2022-07-29",
+  "subject": "Redact device details"
+ },
+ {
+  "sha": "a726bbdf5baf",
+  "date": "2022-07-29",
+  "subject": "Create TuyaSmartPlug-example.py"
+ },
+ {
+  "sha": "b2069d4b8c1c",
+  "date": "2022-07-17",
+  "subject": "Cloud RGB Smartbulb example"
+ },
+ {
+  "sha": "94bf7057a68d",
+  "date": "2022-07-13",
+  "subject": "v1.6.4"
+ },
+ {
+  "sha": "2610ee8f139f",
+  "date": "2022-07-13",
+  "subject": "Fix contrib badge"
+ },
+ {
+  "sha": "ed72ba6f85ba",
+  "date": "2022-07-13",
+  "subject": "Contrib Test badge"
+ },
+ {
+  "sha": "eed50b9f805a",
+  "date": "2022-07-13",
+  "subject": "Update Contrib test name"
+ },
+ {
+  "sha": "2579fd0ee5cd",
+  "date": "2022-07-13",
+  "subject": "Remove py 2.7 and 3.6 test"
+ },
+ {
+  "sha": "22205e78fa44",
+  "date": "2022-07-13",
+  "subject": "Fix for py 3.5 and 2.7"
+ },
+ {
+  "sha": "4a95380a9790",
+  "date": "2022-07-13",
+  "subject": "Update debug to support py 3.5 and 2.7"
+ },
+ {
+  "sha": "7bdc3215e355",
+  "date": "2022-07-13",
+  "subject": "Fix exit for test"
+ },
+ {
+  "sha": "8f402d9e6501",
+  "date": "2022-07-13",
+  "subject": "Add test for Contrib"
+ },
+ {
+  "sha": "8627b70590e9",
+  "date": "2022-07-13",
+  "subject": "Fix indent"
+ },
+ {
+  "sha": "9ebaa2f09ea2",
+  "date": "2022-07-13",
+  "subject": "Add IRRemoteControlDevice"
+ },
+ {
+  "sha": "9559c424fe6d",
+  "date": "2022-07-13",
+  "subject": "IRRemoteControlDevice - minor fixes, docs update"
+ },
+ {
+  "sha": "32a860752810",
+  "date": "2022-07-13",
+  "subject": "Docs, example"
+ },
+ {
+  "sha": "4f37c0d16cc3",
+  "date": "2022-07-13",
+  "subject": "Comments, cleanup"
+ },
+ {
+  "sha": "bca5e8e5112e",
+  "date": "2022-07-13",
+  "subject": "IRRemoteControlDevice MVP"
+ },
+ {
+  "sha": "46c8a8a85c95",
+  "date": "2022-07-12",
+  "subject": "Change socket.send() to .sendall()"
+ },
+ {
+  "sha": "3f17b13ab75c",
+  "date": "2022-07-07",
+  "subject": "v1.6.3 prep - sep read retries from send retries"
+ },
+ {
+  "sha": "67912abacd2d",
+  "date": "2022-07-07",
+  "subject": "Forgot to continue"
+ },
+ {
+  "sha": "563315b4f3de",
+  "date": "2022-07-07",
+  "subject": "socket.recv() may return less than requested, so make sure we get everything we need"
+ },
+ {
+  "sha": "948520703261",
+  "date": "2022-07-07",
+  "subject": "Finish allowing recv retries to be different from send retries"
+ },
+ {
+  "sha": "873818411372",
+  "date": "2022-07-07",
+  "subject": "Handle closed connections while receiving"
+ },
+ {
+  "sha": "7e2eae05ec3c",
+  "date": "2022-07-07",
+  "subject": "Handle closed connections while receiving"
+ },
+ {
+  "sha": "80bbd516bd90",
+  "date": "2022-07-07",
+  "subject": "Add command to 'building payload=' debug message"
+ },
+ {
+  "sha": "98a3987585f7",
+  "date": "2022-07-07",
+  "subject": "Fix length calculation and other issues"
+ },
+ {
+  "sha": "54bf5459a1c5",
+  "date": "2022-07-07",
+  "subject": "Rework _receive() so it searches for the prefix if there is junk before the message"
+ },
+ {
+  "sha": "ea1e30de06dc",
+  "date": "2022-07-07",
+  "subject": "More stringent error checking in parse_header() to help detect corrupt packets"
+ },
+ {
+  "sha": "8528e03565d6",
+  "date": "2022-07-07",
+  "subject": "Rework _send_receive() to separate read and write retries, and retry reads on corrupt messages and null payloads"
+ },
+ {
+  "sha": "7412345892b2",
+  "date": "2022-07-06",
+  "subject": "PyPI v1.6.2"
+ },
+ {
+  "sha": "bc2a1cd560b1",
+  "date": "2022-07-06",
+  "subject": "v1.6.2 - Release Notes"
+ },
+ {
+  "sha": "e57966dd8121",
+  "date": "2022-07-06",
+  "subject": "Add schedule editing, change temperature sensor access methods, and various misc fixes"
+ },
+ {
+  "sha": "9570eea2aa1e",
+  "date": "2022-07-05",
+  "subject": "Rename DPS config 'class' to 'selfclass'"
+ },
+ {
+  "sha": "d8cc05542472",
+  "date": "2022-07-05",
+  "subject": "Release Notes v1.6.2"
+ },
+ {
+  "sha": "928185c5232a",
+  "date": "2022-07-05",
+  "subject": "Start of schedule editor, clean up \"raw_*\" detection, and add decoding of values"
+ },
+ {
+  "sha": "ccd14c1ccb6f",
+  "date": "2022-07-05",
+  "subject": "Fix zero devices bug"
+ },
+ {
+  "sha": "d0a2c1db0614",
+  "date": "2022-07-05",
+  "subject": "Add 'emergencyheat' as a system mode"
+ },
+ {
+  "sha": "e4f733740576",
+  "date": "2022-07-05",
+  "subject": "v1.6.2 Prep"
+ },
+ {
+  "sha": "5b7c0f7223e5",
+  "date": "2022-07-05",
+  "subject": "Include backtrace in exception"
+ },
+ {
+  "sha": "6be73229ab76",
+  "date": "2022-07-05",
+  "subject": "Do not retry on decode error (restores previous behavior)"
+ },
+ {
+  "sha": "6f43e77dfab7",
+  "date": "2022-07-05",
+  "subject": "Make parse_header() and unpack_message() (and, by extension, _receive()) raise an exception instead of returning None when not enough data was received"
+ },
+ {
+  "sha": "acc95a2857d8",
+  "date": "2022-07-05",
+  "subject": "Break socket recv() out into its own function"
+ },
+ {
+  "sha": "60d3828a80a7",
+  "date": "2022-07-05",
+  "subject": "Fix the handling of sensor lists 2-5"
+ },
+ {
+  "sha": "980225fcaf78",
+  "date": "2022-07-05",
+  "subject": "Update Cloud.py"
+ },
+ {
+  "sha": "e0153f05cfeb",
+  "date": "2022-07-03",
+  "subject": "Add /offline function"
+ },
+ {
+  "sha": "cbf2ac2a8aa6",
+  "date": "2022-07-02",
+  "subject": "Fix errors in documentation"
+ },
+ {
+  "sha": "e58f8134034d",
+  "date": "2022-07-02",
+  "subject": "v1.6.1 Notes"
+ },
+ {
+  "sha": "a6598cdb8263",
+  "date": "2022-07-02",
+  "subject": "Add /offline to list offline devices"
+ },
+ {
+  "sha": "8b0fb849d787",
+  "date": "2022-07-02",
+  "subject": "Add mac address lookup from Tuya Cloud"
+ },
+ {
+  "sha": "4317a3610201",
+  "date": "2022-07-02",
+  "subject": "v1.6.1 - ThermostatDevice"
+ },
+ {
+  "sha": "400b7cfcb42a",
+  "date": "2022-07-02",
+  "subject": "Update example script link"
+ },
+ {
+  "sha": "b2308ca3e4a6",
+  "date": "2022-07-02",
+  "subject": "ThermostatDevice example"
+ },
+ {
+  "sha": "7ed543477010",
+  "date": "2022-07-02",
+  "subject": "User Contributed Device Modules"
+ },
+ {
+  "sha": "41a31a02f5cd",
+  "date": "2022-07-02",
+  "subject": "Add example"
+ },
+ {
+  "sha": "6bfe8ef61cfd",
+  "date": "2022-07-02",
+  "subject": "Contrib index and help"
+ },
+ {
+  "sha": "11079d0cbb59",
+  "date": "2022-07-02",
+  "subject": "User Contributed Device Modules"
+ },
+ {
+  "sha": "97e46f90f31d",
+  "date": "2022-07-02",
+  "subject": "Add contrib note for Thermostat device"
+ },
+ {
+  "sha": "f33ebed10d5c",
+  "date": "2022-07-02",
+  "subject": "Credit for module author"
+ },
+ {
+  "sha": "32e48ec6345a",
+  "date": "2022-07-02",
+  "subject": "CONFIGFILE update"
+ },
+ {
+  "sha": "7eba3057c485",
+  "date": "2022-07-02",
+  "subject": "Load cloud config file if available"
+ },
+ {
+  "sha": "2313fe8f8145",
+  "date": "2022-07-01",
+  "subject": "Clean up Cloud(**cloudconfig)"
+ },
+ {
+  "sha": "6dfb8293c477",
+  "date": "2022-07-01",
+  "subject": "Handle Cloud API auth errors better"
+ },
+ {
+  "sha": "0a45cc9c6a1f",
+  "date": "2022-07-01",
+  "subject": "Add Cloud API syncing with auto-retry"
+ },
+ {
+  "sha": "725f209526a8",
+  "date": "2022-07-01",
+  "subject": "Add example"
+ },
+ {
+  "sha": "7eb3bfc0aaef",
+  "date": "2022-07-01",
+  "subject": "Add the option for delayed multi-update to the thermostat as well, and fix the documentation"
+ },
+ {
+  "sha": "be6a92620540",
+  "date": "2022-06-28",
+  "subject": "A bunch of documentation, and then a bunch of code changes which make half of said documentation obsolete"
+ },
+ {
+  "sha": "972700078f8f",
+  "date": "2022-06-28",
+  "subject": "A bunch of documentation, and then a bunch of code changes which make half of said documentation obsolete"
+ },
+ {
+  "sha": "644cb2a22f41",
+  "date": "2022-06-18",
+  "subject": "Code done, just needs documentation"
+ },
+ {
+  "sha": "7593e37911b4",
+  "date": "2022-06-17",
+  "subject": "Bug fix for debug #144"
+ },
+ {
+  "sha": "dda22a9ae2c8",
+  "date": "2022-06-17",
+  "subject": "fix logging calls in XenonDevice.detect_available_dps"
+ },
+ {
+  "sha": "207bcb84e5c8",
+  "date": "2022-06-15",
+  "subject": "Update class docs"
+ },
+ {
+  "sha": "cef71c6f031e",
+  "date": "2022-06-15",
+  "subject": "Simplify"
+ },
+ {
+  "sha": "b2e8651e68a7",
+  "date": "2022-06-15",
+  "subject": "Stage 1.6.1"
+ },
+ {
+  "sha": "62d44c25c4cc",
+  "date": "2022-06-15",
+  "subject": "Stage 1.6.1"
+ },
+ {
+  "sha": "37edb5c23564",
+  "date": "2022-06-15",
+  "subject": "Getting there..."
+ },
+ {
+  "sha": "289e056bad00",
+  "date": "2022-06-15",
+  "subject": "Getting there..."
+ },
+ {
+  "sha": "89414fd81c87",
+  "date": "2022-06-15",
+  "subject": "Getting there..."
+ },
+ {
+  "sha": "38c33a3cabce",
+  "date": "2022-06-15",
+  "subject": "Initial commit.  Still a long way to go"
+ },
+ {
+  "sha": "7c5244fe7225",
+  "date": "2022-06-14",
+  "subject": "Fix importing author and version"
+ },
+ {
+  "sha": "9bd72705882a",
+  "date": "2022-06-14",
+  "subject": "Break the Outlet/Cover/Bulb/Cloud modules out into separate files"
+ },
+ {
+  "sha": "cd9fc27f5423",
+  "date": "2022-06-14",
+  "subject": "Version v1.6.0"
+ },
+ {
+  "sha": "e2702379f3c2",
+  "date": "2022-06-14",
+  "subject": "Simplify usage help"
+ },
+ {
+  "sha": "6937f228aaf1",
+  "date": "2022-06-14",
+  "subject": "Fix formatting"
+ },
+ {
+  "sha": "7f9193fcf06f",
+  "date": "2022-06-14",
+  "subject": "Fix temperature range"
+ },
+ {
+  "sha": "765ec707ef57",
+  "date": "2022-06-14",
+  "subject": "Fix Formatting"
+ },
+ {
+  "sha": "2493fa044f1d",
+  "date": "2022-06-14",
+  "subject": "Fix Formatting"
+ },
+ {
+  "sha": "66a9f5db78fb",
+  "date": "2022-06-14",
+  "subject": "Add DPS table to README for a 24v Thermostat"
+ },
+ {
+  "sha": "d6f3b4ccde86",
+  "date": "2022-06-14",
+  "subject": "Fix set_socketNODELAY() so it sets TCP_NODELAY to the correct value"
+ },
+ {
+  "sha": "60749c40e950",
+  "date": "2022-06-14",
+  "subject": "Apply new socket options to existing open sockets"
+ },
+ {
+  "sha": "79b685b568a6",
+  "date": "2022-06-13",
+  "subject": "Add note for API Server"
+ },
+ {
+  "sha": "017f2f061538",
+  "date": "2022-06-13",
+  "subject": "Fix CI for colorama"
+ },
+ {
+  "sha": "2cc4a4fda1b6",
+  "date": "2022-06-13",
+  "subject": "Add colorama terminal color module"
+ },
+ {
+  "sha": "cefa52f97367",
+  "date": "2022-06-13",
+  "subject": "Add pylint exceptions"
+ },
+ {
+  "sha": "877bc04b2cec",
+  "date": "2022-06-13",
+  "subject": "Beta note"
+ },
+ {
+  "sha": "fc0b4d53312a",
+  "date": "2022-06-13",
+  "subject": "Title Change"
+ },
+ {
+  "sha": "e88c50ed40f4",
+  "date": "2022-06-13",
+  "subject": "Add build ver to startup banner"
+ },
+ {
+  "sha": "b488b15224e6",
+  "date": "2022-06-12",
+  "subject": "Fix typos add example"
+ },
+ {
+  "sha": "a3ee9685f4c0",
+  "date": "2022-06-12",
+  "subject": "Typos"
+ },
+ {
+  "sha": "e255d9507ea0",
+  "date": "2022-06-12",
+  "subject": "Found and registered device counts"
+ },
+ {
+  "sha": "ccfef0b833d8",
+  "date": "2022-06-12",
+  "subject": "Change to found devices number"
+ },
+ {
+  "sha": "bc2a91fb0a85",
+  "date": "2022-06-12",
+  "subject": "Add instructions for TinyTuya server"
+ },
+ {
+  "sha": "232452b4f647",
+  "date": "2022-06-12",
+  "subject": "Fix base python and UDP ports"
+ },
+ {
+  "sha": "6ae5fb9e8216",
+  "date": "2022-06-12",
+  "subject": "Add registered device count"
+ },
+ {
+  "sha": "a736b4dd2dd1",
+  "date": "2022-06-12",
+  "subject": "Add device status"
+ },
+ {
+  "sha": "dc47de422932",
+  "date": "2022-06-12",
+  "subject": "TinyTuya API Server"
+ },
+ {
+  "sha": "2d7920e9b4ac",
+  "date": "2022-06-12",
+  "subject": "Tuya API server debug mode"
+ },
+ {
+  "sha": "b32b20bc5233",
+  "date": "2022-06-12",
+  "subject": "Tuya device API server"
+ },
+ {
+  "sha": "2e657f487146",
+  "date": "2022-06-04",
+  "subject": "Move from Travis to GH Actions for CI"
+ },
+ {
+  "sha": "5812a6fe61e4",
+  "date": "2022-06-04",
+  "subject": "Move set_bulb_type to correct class"
+ },
+ {
+  "sha": "3b9909f4c5b4",
+  "date": "2022-06-04",
+  "subject": "Add nowait option to functions #74"
+ },
+ {
+  "sha": "f67c62a8a035",
+  "date": "2022-06-02",
+  "subject": "Added robot mower data"
+ },
+ {
+  "sha": "fb7d027b85ce",
+  "date": "2022-06-01",
+  "subject": "Combine Universal IR Controller"
+ },
+ {
+  "sha": "42168d87979a",
+  "date": "2022-05-30",
+  "subject": "Add Universal IR Controller DP instructions"
+ },
+ {
+  "sha": "7b186cb18ccd",
+  "date": "2022-05-26",
+  "subject": "Add tinytuya2mqtt and pymoebot projects #134 #136"
+ },
+ {
+  "sha": "49a8aa713cfe",
+  "date": "2022-05-22",
+  "subject": "Misc cleanup stage for 1.4.1"
+ },
+ {
+  "sha": "cc068aedb8db",
+  "date": "2022-05-22",
+  "subject": "Add import for requests"
+ },
+ {
+  "sha": "48f8afd78d1d",
+  "date": "2022-05-23",
+  "subject": "pylint: multiple-statements"
+ },
+ {
+  "sha": "36161fb102c8",
+  "date": "2022-05-23",
+  "subject": "pylint: dangerous-default-value"
+ },
+ {
+  "sha": "ba87327571d8",
+  "date": "2022-05-23",
+  "subject": "pylint: singleton-comparison"
+ },
+ {
+  "sha": "f13cb67d0a68",
+  "date": "2022-05-23",
+  "subject": "Include .pylintrc"
+ },
+ {
+  "sha": "77def8810241",
+  "date": "2022-05-23",
+  "subject": "pylint: bad-indentation"
+ },
+ {
+  "sha": "e13679a2ebac",
+  "date": "2022-05-23",
+  "subject": "pylint: superfluous-parens"
+ },
+ {
+  "sha": "6e8e66b52444",
+  "date": "2022-05-23",
+  "subject": "pylint: logging-not-lazy"
+ },
+ {
+  "sha": "ed3ff36a08d1",
+  "date": "2022-05-23",
+  "subject": "pylint: wrong-import-order, unused-import"
+ },
+ {
+  "sha": "cb02030f5f2b",
+  "date": "2022-05-23",
+  "subject": "pylint: trailing-whitespace"
+ },
+ {
+  "sha": "fb39b1d0a257",
+  "date": "2022-05-20",
+  "subject": "Update README.md"
+ },
+ {
+  "sha": "daacd413bad2",
+  "date": "2022-05-02",
+  "subject": "Smart Bulb Music Example #118"
+ },
+ {
+  "sha": "65143c7eb3a2",
+  "date": "2022-04-25",
+  "subject": "Support optional version parameter"
+ },
+ {
+  "sha": "66a7eebe211f",
+  "date": "2022-04-16",
+  "subject": "Update tinytuya install instructions #125"
+ },
+ {
+  "sha": "165a7cd7dca3",
+  "date": "2022-04-10",
+  "subject": "v1.4.0 Release Notes"
+ },
+ {
+  "sha": "c2d095c446b3",
+  "date": "2022-04-10",
+  "subject": "New command line options"
+ },
+ {
+  "sha": "7dd61e0ed0f2",
+  "date": "2022-04-10",
+  "subject": "Added new command line function notes"
+ },
+ {
+  "sha": "97a22ebe51e6",
+  "date": "2022-04-10",
+  "subject": "New functions"
+ },
+ {
+  "sha": "dea4ad9fcce0",
+  "date": "2022-04-10",
+  "subject": "Fix snapshotjson error response"
+ },
+ {
+  "sha": "7daa863eadfd",
+  "date": "2022-04-10",
+  "subject": "Add devices and json commands"
+ },
+ {
+  "sha": "df2db6dc3b28",
+  "date": "2022-04-10",
+  "subject": "Fix snapshot.json add alldevices() snapshotjson()"
+ },
+ {
+  "sha": "23e7e67ce5df",
+  "date": "2022-04-10",
+  "subject": "Centralize Globals Network Settings"
+ },
+ {
+  "sha": "13d2230da585",
+  "date": "2022-04-10",
+  "subject": "Centralize Globals Network Settings"
+ },
+ {
+  "sha": "5e1ed68dfa7e",
+  "date": "2022-04-10",
+  "subject": "Add snapshot command"
+ },
+ {
+  "sha": "b6a7ff17dcab",
+  "date": "2022-04-10",
+  "subject": "Clean up defaults and globals"
+ },
+ {
+  "sha": "17609436a705",
+  "date": "2022-04-10",
+  "subject": "Return byID dict for deviceScan()"
+ },
+ {
+  "sha": "5b605b6f97a1",
+  "date": "2022-04-10",
+  "subject": "Fix wizard for python 2"
+ },
+ {
+  "sha": "e56009e4031b",
+  "date": "2022-04-09",
+  "subject": "Move scan outisde of init + add force scan toggle"
+ },
+ {
+  "sha": "a9ff50db6f95",
+  "date": "2022-04-09",
+  "subject": "Simplify with brute force scan option"
+ },
+ {
+  "sha": "6e16d0487b9b",
+  "date": "2022-03-27",
+  "subject": "Release notes for wizard updates"
+ },
+ {
+  "sha": "97edfa65e893",
+  "date": "2022-03-27",
+  "subject": "Note -force is to get IP addrs"
+ },
+ {
+  "sha": "8979c064ae38",
+  "date": "2022-03-27",
+  "subject": "Add mac addresses"
+ },
+ {
+  "sha": "c65d74ecfcc1",
+  "date": "2022-03-27",
+  "subject": "Add wizard -force network scan option #117"
+ },
+ {
+  "sha": "4b8b5091af28",
+  "date": "2022-03-28",
+  "subject": "Added support to get the MAC address and local IP address (only tested for IP4) in the Wizard"
+ },
+ {
+  "sha": "6dd99f5f0012",
+  "date": "2022-03-20",
+  "subject": "Add galaxy lamp example"
+ },
+ {
+  "sha": "07d9fcb58f3f",
+  "date": "2022-02-25",
+  "subject": "Updated Tuya Account Setup Instructions"
+ },
+ {
+  "sha": "b8daa3a208de",
+  "date": "2022-02-16",
+  "subject": "Add error handling for set_timer() #87"
+ },
+ {
+  "sha": "743912b27782",
+  "date": "2022-02-03",
+  "subject": "Add cloud set bulb color example"
+ },
+ {
+  "sha": "2aec39c30d0e",
+  "date": "2022-02-02",
+  "subject": "Update download badge"
+ },
+ {
+  "sha": "5b9b7b2d97ab",
+  "date": "2022-02-02",
+  "subject": "Update download badge"
+ },
+ {
+  "sha": "79429b8e584d",
+  "date": "2022-02-02",
+  "subject": "Fix typo"
+ },
+ {
+  "sha": "c814a04fa564",
+  "date": "2022-02-02",
+  "subject": "Add Setup Tutorials"
+ },
+ {
+  "sha": "68b83a8ee6c7",
+  "date": "2022-02-02",
+  "subject": "Fix 3.1 device scan output color"
+ },
+ {
+  "sha": "6a65009fdc65",
+  "date": "2022-01-29",
+  "subject": "Revert \"Fix log.debug formatting\""
+ },
+ {
+  "sha": "8a20237ea358",
+  "date": "2022-01-29",
+  "subject": "Update badge links"
+ },
+ {
+  "sha": "576292d4575a",
+  "date": "2022-01-23",
+  "subject": "PyPI Badges"
+ },
+ {
+  "sha": "fd8077c3ac79",
+  "date": "2022-01-23",
+  "subject": "Add OSS badges"
+ },
+ {
+  "sha": "14f2625da96f",
+  "date": "2022-01-23",
+  "subject": "No devices? Instructions update #100"
+ },
+ {
+  "sha": "af1d927489ad",
+  "date": "2022-01-22",
+  "subject": "Update setup instructions"
+ },
+ {
+  "sha": "bbd139f9ae77",
+  "date": "2022-01-22",
+  "subject": "Set up Tuya Account Updates"
+ },
+ {
+  "sha": "6ecbbe2896cf",
+  "date": "2022-01-22",
+  "subject": "Updated Set up a Tuya Account"
+ },
+ {
+  "sha": "d6bed2598485",
+  "date": "2022-01-13",
+  "subject": "Stage v1.3.2"
+ },
+ {
+  "sha": "b25148599525",
+  "date": "2022-01-13",
+  "subject": "Fix log.debug formatting"
+ },
+ {
+  "sha": "5f5ce3f1de25",
+  "date": "2022-01-13",
+  "subject": "Displays raw data better."
+ },
+ {
+  "sha": "57b381e645c0",
+  "date": "2022-01-09",
+  "subject": "Delete firefox_lvgVOy9jEV.png"
+ },
+ {
+  "sha": "d4c15f4e57fd",
+  "date": "2022-01-09",
+  "subject": "Delete TuyaIOT-server.png"
+ },
+ {
+  "sha": "c5e3c9cba90d",
+  "date": "2022-01-09",
+  "subject": "Update README.md"
+ },
+ {
+  "sha": "f7a1c258b436",
+  "date": "2022-01-09",
+  "subject": "Update README.md"
+ },
+ {
+  "sha": "c434158fadd5",
+  "date": "2022-01-09",
+  "subject": "Add files via upload"
+ },
+ {
+  "sha": "80a9603ee841",
+  "date": "2022-01-09",
+  "subject": "Add files via upload"
+ },
+ {
+  "sha": "0d3209d50240",
+  "date": "2022-01-02",
+  "subject": "v1.3.1 Token Renwal Logic - Issue #94"
+ },
+ {
+  "sha": "4e553eedaa27",
+  "date": "2022-01-02",
+  "subject": "Fix cloud token renewal"
+ },
+ {
+  "sha": "08c29afacb90",
+  "date": "2021-12-30",
+  "subject": "Add getdps() func to docs"
+ },
+ {
+  "sha": "dda2732ea8ae",
+  "date": "2021-12-30",
+  "subject": "Add Cloud class example"
+ },
+ {
+  "sha": "b538f78e2bb3",
+  "date": "2021-12-30",
+  "subject": "v1.3.0 Cloud API Support #87 #95"
+ },
+ {
+  "sha": "8be7958622b1",
+  "date": "2021-12-21",
+  "subject": "Update Tuya Account Setup - Issue #93"
+ },
+ {
+  "sha": "70073e569c08",
+  "date": "2021-12-12",
+  "subject": "Fix debug mode to default off"
+ },
+ {
+  "sha": "00e6d62100d0",
+  "date": "2021-12-12",
+  "subject": "Prep for v1.2.12"
+ },
+ {
+  "sha": "8d33dbd5b488",
+  "date": "2021-12-12",
+  "subject": "Improve code quality"
+ },
+ {
+  "sha": "5f53620b7757",
+  "date": "2021-11-27",
+  "subject": "v1.2.11"
+ },
+ {
+  "sha": "d147066be996",
+  "date": "2021-11-24",
+  "subject": "Corrected typos and format"
+ },
+ {
+  "sha": "260c18ae42c9",
+  "date": "2021-11-24",
+  "subject": "Updated functions section"
+ },
+ {
+  "sha": "609a7dddbc4f",
+  "date": "2021-11-24",
+  "subject": "Updated functions"
+ },
+ {
+  "sha": "f3411b37c9eb",
+  "date": "2021-11-24",
+  "subject": "Added setup instructions for regions."
+ },
+ {
+  "sha": "cbb52e54ce4b",
+  "date": "2021-11-24",
+  "subject": "Updated setup instructions per #82"
+ },
+ {
+  "sha": "55812a4b9cbd",
+  "date": "2021-11-22",
+  "subject": "Auto-compute default maxretry for scan and wizard"
+ },
+ {
+  "sha": "93a94fc12371",
+  "date": "2021-11-21",
+  "subject": "Add retry option and logic to Wizard"
+ },
+ {
+  "sha": "09601373cb79",
+  "date": "2021-10-31",
+  "subject": "Add new regions to instructions"
+ },
+ {
+  "sha": "51573e5c6747",
+  "date": "2021-10-31",
+  "subject": "Tuya Account Setup"
+ },
+ {
+  "sha": "684c03f08e47",
+  "date": "2021-10-30",
+  "subject": "v1.2.10 Wizard Update #66 #75"
+ },
+ {
+  "sha": "ac9498fb5830",
+  "date": "2021-10-30",
+  "subject": "v1.2.10 Wizard Update"
+ },
+ {
+  "sha": "7f740d5ab1df",
+  "date": "2021-10-24",
+  "subject": "Add screenshot links for setup"
+ },
+ {
+  "sha": "ecd3e7c7f568",
+  "date": "2021-10-11",
+  "subject": "Wizard added regions"
+ },
+ {
+  "sha": "794c0ac24e58",
+  "date": "2021-10-11",
+  "subject": "Add new regions for wizard"
+ },
+ {
+  "sha": "5244bdae2007",
+  "date": "2021-10-11",
+  "subject": "Add new region support to wizard #66"
+ },
+ {
+  "sha": "6f39e19f959b",
+  "date": "2021-10-03",
+  "subject": "v1.2.10 disabledetect test"
+ },
+ {
+  "sha": "4379966dbc71",
+  "date": "2021-10-03",
+  "subject": "Add disabledetect toggle"
+ },
+ {
+  "sha": "9c8f2cbd5ee8",
+  "date": "2021-10-03",
+  "subject": "deviceScan"
+ },
+ {
+  "sha": "d8703691b4ef",
+  "date": "2021-09-28",
+  "subject": "Release v1.2.9"
+ },
+ {
+  "sha": "512f2b3cba41",
+  "date": "2021-09-26",
+  "subject": "Add check for encoded 3.3 payload and decode #67"
+ },
+ {
+  "sha": "67117b0e601b",
+  "date": "2021-09-25",
+  "subject": "Added exception handling for _send_receive()"
+ },
+ {
+  "sha": "e4f59e09afb4",
+  "date": "2021-09-22",
+  "subject": "Typo fix"
+ },
+ {
+  "sha": "af0733cca51d",
+  "date": "2021-09-20",
+  "subject": "Add error handling for bad scan data"
+ },
+ {
+  "sha": "6ee516535bfd",
+  "date": "2021-09-19",
+  "subject": "Error Handing for device with None response #68"
+ },
+ {
+  "sha": "5ed4d092359a",
+  "date": "2021-09-19",
+  "subject": "Add error handling where data is None #68"
+ },
+ {
+  "sha": "d18bf7eb2c8c",
+  "date": "2021-09-18",
+  "subject": "Fix link"
+ },
+ {
+  "sha": "99d26a4d8a98",
+  "date": "2021-09-18",
+  "subject": "Github actions badge link"
+ },
+ {
+  "sha": "87f4e881bae7",
+  "date": "2021-09-18",
+  "subject": "Add github action badge"
+ },
+ {
+  "sha": "23742bd1aa0b",
+  "date": "2021-09-18",
+  "subject": "Add Actions"
+ },
+ {
+  "sha": "39857ad55e7b",
+  "date": "2021-09-04",
+  "subject": "Cmd Line and IR Device DPS"
+ },
+ {
+  "sha": "78b1932c4e0d",
+  "date": "2021-09-01",
+  "subject": "Travis CI Badge Fix"
+ },
+ {
+  "sha": "62da5be4a05f",
+  "date": "2021-09-01",
+  "subject": "v1.2.8 Release"
+ },
+ {
+  "sha": "b406c6573b19",
+  "date": "2021-09-01",
+  "subject": "Fix bug in scan when color=False (Issue #63)"
+ },
+ {
+  "sha": "79eaf544504f",
+  "date": "2021-08-20",
+  "subject": "Added BulbDevice error checking"
+ },
+ {
+  "sha": "e398717c3920",
+  "date": "2021-08-20",
+  "subject": "Add error checking for BulbDevice"
+ },
+ {
+  "sha": "200310a4221b",
+  "date": "2021-08-14",
+  "subject": "DPS Read and Set Example"
+ },
+ {
+  "sha": "930fe7b46676",
+  "date": "2021-08-14",
+  "subject": "Add device monitor code example"
+ },
+ {
+  "sha": "4a6671466b9f",
+  "date": "2021-08-09",
+  "subject": "Update actions to be performed in `iot.tuya.com`"
+ },
+ {
+  "sha": "4563396c1264",
+  "date": "2021-07-27",
+  "subject": "Updated travis-ci"
+ },
+ {
+  "sha": "7b68f889fdaa",
+  "date": "2021-07-27",
+  "subject": "Updated diagram link"
+ },
+ {
+  "sha": "9bb3656e6421",
+  "date": "2021-07-27",
+  "subject": "Fix #57 new Tuya IoT payload signature"
+ },
+ {
+  "sha": "4b93b49ed34c",
+  "date": "2021-07-26",
+  "subject": "Fix format"
+ },
+ {
+  "sha": "ab2d8ff7c50c",
+  "date": "2021-07-25",
+  "subject": "Added monitor example script"
+ },
+ {
+  "sha": "4bc56d747bcb",
+  "date": "2021-07-25",
+  "subject": "Add note for UPDATEDPS for edge case devices"
+ },
+ {
+  "sha": "8c6a9ca2fa24",
+  "date": "2021-07-25",
+  "subject": "Added bulb scene example"
+ },
+ {
+  "sha": "62e8d7b20644",
+  "date": "2021-07-25",
+  "subject": "Added bulb scene example"
+ },
+ {
+  "sha": "7fc4af7282d3",
+  "date": "2021-07-06",
+  "subject": "Update to token request"
+ },
+ {
+  "sha": "84e8eaeb90e8",
+  "date": "2021-06-19",
+  "subject": "Added tuya-raw.json"
+ },
+ {
+  "sha": "c9714f049f98",
+  "date": "2021-06-19",
+  "subject": "Add ERR_DEVTYPE for device22"
+ },
+ {
+  "sha": "37cb86724149",
+  "date": "2021-06-17",
+  "subject": "Add delay for device22 discovery retry"
+ },
+ {
+  "sha": "eaf7d25d5fc7",
+  "date": "2021-06-10",
+  "subject": "Added bulb type C"
+ },
+ {
+  "sha": "26ad6d60e9d9",
+  "date": "2021-06-09",
+  "subject": "Add bulb type C corresponding to Feit Electric Dimmers sold at Costco"
+ },
+ {
+  "sha": "7b6c02bb430d",
+  "date": "2021-06-02",
+  "subject": "Updated v1.2.6"
+ },
+ {
+  "sha": "10ccba37a1aa",
+  "date": "2021-06-02",
+  "subject": "repair print on devices.py"
+ },
+ {
+  "sha": "f510705cf874",
+  "date": "2021-05-24",
+  "subject": "Update README.md"
+ },
+ {
+  "sha": "37f854d0ba5c",
+  "date": "2021-05-24",
+  "subject": "Reorganize output"
+ },
+ {
+  "sha": "9c024c94f74f",
+  "date": "2021-05-18",
+  "subject": "state() error condition fix"
+ },
+ {
+  "sha": "787a976a4ec6",
+  "date": "2021-05-18",
+  "subject": "Emit error rather than crash"
+ },
+ {
+  "sha": "d2e22b1a4642",
+  "date": "2021-05-17",
+  "subject": "Expose server error to user"
+ },
+ {
+  "sha": "d7e621f1ccfb",
+  "date": "2021-05-16",
+  "subject": "Add option for updatedps"
+ },
+ {
+  "sha": "9344a80b352a",
+  "date": "2021-05-16",
+  "subject": "Add option for updatedps"
+ },
+ {
+  "sha": "a665296868bb",
+  "date": "2021-05-16",
+  "subject": "Add async example"
+ },
+ {
+  "sha": "c3fd1c5fd1d6",
+  "date": "2021-04-25",
+  "subject": "Added related projects"
+ },
+ {
+  "sha": "4734de05ad26",
+  "date": "2021-04-25",
+  "subject": "Send and Receive Functions v1.2.5"
+ },
+ {
+  "sha": "0e8fbb68202c",
+  "date": "2021-04-25",
+  "subject": "Add send() and receive() functions"
+ },
+ {
+  "sha": "35cea1b06b1d",
+  "date": "2021-04-18",
+  "subject": "v1.2.4 release notes"
+ },
+ {
+  "sha": "1b976b8ee1ea",
+  "date": "2021-04-18",
+  "subject": "Bug fix for device polling for Wizard"
+ },
+ {
+  "sha": "2b5f42d3244a",
+  "date": "2021-04-18",
+  "subject": "v1.2.4 Release Notes"
+ },
+ {
+  "sha": "e2706fc73529",
+  "date": "2021-04-18",
+  "subject": "Added error handling for unpack_message"
+ },
+ {
+  "sha": "a4ebbef6967f",
+  "date": "2021-04-09",
+  "subject": "Add battery powered sensor note"
+ },
+ {
+  "sha": "f3cacd0d2cdc",
+  "date": "2021-04-09",
+  "subject": "Add deviceScan() poll flag option"
+ },
+ {
+  "sha": "7b619973cc91",
+  "date": "2021-03-17",
+  "subject": "Update Tuya account setup desc"
+ },
+ {
+  "sha": "65f76425c90f",
+  "date": "2021-03-17",
+  "subject": "Update Set up Tuya Account"
+ },
+ {
+  "sha": "a1997874e128",
+  "date": "2021-03-16",
+  "subject": "Updated iot.tuya.com setup instructions"
+ },
+ {
+  "sha": "b3c9e11353fb",
+  "date": "2021-03-13",
+  "subject": "Fix bug in error_json()"
+ },
+ {
+  "sha": "590e33fd9ef0",
+  "date": "2021-03-13",
+  "subject": "Fix error_json add detect_available_dps()"
+ },
+ {
+  "sha": "abf20d25139d",
+  "date": "2021-03-06",
+  "subject": "Create SECURITY.md"
+ },
+ {
+  "sha": "8898feed5dd2",
+  "date": "2021-03-02",
+  "subject": "Fix int to float"
+ },
+ {
+  "sha": "4626260ce19d",
+  "date": "2021-03-02",
+  "subject": "Dimmer and Brightness Functions"
+ },
+ {
+  "sha": "1918ed87fc75",
+  "date": "2021-02-28",
+  "subject": "Wordsmith"
+ },
+ {
+  "sha": "483f52fda70c",
+  "date": "2021-02-28",
+  "subject": "Revised setup instructions"
+ },
+ {
+  "sha": "c31f272b234f",
+  "date": "2021-02-28",
+  "subject": "Updated wizard instructions"
+ },
+ {
+  "sha": "12c0ee367dd4",
+  "date": "2021-02-28",
+  "subject": "Added set_dimmer()"
+ },
+ {
+  "sha": "f034bfb6b4e3",
+  "date": "2021-02-28",
+  "subject": "Updated Wizard Setup"
+ },
+ {
+  "sha": "a8bc9f89be27",
+  "date": "2021-02-28",
+  "subject": "Updated description"
+ },
+ {
+  "sha": "a0cf006220e8",
+  "date": "2021-02-28",
+  "subject": "Update desc"
+ },
+ {
+  "sha": "62f4b6e2090a",
+  "date": "2021-02-28",
+  "subject": "Added TinyTuya diagram"
+ },
+ {
+  "sha": "af86cb8e10bf",
+  "date": "2021-02-27",
+  "subject": "Win10 users note"
+ },
+ {
+  "sha": "31fca375b1b9",
+  "date": "2021-02-22",
+  "subject": "Added wizard update to notes"
+ },
+ {
+  "sha": "a8781e270220",
+  "date": "2021-02-20",
+  "subject": "tinytuya.wizard notes"
+ },
+ {
+  "sha": "3048b949ec49",
+  "date": "2021-02-20",
+  "subject": "Move wizard out of init + standalone"
+ },
+ {
+  "sha": "3e541ef434f5",
+  "date": "2021-02-20",
+  "subject": "Better format for Example readme"
+ },
+ {
+  "sha": "10c1f4c58121",
+  "date": "2021-02-20",
+  "subject": "Bug fix in v1.2.2 #32 #33"
+ },
+ {
+  "sha": "dd90efac9a81",
+  "date": "2021-02-20",
+  "subject": "Handle multiple dps for state for Poll"
+ },
+ {
+  "sha": "eaff6ef54085",
+  "date": "2021-02-16",
+  "subject": "Fixed set_white_percentage: colour temp was incorrectly computed for B type devices."
+ },
+ {
+  "sha": "487b44316892",
+  "date": "2021-02-16",
+  "subject": "Fixed set_white_percentage: added missing self."
+ },
+ {
+  "sha": "58aca3e029f4",
+  "date": "2021-02-14",
+  "subject": "Add debug to bulb set_version()"
+ },
+ {
+  "sha": "585827749653",
+  "date": "2021-02-14",
+  "subject": "generate_payload() added gwId, devId and uid args"
+ },
+ {
+  "sha": "1858123111e3",
+  "date": "2021-02-10",
+  "subject": "v1.2.1 Bug Fix for #8"
+ },
+ {
+  "sha": "0a19e6334d54",
+  "date": "2021-02-10",
+  "subject": "Fix _generate_payload for command 18"
+ },
+ {
+  "sha": "8a8eb3ceb2ae",
+  "date": "2021-02-10",
+  "subject": "Add snapshot.json example"
+ },
+ {
+  "sha": "2e4422f223bd",
+  "date": "2021-02-10",
+  "subject": "Add example using snapshot.json"
+ },
+ {
+  "sha": "9eb9b4671971",
+  "date": "2021-02-09",
+  "subject": "TinyTuya Error Codes"
+ },
+ {
+  "sha": "f418e20acdde",
+  "date": "2021-02-09",
+  "subject": "Remove debug print _hexvalue_to_hsv"
+ },
+ {
+  "sha": "367c17f232d2",
+  "date": "2021-02-09",
+  "subject": "Add devices.py example"
+ },
+ {
+  "sha": "006992bb1a29",
+  "date": "2021-02-09",
+  "subject": "Improved _get_socket retry logic"
+ },
+ {
+  "sha": "ae10ad24a6ee",
+  "date": "2021-02-09",
+  "subject": "v1.2.0 Error Handling and Bug Fixes"
+ },
+ {
+  "sha": "cea3c48eab7b",
+  "date": "2021-02-09",
+  "subject": "Example script using devices.json"
+ },
+ {
+  "sha": "50dae6f6d3b5",
+  "date": "2021-02-07",
+  "subject": "Additional error handling and retry logic"
+ },
+ {
+  "sha": "6258c41e09b3",
+  "date": "2021-02-06",
+  "subject": "v1.1.5 Bug Fixes and Improvements"
+ },
+ {
+  "sha": "596835ddec4b",
+  "date": "2021-02-06",
+  "subject": "Improved error handling"
+ },
+ {
+  "sha": "0a13b6776de4",
+  "date": "2021-02-06",
+  "subject": "Add json payload error handling"
+ },
+ {
+  "sha": "ee995bf90fc3",
+  "date": "2021-02-06",
+  "subject": "Decrypt all TuyaMessage responses"
+ },
+ {
+  "sha": "0db9ebbdcd5a",
+  "date": "2021-02-06",
+  "subject": "Added updatedps() and set_debug() to list"
+ },
+ {
+  "sha": "842b5f12999f",
+  "date": "2021-01-31",
+  "subject": "v1.1.4 Update DPS"
+ },
+ {
+  "sha": "f4352fcbb14a",
+  "date": "2021-01-31",
+  "subject": "Add note about DPS ranges"
+ },
+ {
+  "sha": "15b7ac063cc4",
+  "date": "2021-01-31",
+  "subject": "Add example scripts"
+ },
+ {
+  "sha": "3f1334782c12",
+  "date": "2021-01-30",
+  "subject": "Add updatedps() to send command 18"
+ },
+ {
+  "sha": "2aeb1174e1a6",
+  "date": "2021-01-27",
+  "subject": "Add note for device22 exception"
+ },
+ {
+  "sha": "89830214c974",
+  "date": "2021-01-17",
+  "subject": "Create codeql-analysis.yml"
+ },
+ {
+  "sha": "99d8ac8dda60",
+  "date": "2021-01-12",
+  "subject": "Add auto-find IP Address and fix #17"
+ },
+ {
+  "sha": "fa6dcf6629e6",
+  "date": "2021-01-12",
+  "subject": "v1.1.3 Notes"
+ },
+ {
+  "sha": "917093b63fad",
+  "date": "2020-12-20",
+  "subject": "Bug fix hexdigest[8:][:16] for 3.1 Devics"
+ },
+ {
+  "sha": "1f4644c78682",
+  "date": "2020-11-28",
+  "subject": "Updated for 1.1.1"
+ },
+ {
+  "sha": "f0074dcc9870",
+  "date": "2020-11-28",
+  "subject": "Fixed  example"
+ },
+ {
+  "sha": "5ebdd12ba77f",
+  "date": "2020-11-28",
+  "subject": "Added example"
+ },
+ {
+  "sha": "df2306a0e296",
+  "date": "2020-11-28",
+  "subject": "Updated BuldDevice Class"
+ },
+ {
+  "sha": "f6885e1fc6b2",
+  "date": "2020-11-27",
+  "subject": "Added BulbDevice example"
+ },
+ {
+  "sha": "2eb7ce437807",
+  "date": "2020-11-27",
+  "subject": "Added support for 2 bulb types in BulbDevice"
+ },
+ {
+  "sha": "370f334b8bde",
+  "date": "2020-11-27",
+  "subject": "Update setup instructions"
+ },
+ {
+  "sha": "2d14d204b526",
+  "date": "2020-11-27",
+  "subject": "Added Release Notes"
+ },
+ {
+  "sha": "40e4a16ec4ce",
+  "date": "2020-11-27",
+  "subject": "Updated LOCAL_KEY instructions"
+ },
+ {
+  "sha": "509328f33400",
+  "date": "2020-11-27",
+  "subject": "Updated pip install to include requests module"
+ },
+ {
+  "sha": "8cf469b0feae",
+  "date": "2020-11-26",
+  "subject": "Added Setup Wizard instructions"
+ },
+ {
+  "sha": "2b7a65175af3",
+  "date": "2020-11-26",
+  "subject": "Cleaned up wizard code"
+ },
+ {
+  "sha": "5a5c0532eba7",
+  "date": "2020-11-26",
+  "subject": "Added Setup Wizard"
+ },
+ {
+  "sha": "7b94c22377a2",
+  "date": "2020-11-26",
+  "subject": "Updated Description"
+ },
+ {
+  "sha": "6923083991c8",
+  "date": "2020-11-26",
+  "subject": "Updated Description for Setup Wizard"
+ },
+ {
+  "sha": "c9455aebf029",
+  "date": "2020-11-26",
+  "subject": "Added setup wizard to pull Tuya Local Keys"
+ },
+ {
+  "sha": "f6d43141d208",
+  "date": "2020-11-23",
+  "subject": "Added TuyaMCU reference"
+ },
+ {
+  "sha": "a012ec549ebe",
+  "date": "2020-11-23",
+  "subject": "Clean up python code formatting"
+ },
+ {
+  "sha": "5c25a89b9cd5",
+  "date": "2020-11-23",
+  "subject": "add set_socketRetryLimit(integer) logic (default 5) if exceed limit will rethrow the exception from low level _send_receive"
+ },
+ {
+  "sha": "5895ad79ca0e",
+  "date": "2020-11-22",
+  "subject": "fix typo in NODELAY code change ==false to not for one comparison"
+ },
+ {
+  "sha": "d40fe7b8feb8",
+  "date": "2020-11-21",
+  "subject": "make persistent socket mode an option (default False) make NODELAY socket mode an option (default True) cleanup logging and comments around persistent sockets and scene mode update README.md"
+ },
+ {
+  "sha": "8e1e6d50edd7",
+  "date": "2020-11-21",
+  "subject": "Bump hexdigest from 8:16 to 8:24"
+ },
+ {
+  "sha": "220535252e10",
+  "date": "2020-11-21",
+  "subject": "Updated Tuya DPS Table"
+ },
+ {
+  "sha": "a73dd3d558af",
+  "date": "2020-11-21",
+  "subject": "Fix DPS Key/Value Table"
+ },
+ {
+  "sha": "cbb769615d90",
+  "date": "2020-11-21",
+  "subject": "Added DPS Key/Value Table"
+ },
+ {
+  "sha": "6419d2bd9c7f",
+  "date": "2020-11-21",
+  "subject": "Added Heartbeat"
+ },
+ {
+  "sha": "a87b7cdf2b7c",
+  "date": "2020-11-15",
+  "subject": "add a few \"scenes\" supported by color bulbs add a persistent socket that is not closed on every operation add a respawing of socket if there is a socket error during send or receive (attempt to handle windows error 10054"
+ },
+ {
+  "sha": "335be4b2e691",
+  "date": "2020-09-13",
+  "subject": "Updated scan comments"
+ },
+ {
+  "sha": "0b01381e918e",
+  "date": "2020-09-13",
+  "subject": "Updated import"
+ },
+ {
+  "sha": "dee8d1029261",
+  "date": "2020-09-13",
+  "subject": "Add network scan function to find tuya devices"
+ },
+ {
+  "sha": "5a17bb1548fc",
+  "date": "2020-09-13",
+  "subject": "Fix typo in conditional"
+ },
+ {
+  "sha": "f8bdc52ebbf1",
+  "date": "2020-09-13",
+  "subject": "Fix SET to CONTROL"
+ },
+ {
+  "sha": "621023e71416",
+  "date": "2020-09-13",
+  "subject": "Fix __init__ bug for BulbDevice"
+ },
+ {
+  "sha": "927657674982",
+  "date": "2020-09-07",
+  "subject": "dev_type='default'"
+ },
+ {
+  "sha": "9eca3e29456e",
+  "date": "2020-09-07",
+  "subject": "Expand tuya device dictionary and device20=default"
+ },
+ {
+  "sha": "c9f2dfacae4e",
+  "date": "2020-09-07",
+  "subject": "Updated Device Key instructions"
+ },
+ {
+  "sha": "067bc7d66e52",
+  "date": "2020-09-07",
+  "subject": "Added retry logic and option"
+ },
+ {
+  "sha": "24fcf56d23a2",
+  "date": "2020-09-04",
+  "subject": "Add PyPi badge"
+ },
+ {
+  "sha": "72af4d4656fd",
+  "date": "2020-09-03",
+  "subject": "Update gitignore"
+ },
+ {
+  "sha": "2b41c60c931a",
+  "date": "2020-09-03",
+  "subject": "Update setup md"
+ },
+ {
+  "sha": "b95d1395f2a0",
+  "date": "2020-09-03",
+  "subject": "Update setup"
+ },
+ {
+  "sha": "5adacc969956",
+  "date": "2020-09-03",
+  "subject": "Added pytuya note"
+ },
+ {
+  "sha": "6d488af9976c",
+  "date": "2020-09-03",
+  "subject": "Updated travis.yml"
+ },
+ {
+  "sha": "e379b0c36e3e",
+  "date": "2020-09-03",
+  "subject": "Added TravisCI"
+ },
+ {
+  "sha": "3d81b0c04bde",
+  "date": "2020-09-03",
+  "subject": "Added test.py"
+ },
+ {
+  "sha": "023a42f24b41",
+  "date": "2020-09-03",
+  "subject": "Initial Commit"
+ },
+ {
+  "sha": "abadd4106fd9",
+  "date": "2020-09-03",
+  "subject": "Initial commit"
+ }
+]

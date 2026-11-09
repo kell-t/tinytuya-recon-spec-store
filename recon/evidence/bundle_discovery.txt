@@ -1,0 +1,67 @@
+# Bundle: discovery — 94/946 commit-subject hits (full history; refs rare — subject = intent only, verify at pin)
+# Primary code/doc inventory:
+  - tinytuya/scanner.py
+  - tinytuya/core/udp_helper.py
+  - tools/broadcast-relay.py
+  - DESIGN.md § Discovery
+
+2026-07-02 [27aa6986ed52] fix: correct 16 verified bugs across Cloud, core, Bulb, scanner, Monitor
+2026-03-07 [a6bdef71517a] Tell scanner to not save snapshot file when only looking for certain devices
+2026-03-01 [2a95d00f8f61] Update README and improve error messaging in scanner and wizard
+2026-01-10 [d72f3085c5ea] Enhance device version detection for v3.4 and v3.5 in ForceScannedDevice class #671
+2025-08-08 [8d191d792cd7] Allow scanner to work even without GCM
+2025-08-05 [28ada7b9fa4a] Fix newline in Wizard region list
+2025-04-28 [b9e41462dbdf] broadcast-relay: make it work with older versions of the scanner
+2025-04-28 [36e3d11a4830] broadcast-relay: no need to bind the sending socket
+2025-04-28 [155efba4086e] Add new tool: broadcast-relay
+2025-01-25 [c70e3a58c432] Update release notes for v1.16.1 and increment version number to include scanner error handling improvements
+2025-01-25 [fcee73701ea0] Add better error message when sending scanner broadcasts fails
+2025-01-25 [57e02572ea54] Add better error message when sending scanner broadcasts fails
+2025-01-25 [56f41fa72c0d] Fix WinError 10022: Handle invalid socket arguments in send_discovery_request
+2025-01-04 [b90172457960] fix import of scanner, fix pylint
+2024-12-31 [ff4b2f25eeca] refactor udp decryption to own file
+2024-11-12 [14e6b7a3f307] Add IoT core service renewal info to the setup wizard in the README
+2024-07-08 [2b495bca257c] Add network configuration for force scan
+2024-07-07 [728779de7d1e] Add broadcast for 3.5 devices to server
+2024-07-07 [b00882a442bd] Close the broadcast sockets once we're done with them
+2024-07-07 [c6dba30c6eae] Also use psutil to get the force-scan IP list if netifaces is not available
+2024-07-07 [0b199901c01f] Rewrite tinytuya.find_device() to use the scanner
+2024-07-07 [2fbb69158cc3] Allow calling send_discovery_request() without an argument
+2024-07-07 [831f1131f17e] Make scanner send broadcasts to port 7000
+2024-07-07 [5f38b49e0146] Add "Force Scan" button and UI updates
+2024-07-07 [ff6abf2275da] Add get_ip_to_broadcast() function to scanner
+2024-07-07 [7d160a0f98ac] Allow device discovery packets on port 7000
+2024-06-24 [133fd359fdd8] Allow host bits in the force-scan network list
+2024-06-23 [7259b8dec70a] Rename scanner variable try_v35 to a more descriptive try_v35_with_v34
+2024-06-23 [e9fd881cff54] Add force-scanning v3.5 devices to scanner
+2024-06-23 [d088823727d9] Add force-scanning v3.5 devices to scanner
+2024-06-22 [d3bc3d08ba56] Allow a string as the force-scan list
+2024-06-22 [d3be0ac645fc] Fix scanner force-scanning
+2024-02-22 [f84834b845b0] Add note to README about browser theming/Dark Reader QR code scanning
+2023-11-14 [0eabf2d460b6] Minor scanner docu update
+2023-11-14 [9fce7640a84d] Fix tinytuya.find_device() and decrypt_udp() for v3.1 devices
+2023-08-16 [9c3b0d2fee91] Scan for new IP address then auto-IP is used and connection to last-known address fails
+2023-08-16 [b64fb93e6948] Allow multiple concurrent scans under some operation systems
+2023-04-28 [ca77a8ca8f67] Document 'Auto' discovery for IP address #337
+2023-04-23 [791ab3773cbd] Normalize ability/ablilty in scanner
+2023-04-18 [1be11b2e6406] Remove requirement for PyCryptodome in scanner (allows pyaes when no devices are v3.5+)
+2023-04-16 [40722bab867f] Make detection of 'scan' keyword more robust
+2023-04-16 [27d097546495] Make detection of 'scan' keyword more robust
+2023-04-16 [6c4182a13cd9] Allow wizard to scan for a Device ID to use
+2023-03-24 [4bd5189ab89e] Add pcap parser to tools/
+2023-03-24 [187a17b28fab] Add *.pcap and *~ to .gitignore
+2023-03-20 [7ec77ea69943] Cloud/wizard fixes
+2023-03-09 [997bec95b5df] Tighten up parent device detection in the Wizard
+2023-03-03 [bddb9736b01b] Move creation of tuya-raw.json file info block into Wizard
+2023-02-25 [d8a25b46c05e] Update wizard to not require apiDeviceID
+2023-02-23 [4df14afeeead] Add UDP 7000 broadcast
+2023-01-16 [a474c756c1d3] Scanner fixes and Wizard rework
+2023-01-16 [d23db5fbbcae] v3.5 support fix for scanner #247
+2023-01-15 [637c9aeefd03] Map maxretry to scantime in scan functions #247
+2023-01-14 [5e066415e651] Scanner fix for v3.1 devices
+2023-01-14 [1bedc29d193e] Strip trailing NULs to make the scanner JSON parser happy
+2023-01-14 [e52cc07e39ed] Fixes for new scanner
+2023-01-13 [a495c694990c] Complete rewrite of the scanner, now allows force-scanning of IP ranges
+2022-10-12 [c90f31a15824] Make wizard gracefully handle wrong Region/DeviceID
+2022-10-04 [35c1842dbbea] Save keys listed in DEVICEFILE_SAVE_VALUES to devices.json, and rework wizard.py to use tinytuya.Cloud()
+2022-08-14 [89e3ceb35ad5] Add dps "1" seed to discovery for 3.2 prot

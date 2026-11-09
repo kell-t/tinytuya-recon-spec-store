@@ -1,0 +1,65 @@
+# Bundle: cloud-api — 59/946 commit-subject hits (full history; refs rare — subject = intent only, verify at pin)
+# Primary code/doc inventory:
+  - tinytuya/Cloud.py
+  - API.md § Cloud
+  - DESIGN.md § Cloud
+
+2026-07-02 [d4a148ca5f93] Skip GCM IV randomness test when DEBUG is active (fixed IV by design)
+2026-07-02 [cdc351cabfee] Restore debug-mode fixed IV for troubleshooting
+2026-07-02 [27aa6986ed52] fix: correct 16 verified bugs across Cloud, core, Bulb, scanner, Monitor
+2026-07-02 [2dd488774631] docs: add DESIGN.md and AGENTS.md to guide future development
+2026-06-25 [00574f78f19e] Cloud: send PUT/DELETE with the real HTTP method
+2026-03-08 [26e2929e0a5c] fix(Cloud): use key-absence sentinel for mapping fallback (Copilot review)
+2026-03-08 [cbe2ecff1d51] fix(Cloud): preserve device mappings on API failure in getdevices()
+2025-08-24 [736ba6774d88] Update release notes for version 1.17.4 to include Cloud configFile option
+2025-06-04 [1d97627875dd] Add new Singapore datacenter to Cloud
+2025-04-26 [bd8408bd9039] Update logging for malformed device entries in Cloud module
+2025-04-26 [c099234c7af2] Add cloud error handling and server recovery logic
+2024-10-08 [c51b4c3f4074] Add CloudRequest example #541
+2024-01-29 [d45473d1fd57] Adding support for Presence Detector Device like https://www.amazon.com/gp/product/B0BZCRNY14ZZ
+2023-07-04 [f7cf7effb24d] Cloud getdevices() bug #381
+2023-05-26 [01611fc4f366] Modify assign_dp_mappings() to allow a mappings dict instead of just a file name
+2023-05-26 [d987f0bdd4ad] Add assign_dp_mappings() function to add mappings to an entire tuyadevice list
+2023-05-24 [9fd5b924e0f0] New Cloud functions to download DP Name mappings
+2023-04-23 [3060e8b7f827] Revert setting Content-type header on Cloud non-POST requests
+2023-04-11 [b077f49dd8af] Cloud device list and Content-Type update
+2023-03-20 [7ec77ea69943] Cloud/wizard fixes
+2023-03-20 [74c0b19adcc0] Fetch the device list a 2nd time to make sure we have the local key
+2023-03-03 [5afef6ebceaf] Finish reworking Cloud device list
+2023-02-25 [a8fff854ddcc] Rework Cloud device list fetching to get all devices and without an initial Device ID
+2023-02-24 [242cd2c09658] Better Cloud device log evtype handling
+2023-02-24 [4413314b6dc9] Allow passing an initial token from a previous run to Cloud init
+2023-02-24 [b5e93d3c2c40] Add documentation for set_multiple_values() and add Cloud IR exmple
+2023-02-17 [adb2a1052624] Removed unused hsvarray assignment
+2023-02-04 [d85bb23af663] Restrict pylint to tinytuya
+2022-12-12 [d887b06ed026] Caution for Tuya Cloud API limits #236
+2022-12-02 [47bdc6e714b3] Fix _gettoken() bug #229
+2022-12-02 [2bf893a9642b] Rework Cloud log start/end times, and update documentation
+2022-11-22 [f866f5fcc54c] Update README with new Cloud functions
+2022-11-22 [9a1e0cd0d6fa] Standardize deviceid and make error check catch "" (empty string) in addition to None, and include a URL example in cloudrequest() comments
+2022-11-22 [19947ab3b054] Standardize deviceid and make error check catch "" (empty string) in addition to None, and include a URL example in cloudrequest() comments
+2022-11-22 [44f52876e203] Abort requests on token-fetch failure
+2022-11-22 [8393e6c71446] Add fetching device logs to Cloud, and generic URLs
+2022-10-28 [0535d8946db5] Another error handling tweak to Cloud.getdevices()
+2022-10-28 [4474fd1549f6] Another error handling tweak to Cloud.getdevices()
+2022-10-28 [3684ee96abec] Restore the reference to 'self' in all __init__() functions, and make sure __init__() exceptions are printed correctly
+2022-10-04 [35c1842dbbea] Save keys listed in DEVICEFILE_SAVE_VALUES to devices.json, and rework wizard.py to use tinytuya.Cloud()
+2022-10-03 [bf12d43f403e] Restore \r\n line endings
+2022-09-12 [520e2573dba4] Restore dev_type when changing version away from 3.4
+2022-09-12 [637d67cdacf9] Restore dev_type when changing version away from 3.4
+2022-07-17 [b2069d4b8c1c] Cloud RGB Smartbulb example
+2022-07-05 [6be73229ab76] Do not retry on decode error (restores previous behavior)
+2022-07-05 [980225fcaf78] Update Cloud.py
+2022-07-02 [8b0fb849d787] Add mac address lookup from Tuya Cloud
+2022-07-02 [7eba3057c485] Load cloud config file if available
+2022-07-01 [2313fe8f8145] Clean up Cloud(**cloudconfig)
+2022-07-01 [6dfb8293c477] Handle Cloud API auth errors better
+2022-07-01 [0a45cc9c6a1f] Add Cloud API syncing with auto-retry
+2022-06-14 [9bd72705882a] Break the Outlet/Cover/Bulb/Cloud modules out into separate files
+2022-02-03 [743912b27782] Add cloud set bulb color example
+2022-01-02 [0d3209d50240] v1.3.1 Token Renwal Logic - Issue #94
+2022-01-02 [4e553eedaa27] Fix cloud token renewal
+2021-12-30 [dda2732ea8ae] Add Cloud class example
+2021-12-30 [b538f78e2bb3] v1.3.0 Cloud API Support #87 #95
+2021-07-27 [9bb3656e6421] Fix #57 new Tuya IoT payload signature
+2021-07-06 [7fc4af7282d3] Update to token request

@@ -1,0 +1,70 @@
+# Bundle: packaging-surface — 152/946 commit-subject hits (full history; refs rare — subject = intent only, verify at pin)
+# Primary code/doc inventory:
+  - tinytuya/__init__.py
+  - tinytuya/core/__init__.py
+  - tinytuya/core/exceptions.py
+  - tinytuya/core/error_helper.py
+  - tinytuya/core/const.py
+  - pyproject.toml
+  - setup.py
+
+2026-06-28 [d3bdd7078583] release: bump version to 1.19.0, update RELEASE.md for Monitor + community fixes
+2026-06-28 [34e6f449525b] Update testcontrib.py and Contrib/README.md to use preferred import pattern
+2026-05-28 [b6f692a18ddd] release: bump version to 1.18.1, update RELEASE.md for MAX_PAYLOAD_LENGTH fix
+2026-04-12 [1b3f3bcc1529] feat: update release notes for v1.18.0
+2026-04-12 [8ab0d0df4d31] fix: update import handling for package version retrieval in setup.py
+2026-04-12 [3cea89363d21] feat: update version to 1.18.0, enhance device file loading, and improve error handling in CLI
+2026-04-12 [518328ba7b21] feat: update README and server version to p16, enhance device file loading and error handling
+2026-03-15 [ba7b6d8a8a1b] docs: clarify version=3.3 is an example, not a universal default
+2026-03-15 [70f00e5ce3f2] docs: clarify set_version() example — 3.3 is not the required version
+2026-03-07 [cec1830af19a] Use persistent sockets for CLI monitor, and update RELEASE.md
+2026-02-23 [1f38a8e7b782] Revert deprecated Contrib/__init__.py
+2026-02-22 [31adb0b04c76] v1.17.6: Fix RFRemoteControlDevice bugs and update version to 1.17.6 #683
+2026-02-21 [931bb7aad11a] Update RELEASE.md to reflect the addition of SoriaInverterDevice and correct version formatting
+2026-02-21 [e9a23af8c916] Enhance device command handling by improving value parsing and error handling for version retrieval
+2026-02-21 [c1d565d201db] Typo fix Update tinytuya/Contrib/__init__.py
+2026-01-10 [d72f3085c5ea] Enhance device version detection for v3.4 and v3.5 in ForceScannedDevice class #671
+2025-08-24 [736ba6774d88] Update release notes for version 1.17.4 to include Cloud configFile option
+2025-08-24 [7ca1b531ee8a] Bump version to 1.17.4 and add Release notes
+2025-08-09 [78505b78c164] Update RELEASE.md for v1.17.3 - Make colorama dependency optional
+2025-06-04 [635c545d217e] Add release notes for v1.17.2 - BulbDevice Fix
+2025-05-31 [fce1d3c37f72] Update RELEASE.md for v1.17.1 - Fix BulbDevice for non-bulb devices
+2025-05-27 [cd99020e4fa4] Bump version number
+2025-05-25 [c5c02a4a48ae] Update version to 1.17.0 and add release notes for BulbDevice rewrite
+2025-05-07 [7075b18343f0] Fix initialization bug with python2 (embedded devices)
+2025-04-28 [b9e41462dbdf] broadcast-relay: make it work with older versions of the scanner
+2025-04-26 [7f3f20f822ad] Bump version to 1.16.2 and update release notes
+2025-04-22 [bf24e363e0da] Remove Python 3.6 build test as it's not available on 22.04
+2025-04-22 [192ffdcf6e86] Update Github build test versions
+2025-01-25 [c70e3a58c432] Update release notes for v1.16.1 and increment version number to include scanner error handling improvements
+2025-01-05 [6b92610afad7] Add version switch to CLI
+2025-01-04 [b90172457960] fix import of scanner, fix pylint
+2025-01-01 [3d47dc78d5e1] fix: change `version` to `self.version`
+2025-01-01 [7fa261bb835d] Remove unused library version variables
+2024-12-31 [be63f9b4fe79] fix import
+2024-12-31 [b46865c1ce08] clean up new imports in core.py
+2024-11-12 [14e6b7a3f307] Add IoT core service renewal info to the setup wizard in the README
+2024-07-19 [43f3e491038e] Bump version and edit documentation
+2024-07-19 [f0f1e0bace57] Handle exception when binding to IP address fails
+2024-07-07 [3aea26172d29] Release notes
+2024-06-23 [9420ec66f8d3] Make sure set_version() is given a float (#507)
+2024-05-25 [2360fa3ce9e6] Update workflows and bump version
+2024-05-06 [b0f7be7600a1] Update Dockerfile to use Python 3.12-bookworm and remove rust build
+2024-02-24 [8971b802d5e4] Add release notes
+2024-02-24 [18474664bc13] Remove crypto import
+2024-02-24 [6676d8df3c2e] Add #468 to Release Notes
+2024-02-22 [7082afe96605] Update Contrib README for __init__.py deprecation
+2024-02-22 [c9b700028f6e] Update Contrib README for __init__.py deprication
+2024-02-22 [1dcba48605c3] Depricate tinytuya/Contrib/__init__.py
+2023-11-14 [5591ec72fdc7] Remove python 2.7 in doc
+2023-11-14 [b044a775492a] Remove Python 2.7 support #376
+2023-11-14 [2ddb6f2b8ee2] Server build version update
+2023-11-14 [669a98fe0657] Update version to 1.13.0
+2023-11-14 [5f3fe554a1d0] Add pyca/cryptography to setup.py and some minor docu updates
+2023-11-14 [866a52cc78a5] Fix infinite loop in IRRemoteControlDevice.detect_control_type() (closes #403)
+2023-10-06 [b18c444083a7] Setup instruction updates #413
+2023-08-17 [c15837d04032] Add "check version" suggestion message when status() receives error
+2023-08-17 [71fb5410b74b] Add "check version" suggestion message when status() receives no data
+2023-07-19 [ea1444c859de] Update Setup PDF #387
+2023-07-04 [4c6f814e500e] Handle import issue with urllib3 #377
+2023-06-20 [ef5486128832] Add test for python 3.9 and 3.10

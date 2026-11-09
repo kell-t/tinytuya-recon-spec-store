@@ -1,0 +1,23 @@
+# Bundle: monitor — 18/946 commit-subject hits (full history; refs rare — subject = intent only, verify at pin)
+# Primary code/doc inventory:
+  - tinytuya/core/Monitor.py
+  - PROTOCOL.md § monitoring sections
+
+2026-07-02 [8169204ef606] fix(Monitor): address Copilot review findings
+2026-07-02 [0d66872ffd97] fix(Monitor): make reconnection reliable and non-blocking; bump to v1.20.0
+2026-07-02 [27aa6986ed52] fix: correct 16 verified bugs across Cloud, core, Bulb, scanner, Monitor
+2026-06-28 [121b23d41ee2] README: add auto_reconnect=True to Monitor class example and features list
+2026-06-28 [f40dfb2110f8] Add Experimental note for Monitor Class
+2026-06-28 [d3bdd7078583] release: bump version to 1.19.0, update RELEASE.md for Monitor + community fixes
+2026-06-28 [f3629a1f5985] Add Monitor auto_reconnect connector thread
+2026-06-28 [9102a3eb446f] docs: add Monitor class section to README, showcase on_disconnect opt-in in examples
+2026-06-06 [835514c1d96d] Add Monitor class — single-thread multi-device status monitoring
+2026-04-12 [e146453b57bb] docs: enhance CLI command descriptions and add monitoring feature details
+2026-04-12 [49dfafe96ba4] fix: correct argument description in CLI and improve device monitoring logic
+2026-03-07 [cec1830af19a] Use persistent sockets for CLI monitor, and update RELEASE.md
+2026-03-07 [2a5ebf934067] Move CLI into new file and add monitor command
+2023-08-17 [ab18a712fec4] More examples/monitor.py updates
+2023-08-17 [7b713f576db5] Add some error handling to examples/monitor.py
+2023-08-17 [1c26c8333ca3] Give examples/monitor.py some much-needed love
+2021-08-14 [930fe7b46676] Add device monitor code example
+2021-07-25 [ab2d8ff7c50c] Added monitor example script
