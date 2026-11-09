@@ -1,1 +1,1 @@
-PIN: master-line tag v1.20.0 @ 8cd2e7355cd7876be20d61e877063db06e79ba1c (published 2026-07-06); repo default branch: master
+PIN: master-line tag v1.20.0 @ commit 8512d8364a9d0e351bbec2597bafa17595545b13 (annotated tag obj 8cd2e73) (published 2026-07-06); repo default branch: master
