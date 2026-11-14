@@ -223,9 +223,9 @@ Cloud methods SHALL return the shared error dict `{"Error": <text>, "Err": <code
 
 ### Requirement: Rate-limit caution for automation use
 The shipped documentation SHALL warn that free Tuya Developer Trial accounts impose strict API call limits, and the client SHALL NOT enforce client-side throttling or backoff beyond its paging bounds.
-- Status: INFERRED
+- Status: VERIFIED
 - Evidence: [commit d887b06ed026] "Caution for Tuya Cloud API limits"; doc: API.md line 727 (rate-limit note); README.md line 506 (CAUTION block)
-- Anchor: anchor not located (documentation-only constraint; no client-side limiter exists in `tinytuya/Cloud.py`)
+- Anchor: `README.md:508` (CAUTION block re-read live at pin, pass-5 graduation 2026-11-15; the 506 cited in Evidence is the section intro line — corrected here append-only); `API.md:727` (rate limits Note, text re-confirmed verbatim at pin); `tinytuya/Cloud.py:786` (max_fetches paging bound is the only client-side rate bound; throttle/backoff/rate-limit enforcement greps zero hits across the package at pin — absence re-verified). Previously: anchor not located (documentation-only constraint; no client-side limiter exists in `tinytuya/Cloud.py`)
 
 #### Scenario: Shipped docs caution against frequent automation calls
 - **WHEN** a user considers automation that calls the Cloud frequently
