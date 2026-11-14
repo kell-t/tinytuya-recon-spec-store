@@ -294,9 +294,9 @@ New Contrib device modules SHALL be consumed via `from tinytuya.Contrib import Y
 
 ### Requirement: DPS-to-name mapping sourced from cloud devices.json
 DPS indexes SHALL be presented to users with human-readable names sourced from the Tuya Cloud download in `devices.json` (since TinyTuya v1.12.8); when that mapping is wrong for a product, the documented remedy is to switch the product's Control Instruction Mode to "DP Instruction" in the Tuya IoT developer console and re-poll.
-**Status**: INFERRED
+**Status**: VERIFIED
 **Evidence**: doc: DP_Mapping.md (whole file — steps 1–6 for enabling DP Instruction mode and rebuilding devices.json)
-**Anchor**: anchor not located (cloud-side behavior; devices.json loading is owned by the cloud-api / device-control capabilities)
+**Anchor**: `tinytuya/wizard.py:206` (include_map chain — wizard prompt at 203 then getdevices call, re-read live at pin, pass-5 graduation 2026-11-15); `tinytuya/Cloud.py:408` (getdevices include_map parameter); `tinytuya/Cloud.py:518` (getmappings attach, per-product mapping stored in devices.json at 522); `tinytuya/Cloud.py:884` (getmapping downloads the per-product mapping from the cloud); DP_Mapping.md lines 3 and 7 re-read verbatim at pin. Previously: anchor not located (cloud-side behavior; devices.json loading is owned by the cloud-api / device-control capabilities)
 
 #### Scenario: DPS names come with the devices.json download
 - **WHEN** TinyTuya downloads the cloud device list into devices.json (since v1.12.8)
