@@ -1,1 +1,6 @@
 /repo/
+
+# Persistent source cache + recovery undo slot (recon-spec-store-kit cache;
+# see recon/openspec/specs/repo-cache).
+.repo/
+.repo-old/
